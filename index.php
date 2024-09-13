@@ -1,5 +1,5 @@
 <?php
-require '_assets/includes/autoload.php';
+require '_assets/includes/autoloader.php';
 
 try{
     (new \modules\blog\controllers\Homepage())->execute();
