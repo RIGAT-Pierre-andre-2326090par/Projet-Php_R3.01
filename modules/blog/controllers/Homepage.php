@@ -1,8 +1,8 @@
 <?php
-namespace blog\controllers\Homepage;
+namespace blog\controllers;
 
 class Homepage {
     public function execute(): void {
-        (new \blog\views\Homepage())->show();
+        (new \blog\views\homepage())->show();
     }
 }
