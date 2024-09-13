@@ -14,6 +14,11 @@ class Layout // La classe Layout nous permet de poser la base de nos pages HTML
     <link href="../../../_assets/styles/light-style.css" rel="stylesheet"/> <!-- Lien jusqu'au CSS -->
 </head>
 <body>
+<header>
+    
+
+
+</header>
 <?= $this->content; ?> <!-- Contenu de la page, avec $content-->
 
 </body>
