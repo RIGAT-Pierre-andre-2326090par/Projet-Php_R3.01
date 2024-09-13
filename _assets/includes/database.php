@@ -4,7 +4,7 @@
     try
     {
         // Connexion à la base de données.
-        $dsn = 'mysql:host=' . $host . ';dbname=' . $password;
+        $dsn = 'mysql:host=' . $host . ';dbname=' . $name;
         $pdo = new \PDO($dsn, $username, $password);
         // Codage de caractères.
         $pdo->exec('SET CHARACTER SET utf8');
