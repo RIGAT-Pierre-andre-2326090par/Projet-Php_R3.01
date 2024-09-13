@@ -1,6 +1,6 @@
 <?php
 namespace blog\views;
-class Layout // La classe Layout nous permet de poser la base de nos pages HTML
+class layout // La classe Layout nous permet de poser la base de nos pages HTML
 {
   public function __construct(private string $title, private string $content){} // On définit notre constructeur
   public function show():void{ // Création de la fonction show, qui permet d'afficher le contenu de la page
