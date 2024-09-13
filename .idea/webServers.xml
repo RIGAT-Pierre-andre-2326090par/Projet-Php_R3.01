@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="487800e7-c30e-4962-9619-6541c32f701f" name="tenrac-lovers" url="http://tenrac-lovers.alwaysdata.net">
+        <fileTransfer rootFolder="/home/tenrac-lovers" accessType="SFTP" host="ssh-tenrac-lovers.alwaysdata.net" port="22" sshConfigId="804cbceb-edfe-45cb-990b-d90fb0caffb1" sshConfig="tenrac-lovers@ssh-tenrac-lovers.alwaysdata.net:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" isUseRsync="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
