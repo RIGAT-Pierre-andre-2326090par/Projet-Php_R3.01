@@ -25,6 +25,10 @@ class layout // La classe Layout nous permet de poser la base de nos pages HTML
       </nav>
       <?= $this->content; ?> <!-- Contenu de la page, avec $content-->
 
+      <footer>
+          
+
+      </footer>
       </body>
 
 </html>

@@ -2,7 +2,7 @@
 
 use blog\controllers\Homepage;
 
-require '_assets/includes/autoloader.php';
+//require '_assets/includes/autoloader.php';
 
 try{
     (new Homepage())->execute();
