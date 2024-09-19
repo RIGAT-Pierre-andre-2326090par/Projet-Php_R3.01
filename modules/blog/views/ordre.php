@@ -4,21 +4,25 @@ namespace blog\views;
 
 class ordre
 {
-    public function show(): void {
-        ob_start();
+    public function show():void{
         ?>
-        <img src="#" />
-        <h2>Nom du club</h2>
-        <h4>Adresse</h4>
-        <p> Une description absolument pas intéressante blabla</p>
-
-        <strong>Photos</strong>
-        <img src="#" />
-        <strong>Membres</strong>
-        <img src="#" />
+        <h1>Ordre</h1>
+        <p>Description de dingo wow</p>
+        <h3>CLUBS</h3>
+        <section class="infoClub">
+            <img src="#" />
+            <p> Nom </p> <br>
+            <p> Adresse </p>
+        </section>
+        <section class="infoClub">
+            <img src="#" />
+            <p> Nom </p> <br>
+            <p> Adresse </p>
+        </section>
         <?php
-        (new layout('Ordre', ob_get_clean()))->show();
+        (new layout('Ordre et clubs', ob_get_clean()))->show();
     }
+
 
 }
 ?>
