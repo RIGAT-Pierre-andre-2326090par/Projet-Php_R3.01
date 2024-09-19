@@ -13,9 +13,8 @@ try{
         elseif ($_GET['action'] == 'repas'){
             (new \blog\controllers\repas())->execute();
         }
-        else {
-            (new \blog\controllers\homepage())->execute();
-        }
+    } else {
+        (new \blog\controllers\homepage())->execute();
     }
 }
 catch(Exception $e){
