@@ -1,8 +1,12 @@
 <?php
 namespace blog\controllers;
 
+use includes\database\DatabaseConnection;
+
 class homepage {
     public function execute(): void {
-        (new \blog\views\homepage())->show();
+        $plats = null;
+        $clubs = null;
+        (new \blog\views\homepage())->show($plats, $clubs);
     }
 }
