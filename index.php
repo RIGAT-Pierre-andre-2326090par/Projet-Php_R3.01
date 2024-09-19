@@ -1,12 +1,10 @@
 <?php
 
-use blog\controllers\Homepage;
-
-//require '_assets/includes/autoloader.php';
+require '_assets/includes/autoloader.php';
 
 try{
-    (new Homepage())->execute();
+    (new \blog\controllers\homepage())->execute();
 }
 catch(Exception $e){
-    //(new \Blog\Views\Error($e->getMessage()))->show();
+    (new \blog\views\Error($e->getMessage()))->show();
 }
