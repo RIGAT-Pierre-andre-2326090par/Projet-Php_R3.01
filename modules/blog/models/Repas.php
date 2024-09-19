@@ -8,6 +8,6 @@ class Repas
 
     public function show()
     {
-        echo "<hr><br>$this->dates<br>";
+
     }
 }

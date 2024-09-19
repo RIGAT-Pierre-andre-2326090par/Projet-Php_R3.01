@@ -8,6 +8,6 @@ class Ingredient
 
     public function show()
     {
-        echo "<hr><br>$this->nom_ig<br>";
+
     }
 }

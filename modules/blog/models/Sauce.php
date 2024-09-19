@@ -8,6 +8,6 @@ class Sauce
 
     public function show()
     {
-        echo "<hr><br>$this->nom_sc<br>";
+
     }
 }

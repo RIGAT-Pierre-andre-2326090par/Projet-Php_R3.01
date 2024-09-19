@@ -8,7 +8,7 @@ class Tenrac
 
     public function show()
     {
-        echo "<hr><br>$this->nom_tr, $this->adresse_tr, $this->courriel_tr, $this->telephone_tr, $this->grade_tr, $this->rang_tr, $this->titre_tr, $this->dignite_tr<br>";
+
     }
 
 }

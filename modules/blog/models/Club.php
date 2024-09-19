@@ -8,6 +8,6 @@ class Club
 
     public function show()
     {
-        echo "<hr><br>$this->nom_cl, $this->img_cl<br>";
+
     }
 }
