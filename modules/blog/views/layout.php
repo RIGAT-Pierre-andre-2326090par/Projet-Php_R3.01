@@ -14,14 +14,12 @@ class layout // La classe Layout nous permet de poser la base de nos pages HTML
           <link href="../../../_assets/styles/style.css" rel="stylesheet"/> <!-- Lien jusqu'au CSS -->
       </head>
       <body>
-      <nav>
+      <nav class="bandeau">
           <ul>
             <li><a href="#">Plats</a></li>
             <li><a href="#">Clubs</a></li>
             <li><a href="#">Repas</a></li>
           </ul>
-
-
       </nav>
       <?= $this->content; ?> <!-- Contenu de la page, avec $content-->
 
