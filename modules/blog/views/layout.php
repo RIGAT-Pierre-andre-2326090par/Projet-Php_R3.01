@@ -26,7 +26,20 @@ class layout // La classe Layout nous permet de poser la base de nos pages HTML
       <?= $this->content; ?> <!-- Contenu de la page, avec $content-->
 
       <footer>
-          
+          <hr>
+          <section class="contact">
+              <p>Contact</p>
+              <p>Mentions légales</p>
+              <p>Conditions générales d'utilisations</p>
+          </section>
+
+          <section class="reseaux">
+              <img src="#" />
+              <img src="#" />
+              <img src="#" />
+          </section>
+
+          <p>Tenrac-Lovers©</p>
 
       </footer>
       </body>
