@@ -14,13 +14,15 @@ class layout // La classe Layout nous permet de poser la base de nos pages HTML
           <link href="../../../_assets/styles/style.css" rel="stylesheet"/> <!-- Lien jusqu'au CSS -->
       </head>
       <body>
-      <nav class="bandeau">
+      <nav class="bandeau"> <!-- On crée notre bandeau de navigation -->
           <ul>
             <li><a href="index.php?action=plats">Plats</a></li>
             <li><a href="#">Clubs</a></li>
             <li><a href="#">Repas</a></li>
+              <li><a href="#">Ordre</a></li>
           </ul>
       </nav>
+
       <?= $this->content; ?> <!-- Contenu de la page, avec $content-->
 
       <footer>
