@@ -2,7 +2,7 @@
 
 namespace Blog\Models;
 
-class Plat
+class Plats
 {
     public function __construct(private $nom_pl){}
 }
