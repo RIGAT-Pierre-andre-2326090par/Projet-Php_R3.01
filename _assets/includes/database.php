@@ -1,7 +1,7 @@
 <?php
     namespace includes\database;
 
-    class DatabaseConnection {
+    class database {
         public function getInstance(): \PDO {
             global $host, $username, $password, $name;
             try
