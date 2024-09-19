@@ -10,9 +10,6 @@ try{
         elseif ($_GET['action'] == 'ordre'){
             (new \blog\controllers\ordre())->execute();
         }
-        elseif ($_GET['action'] == 'repas'){
-            (new \blog\controllers\repas())->execute();
-        }
     } else {
         (new \blog\controllers\homepage())->execute();
     }
