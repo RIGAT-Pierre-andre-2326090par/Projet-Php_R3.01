@@ -7,6 +7,12 @@ try{
         if ($_GET['action'] == 'plats'){
             (new \blog\controllers\plats())->execute();
         }
+        if ($_GET['action'] == 'ordre'){
+            (new \blog\controllers\ordre())->execute();
+        }
+        if ($_GET['action'] == 'repas'){
+            (new \blog\controllers\repas())->execute();
+        }
     }
     (new \blog\controllers\homepage())->execute();
 }
