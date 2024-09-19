@@ -4,5 +4,10 @@ namespace Blog\Models;
 
 class Ingredient
 {
-    public function __construct(private $nom_ig, private $legume_ig){}
+    public function __construct(private $nom_ig, private $legume_ig, private $img_ig){}
+
+    public function show()
+    {
+        echo "<hr><br>$this->nom_ig<br>";
+    }
 }
