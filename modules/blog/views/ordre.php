@@ -17,7 +17,8 @@ class ordre
         <strong>Membres</strong>
         <img src="#" />
         <?php
-        (new \blog\views\layout('Accueil', ob_get_clean()))->show();
+        (new layout('Ordre', ob_get_clean()))->show();
     }
+
 }
 ?>

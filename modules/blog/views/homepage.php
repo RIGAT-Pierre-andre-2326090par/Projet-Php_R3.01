@@ -13,6 +13,6 @@ class homepage {
         <?php echo $clubs?>
         <a>Voir plus</a>
         <?php
-        (new \blog\views\layout('Accueil', ob_get_clean()))->show();
+        (new layout('Accueil', ob_get_clean()))->show();
     }
 }

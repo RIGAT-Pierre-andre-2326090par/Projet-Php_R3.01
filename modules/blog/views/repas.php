@@ -20,6 +20,7 @@ class repas
             <p> Adresse </p>
         </section>
         <?php
+        (new layout('Repas', ob_get_clean()))->show();
     }
 
 

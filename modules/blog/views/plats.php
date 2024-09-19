@@ -45,5 +45,6 @@ class plats{
             <p>Description longue de ouf</p>
         </section>
         <?php
-        (new \blog\views\layout('Accueil', ob_get_clean()))->show();
+        (new layout('Plats', ob_get_clean()))->show();
     }}
+?>
