@@ -7,14 +7,16 @@ try{
         if ($_GET['action'] == 'plats'){
             (new \blog\controllers\plats())->execute();
         }
-        if ($_GET['action'] == 'ordre'){
+        elseif ($_GET['action'] == 'ordre'){
             (new \blog\controllers\ordre())->execute();
         }
-        if ($_GET['action'] == 'repas'){
+        elseif ($_GET['action'] == 'repas'){
             (new \blog\controllers\repas())->execute();
         }
+        else {
+            (new \blog\controllers\homepage())->execute();
+        }
     }
-    (new \blog\controllers\homepage())->execute();
 }
 catch(Exception $e){
     (new \blog\views\Error($e->getMessage()))->show();
