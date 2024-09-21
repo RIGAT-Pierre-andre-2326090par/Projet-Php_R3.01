@@ -1,6 +1,6 @@
 <?php
 
-namespace Blog\Models;
+namespace blog\models;
 
 class Sauce
 {
