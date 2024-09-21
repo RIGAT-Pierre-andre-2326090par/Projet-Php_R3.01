@@ -15,5 +15,5 @@ try{
     }
 }
 catch(Exception $e){
-    (new \blog\views\Error($e->getMessage()))->show();
+    (new \blog\views\error())->show($e->getMessage());
 }
