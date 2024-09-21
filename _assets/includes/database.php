@@ -1,26 +1,37 @@
 <?php
-    namespace includes\database;
+namespace includes;
 
-    class database {
-        public function getInstance(): \PDO {
-            global $host, $username, $password, $name;
-            try
-            {
-                // Connexion à la base de données.
-                $dsn = 'mysql:host=' . $host . ';dbname=' . $name;
-                $pdo = new \PDO($dsn, $username, $password);
-                // Codage de caractères.
-                $pdo->exec('SET CHARACTER SET utf8');
-                // Gestion des erreurs sous forme d'exceptions.
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+use PDO;
+use PDOException;
 
-                return $pdo;
-            }
-            catch(PDOException $e)
-            {
-                // Affichage de l'erreur.
-                die('Erreur : ' . $e->getMessage());
-            }
+class database {
+    private dbpass $pass; // Non-static property
+
+    public function __construct() {
+        $this->pass = new dbpass(); // Initialize dbpass instance
+    }
+
+    public function getInstance(): PDO {
+        // Access the dbpass properties
+        $host = $this->pass->host;
+        $username = $this->pass->username;
+        $password = $this->pass->password;
+        $name = $this->pass->name;
+
+        try {
+            // Connection to the database
+            $dsn = 'mysql:host=' . $host . ';dbname=' . $name;
+            $pdo = new PDO($dsn, $username, $password);
+            // Character encoding
+            $pdo->exec('SET CHARACTER SET utf8');
+            // Enable exception-based error handling
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            return $pdo;
+        } catch (PDOException $e) {
+            // Display the error
+            die('Erreur : ' . $e->getMessage());
         }
     }
+}
 ?>
