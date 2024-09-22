@@ -10,4 +10,24 @@ class Club
     {
 
     }
+
+    public function getId()
+    {
+        return $this->id_cl;
+    }
+
+    public function getName()
+    {
+        return $this->nom_cl;
+    }
+
+    public function getAddress()
+    {
+        return $this->adresse_cl;
+    }
+
+    public function getImage()
+    {
+        return $this->img_cl;
+    }
 }
