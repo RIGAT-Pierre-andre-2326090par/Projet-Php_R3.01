@@ -1,6 +1,5 @@
 <?php
 
-namespace modules;
 require '_assets/includes/autoloader.php';
 
 try{
@@ -15,7 +14,7 @@ try{
             (new blog\controllers\homepage())->execute();
         }
         else (new blog\controllers\homepage())->execute();
-    }
+    } else (new blog\controllers\homepage())->execute();
 }
 catch(Exception $e){
     (new \blog\views\error())->show($e->getMessage());
