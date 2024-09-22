@@ -36,3 +36,4 @@ class homepage {
         (new layout('Accueil', ob_get_clean()))->show();
     }
 }
+?>

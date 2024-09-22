@@ -4,16 +4,11 @@ namespace blog\models;
 
 class Club
 {
-    public function __construct(private $id_cl, private $nom_cl, private $adresse_cl, private $img_cl){}
+    public function __construct(private $nom_cl, private $adresse_cl, private $img_cl){}
 
     public function show()
     {
-
-    }
-
-    public function getId()
-    {
-        return $this->id_cl;
+        echo "Club: $this->nom_cl, Address: $this->adresse_cl, Image: $this->img_cl";
     }
 
     public function getName()

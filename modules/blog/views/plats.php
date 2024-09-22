@@ -9,42 +9,15 @@ class plats{
         <h2>De superbes plats</h2>
         <p>Découvrez nos plats sensationnels</p>
 
-        <section class="plat">
-            <img src="#" />
-            <h3>Titre Plat1</h3>
-            <p>Description longue de ouf</p>
-        </section>
+        <?php foreach ($plats as $plat) { ?>
+            <section class="infoClub">
+                <img src="<?= htmlspecialchars($plat->getImage()); ?>" alt="<?= htmlspecialchars($plat->getName()); ?>" style="max-width: 200px; height: auto;" />
+                <h3><?= htmlspecialchars($plat->getName()); ?></h3>
+                <p><?= htmlspecialchars($plat->getDesc()); ?></p>
+            </section>
 
-        <section class="plat">
-            <img src="#" />
-            <h3>Titre Plat1</h3>
-            <p>Description longue de ouf</p>
-        </section>
-
-        <section class="plat">
-            <img src="#" />
-            <h3>Titre Plat1</h3>
-            <p>Description longue de ouf</p>
-        </section>
-
-        <section class="plat">
-            <img src="#" />
-            <h3>Titre Plat1</h3>
-            <p>Description longue de ouf</p>
-        </section>
-
-        <section class="plat">
-            <img src="#" />
-            <h3>Titre Plat1</h3>
-            <p>Description longue de ouf</p>
-        </section>
-
-        <section class="plat">
-            <img src="#" />
-            <h3>Titre Plat1</h3>
-            <p>Description longue de ouf</p>
-        </section>
         <?php
         (new layout('Plats', ob_get_clean()))->show();
     }}
+}
 ?>

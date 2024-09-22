@@ -19,7 +19,6 @@ class ordre
                 <h3><?= htmlspecialchars($club->getName()); ?><em></h3>
                 <p><?= htmlspecialchars($club->getAddress()); ?><em></p>
             </section>
-
         <?php
         }
         (new layout('Ordre et clubs', ob_get_clean()))->show();
