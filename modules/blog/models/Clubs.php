@@ -4,6 +4,7 @@ namespace blog\models;
 
 use PDO;
 use PDOException;
+
 class Clubs
 {
     public function getClubs() {
@@ -16,20 +17,11 @@ class Clubs
             $stmt->rowCount() or die('Pas de résultat' . PHP_EOL); // S'il y a des résultats.
 
             $stmt->setFetchMode(PDO::FETCH_OBJ);
-            ob_start();
+            $clubs = [];
             while ($result = $stmt->fetch())
-            {?>
-                <a href="">
-                    <div class="club">
-                        <div>
-                            <h2><?php echo $result->nomclub;?></h2>
-                            <p><?php echo $result->adresse;?></p>
-                        </div>
-                        <img src="<?php echo $result->imgclub;?>">
-                    </div>
-                </a>
-            <?php       }
-            $clubs = ob_get_clean();
+            {
+                $clubs[] = new \blog\models\Club($result->id, $result->nomclub, $result->adresse, $result->imageclub);
+            }
         }
         catch (PDOException $e)
         {

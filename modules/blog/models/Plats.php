@@ -16,20 +16,11 @@ class Plats
             $stmt->rowCount() or die('Pas de résultat' . PHP_EOL); // S'il y a des résultats.
 
             $stmt->setFetchMode(PDO::FETCH_OBJ);
-            ob_start();
+            $plats = [];
             while ($result = $stmt->fetch())
-            {?>
-                <a href="">
-                    <div class="plat">
-                        <div>
-                            <h2><?php echo $result->nomplat;?></h2>
-                            <p><?php echo $result->descplat;?></p>
-                        </div>
-                        <img src="<?php echo $result->imgplat;?>">
-                    </div>
-                </a>
-<?php       }
-            $plats = ob_get_clean();
+            {
+                $plats[] = new \blog\models\Plat($result->nomplat, $result->descplat, $result->imgplat);
+            }
         }
         catch (PDOException $e)
         {
