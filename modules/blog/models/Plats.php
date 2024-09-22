@@ -8,7 +8,7 @@ class Plats
 {
     public function getPlats(){
         $pdo = (new \includes\database())->getInstance();
-        $sql = 'SELECT NOM_CL nomclub, ID_CL id, ADRESSE_CL adresse FROM CLUB LIMIT 10';
+        $sql = 'SELECT NOM_PL nomplat FROM PLAT LIMIT 10';
         $stmt = $pdo->prepare($sql); // Préparation d'une requête.
         try
         {
@@ -19,9 +19,9 @@ class Plats
             ob_start();
             while ($result = $stmt->fetch())
             {
-                (new \blog\models\Club($result->id, $result->nomclub, $result->adresse, null))->show();
+                (new \blog\models\Plats($result->nomplat, null))->show();
             }
-            $clubs = ob_get_clean();
+            $plats = ob_get_clean();
         }
         catch (PDOException $e)
         {
@@ -30,6 +30,6 @@ class Plats
             echo 'Requête : ', $sql, PHP_EOL;
             exit();
         }
-        return $clubs;
+        return $plats;
     }
 }
