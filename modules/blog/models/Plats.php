@@ -6,6 +6,7 @@ use PDOException;
 
 class Plats
 {
+    public function __construct(){}
     public function getPlats(){
         $pdo = (new \includes\database())->getInstance();
         $sql = 'SELECT NOM_PL nomplat, DESC_PL descplat, IMG_PL imgplat FROM PLAT LIMIT 10';
@@ -19,7 +20,7 @@ class Plats
             $plats = [];
             while ($result = $stmt->fetch())
             {
-                $plats[] = new \blog\models\Plat($result->nomplat, $result->descplat, $result->imgplat);
+                $plats[] = new \blog\models\plat($result->nomplat, $result->descplat, $result->imgplat) ;
             }
         }
         catch (PDOException $e)

@@ -5,6 +5,7 @@ namespace blog\controllers;
 class plats
 {
    public function execute(): void{
-       (new \blog\views\plats())->show();
+       $plats = (new \blog\models\Plats())->getPlats();
+       (new \blog\views\plats())->show($plats);
    }
 }

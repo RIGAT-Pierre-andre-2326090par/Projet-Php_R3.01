@@ -4,7 +4,27 @@ namespace blog\models;
 
 class plat
 {
-    public function __construct() {}
+    public $nom;
+    public $description;
+    public $image;
+
+    public function __construct($nom, $description, $image) {
+        $this->nom = $nom;
+        $this->description = $description;
+        $this->image = $image;
+    }
+    public function getNom(): string {
+        return $this->nom;
+    }
+
+    public function getDescription(): string {
+        return $this->description;
+    }
+
+    public function getImage(): string {
+        return $this->image;
+    }
+
     public function getPlat(){
         $pdo = (new \includes\database())->getInstance();
         $stmt = $pdo->prepare('SELECT * FROM PLAT WHERE NOM_PL=:id');
