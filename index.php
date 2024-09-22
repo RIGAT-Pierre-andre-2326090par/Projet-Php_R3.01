@@ -10,6 +10,9 @@ try{
         elseif ($_GET['action'] == 'ordre'){
             (new \blog\controllers\ordre())->execute();
         }
+        elseif ($_GET['action'] == 'plat'){
+            (new \blog\controllers\plat())->execute();
+        }
     } else {
         (new \blog\controllers\homepage())->execute();
     }
