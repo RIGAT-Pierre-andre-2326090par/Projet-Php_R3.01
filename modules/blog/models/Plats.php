@@ -8,7 +8,7 @@ class Plats
 {
     public function getPlats(){
         $pdo = (new \includes\database())->getInstance();
-        $sql = 'SELECT NOM_PL nomplat FROM PLAT LIMIT 10';
+        $sql = 'SELECT NOM_PL nomplat, DESC_PL descplat, IMG_PL imgplat FROM PLAT LIMIT 10';
         $stmt = $pdo->prepare($sql); // Préparation d'une requête.
         try
         {
@@ -18,9 +18,17 @@ class Plats
             $stmt->setFetchMode(PDO::FETCH_OBJ);
             ob_start();
             while ($result = $stmt->fetch())
-            {
-                (new \blog\models\Plats($result->nomplat, null))->show();
-            }
+            {?>
+                <a href="">
+                    <div class="plat">
+                        <div>
+                            <h2><?php echo $result->nomplat;?></h2>
+                            <p><?php echo $result->descplat;?></p>
+                        </div>
+                        <img src="<?php echo $result->imgplat;?>">
+                    </div>
+                </a>
+<?php       }
             $plats = ob_get_clean();
         }
         catch (PDOException $e)

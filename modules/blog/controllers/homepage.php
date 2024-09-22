@@ -6,8 +6,8 @@ use PDOException;
 
 class homepage {
     public function execute(): void {
-        $plats = (new \blog\models\plats())->getPlats();
-        $clubs = (new \blog\models\clubs())->getClubs();
+        $plats = (new \blog\models\Plats())->getPlats();
+        $clubs = (new \blog\models\Clubs())->getClubs();
         (new \blog\views\homepage())->show($plats, $clubs);
     }
 }
