@@ -2,6 +2,8 @@
 
 require '_assets/includes/autoloader.php';
 
+echo "test";
+
 try{
     if (filter_input(INPUT_GET, 'action')) {
         if ($_GET['action'] == 'plats') {
