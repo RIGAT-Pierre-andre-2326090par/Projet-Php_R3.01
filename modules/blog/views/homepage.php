@@ -4,7 +4,7 @@ class homepage {
     public function show($plats, $clubs): void {
         ob_start();
 ?>
-        <h1>Bienvenue sur Tenrac-Lovers TEST</h1>
+        <h1>Bienvenue sur Tenrac-Lovers TEST2</h1>
         <p>Découvre une myriade de plats plus gras les uns que les autres !</p>
         <h2>De superbes plats</h2>
         <?php echo $plats?>

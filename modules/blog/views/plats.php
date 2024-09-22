@@ -3,7 +3,7 @@
 namespace blog\views;
 
 class plats{
-    public function show(): void {
+    public function show($plats): void {
         ob_start();
         ?>
         <h2>De superbes plats</h2>
