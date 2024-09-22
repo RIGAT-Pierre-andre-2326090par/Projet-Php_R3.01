@@ -11,11 +11,11 @@ class ordre
 
         <p>Description de dingo wow</p>
 
-        <h3>Clubs</h3>
+        <h2>Clubs</h2>
 
         <?php foreach ($clubs as $club) { ?>
             <section class="infoClub">
-                <img src="<?= htmlspecialchars($club->getImage()); ?>" alt="<?= htmlspecialchars($club->getName()); ?>" style="max-width: 200px; height: auto;" />
+                <img src="<?= htmlspecialchars($club->getImage()); ?>" alt="<?= htmlspecialchars($club->getAdress()); ?>" style="max-width: 200px; height: auto;" />
                 <h3><?= htmlspecialchars($club->getName()); ?><em></h3>
                 <p><?= htmlspecialchars($club->getAddress()); ?><em></p>
             </section>
