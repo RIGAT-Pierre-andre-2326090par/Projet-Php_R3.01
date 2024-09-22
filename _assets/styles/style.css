@@ -1,0 +1,9 @@
+.bandeau{
+    background-color: orange;
+    display:flex;
+}
+
+footer{
+    background-color: orange;
+    display: flex;
+}
