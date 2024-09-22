@@ -16,6 +16,7 @@ class layout // La classe Layout nous permet de poser la base de nos pages HTML
       <body>
       <nav class="bandeau"> <!-- On crée notre bandeau de navigation -->
           <ul>
+              <li><a href="index.php?action=accueil"</a> </li>
             <li><a href="index.php?action=plats">Plats</a></li>
             <li><a href="index.php?action=ordre">Ordre et clubs</a></li>
           </ul>
