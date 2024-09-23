@@ -21,9 +21,7 @@ class layout // La classe Layout nous permet de poser la base de nos pages HTML
               <li><a href="../../../index.php?action=ordre"> Ordre et clubs </a></li>
           </ul>
       </nav>
-
       <?= $this->content; ?> <!-- Contenu de la page, avec $content-->
-
       <footer>
           <hr>
           <section class="contact">
@@ -31,7 +29,6 @@ class layout // La classe Layout nous permet de poser la base de nos pages HTML
               <p>Mentions légales</p>
               <p>Conditions générales d'utilisations</p>
           </section>
-
           <section class="reseaux">
               <img src="#" />
               <img src="#" />
@@ -39,14 +36,10 @@ class layout // La classe Layout nous permet de poser la base de nos pages HTML
           </section>
 
           <p>Tenrac-Lovers©</p>
-
       </footer>
       </body>
-
 </html>
 <?php
   }
-
-
 }
 ?>
