@@ -1,9 +1,46 @@
 .bandeau{
     background-color: orange;
     display:flex;
+    flex-direction: row;
+    font-size:15px;
+    color:antiquewhite;
+}
+
+.bandeau a:hover{
+    color: #ee801f;
+}
+
+.bandeau a:visited{
+    color:antiquewhite;
+}
+
+.bandeau a:active{
+    color:#c0392b;
 }
 
 footer{
     background-color: orange;
     display: flex;
+    color:antiquewhite;
+    font-size: 13px;
+}
+
+body{
+    background-color: orange;
+    color:antiquewhite;
+
+}
+
+@media (max-width: 480px) {
+    .bandeau{
+        flex-direction: column;
+        text-align: center;
+        font-size: 12px;
+    }
+
+    footer{
+        flex-direction: column;
+        font-size: 10px;
+    }
+
 }
