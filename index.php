@@ -12,7 +12,11 @@ try{
             (new blog\controllers\plat())->execute();
         } elseif ($_GET['action'] == 'accueil') {
             (new blog\controllers\homepage())->execute();
+        } elseif ($_GET['action'] == 'login') {
+            (new blog\controllers\login())->execute();
         }
+
+
     }
     else (new blog\controllers\homepage())->execute();
 }	

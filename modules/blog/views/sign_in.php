@@ -23,6 +23,6 @@ class sign_in
             <input type="submit" value="sign_in">
         </form>
         <?php
-        (new layout('Sign in', ob_get_clean()))->show();
+        (new layout('Inscription', ob_get_clean()))->show();
     }
 }

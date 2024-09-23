@@ -1,9 +1,28 @@
 <?php
 
 namespace blog\controllers;
-include '_assets/includes/autoloader.php';
+//include '_assets/includes/autoloader.php';
 
-try{
+class login{
+    public function execute():void
+    {
+        $email = 0;
+        $password = 0;
+        if ($email == 'email' && $password == 'password') {
+            header('location:index.php?action=accueil');
+
+        }
+        else {
+            header('location:index.php?action=login');
+            echo 'Mot de passe incorrect !';
+        }
+        (new \blog\views\login())->show();
+    }
+}
+
+
+
+/*try{
     if (filter_input(INPUT_POST, 'action')) {
         if ($_POST['action'] === 'sign_in') {
             $pdo = (new \includes\database())->getInstance();
@@ -21,4 +40,4 @@ try{
 }
 catch(Exception $e){
     (new \blog\views\error())->show($e->getMessage());
-}
+}*/
