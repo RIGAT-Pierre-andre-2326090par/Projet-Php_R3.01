@@ -11,13 +11,14 @@ class plats{
 
         <?php foreach ($plats as $plat) { ?>
             <section class="infoClub">
-                <img src="<?= htmlspecialchars($plat->getImage()); ?>" alt="<?= htmlspecialchars($plat->getName()); ?>" style="max-width: 200px; height: auto;" />
-                <h3><?= htmlspecialchars($plat->getName()); ?></h3>
-                <p><?= htmlspecialchars($plat->getDesc()); ?></p>
+                <img src="<?= htmlspecialchars($plat->getImage()); ?>" alt="<?= htmlspecialchars($plat->getNom()); ?>" style="max-width: 200px; height: auto;" />
+                <h3><?= htmlspecialchars($plat->getNom()); ?></h3>
+                <p><?= htmlspecialchars($plat->getDescription()); ?></p>
             </section>
 
         <?php
+        }
         (new layout('Plats', ob_get_clean()))->show();
-    }}
-}
+        }
+    }
 ?>

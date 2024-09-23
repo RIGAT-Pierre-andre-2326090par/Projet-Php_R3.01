@@ -5,6 +5,7 @@ namespace blog\views;
 class error
 {
     public function show(string $erreur):void{
+        ob_start();
         ?>
         <?php echo $erreur;?>
         <?php

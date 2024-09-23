@@ -4,7 +4,7 @@ namespace blog\views;
 
 class club
 {
-    public function show(): void {
+    public function show($plat): void {
         ob_start();
         ?>
         <img src="#" />

@@ -15,9 +15,9 @@ class ordre
 
         <?php foreach ($clubs as $club) { ?>
             <section class="infoClub">
-                <img src="<?= htmlspecialchars($club->getImage()); ?>" alt="<?= htmlspecialchars($club->getAdress()); ?>" style="max-width: 200px; height: auto;" />
-                <h3><?= htmlspecialchars($club->getName()); ?><em></h3>
-                <p><?= htmlspecialchars($club->getAddress()); ?><em></p>
+                <img src="<?= htmlspecialchars($club->getImage()); ?>" alt="<?= htmlspecialchars($club->getAdresse()); ?>" style="max-width: 200px; height: auto;" />
+                <h3><?= htmlspecialchars($club->getNom()); ?><em></h3>
+                <p><?= htmlspecialchars($club->getAdresse()); ?><em></p>
             </section>
         <?php
         }
