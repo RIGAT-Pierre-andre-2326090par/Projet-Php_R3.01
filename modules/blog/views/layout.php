@@ -4,7 +4,6 @@ class layout // La classe Layout nous permet de poser la base de nos pages HTML
 {
   public function __construct(private string $title, private string $content){} // On définit notre constructeur
   public function show():void{ // Création de la fonction show, qui permet d'afficher le contenu de la page
-
   ?>
 <!DOCTYPE html>  <!-- Structure basique de HTML, qui se retrouvera sur toutes les pages -->
 <html lang="fr">
@@ -21,9 +20,7 @@ class layout // La classe Layout nous permet de poser la base de nos pages HTML
               <li><a href="../../../index.php?action=ordre"> Ordre et clubs </a></li>
           </ul>
       </nav>
-
       <?= $this->content; ?> <!-- Contenu de la page, avec $content-->
-
       <footer>
           <hr>
           <section class="contact">
@@ -31,7 +28,6 @@ class layout // La classe Layout nous permet de poser la base de nos pages HTML
               <p>Mentions légales</p>
               <p>Conditions générales d'utilisations</p>
           </section>
-
           <section class="reseaux">
               <img src="#" />
               <img src="#" />
@@ -39,14 +35,10 @@ class layout // La classe Layout nous permet de poser la base de nos pages HTML
           </section>
 
           <p>Tenrac-Lovers©</p>
-
       </footer>
       </body>
-
 </html>
 <?php
   }
-
-
 }
 ?>
