@@ -3,23 +3,35 @@
 namespace blog\controllers;
 //include '_assets/includes/autoloader.php';
 
-class login{
-    public function execute():void
-    {
-        $email = 0;
-        $password = 0;
-        if ($email == 'email' && $password == 'password') {
-            header('location:index.php?action=accueil');
+use blog\models\Tenrac;
 
+class login
+{
+    public function execute(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $email = $_POST['email'] ?? null;
+            $password = $_POST['password'] ?? null;
+            if (empty($email) || empty($password)) {
+                echo 'Veuillez renseigner tous les champs.';
+                (new \blog\views\login())->show();
+                return;
+            }
+
+            $model = new Tenrac();
+            $user = $model->getMail($email);
+
+            if ($user && password_verify($password, $user['password'])) {
+                header('location:index.php?action=accueil');
+
+            } else {
+                header('location:index.php?action=login');
+                echo 'Mot de passe incorrect !';
+            }
+            (new \blog\views\login())->show();
         }
-        else {
-            header('location:index.php?action=login');
-            echo 'Mot de passe incorrect !';
-        }
-        (new \blog\views\login())->show();
     }
 }
-
 
 
 /*try{
