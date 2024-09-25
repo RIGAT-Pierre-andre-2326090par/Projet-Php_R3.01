@@ -14,7 +14,7 @@ class homepage {
                         <h3><?= htmlspecialchars($plat->getNom()); ?></h3>
                         <p><?= htmlspecialchars($plat->getDescription()); ?></p>
                     </div>
-                    <img src="<?= htmlspecialchars($plat->getImage()); ?>">
+                    <img src="<?= htmlspecialchars('/_assets/images/plat/' . $plat->getImage()); ?>">
                 </section>
             </a>
         <?php }?>d
@@ -27,7 +27,7 @@ class homepage {
                         <h3><?= htmlspecialchars($club->getNom()); ?></h3>
                         <p><?= htmlspecialchars($club->getAdresse()); ?></p>
                     </div>
-                    <img src="<?= htmlspecialchars($club->getImage()); ?>">
+                    <img src="<?= htmlspecialchars('/_assets/images/club/' . $club->getImage()); ?>">
                 </section>
             </a>
         <?php }?>
