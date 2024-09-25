@@ -7,7 +7,7 @@ class homepage {
         <h1>Bienvenue sur Tenrac-Lovers TEST2</h1>
         <p>Découvre une myriade de plats plus gras les uns que les autres !</p>
         <h2>De superbes plats</h2>
-        <?php foreach ($plats as $plat) { ?> <!-- La balise foreach nous permet, de créer la section pour chaque plat existant, au lieu de tout réecrire -->
+        <?php foreach ($plats as $plat) { ?>
             <a href="">
                 <section class="plat">
                     <div>
