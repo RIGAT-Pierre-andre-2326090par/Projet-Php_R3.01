@@ -10,19 +10,22 @@ class layout // La classe Layout nous permet de poser la base de nos pages HTML
       <head>
           <meta charset="utf-8"/>
           <title><?= $this->title; ?></title> <!-- Prend la valeur de $title -->
-          <link href="../../../_assets/styles/style.css" rel="stylesheet"/> <!-- Lien jusqu'au CSS -->
+          <link href="/_assets/styles/style.css" rel="stylesheet"/> <!-- Lien jusqu'au CSS -->
       </head>
       <body>
       <header>
             <nav class="bandeau"> <!-- On crée notre bandeau de navigation -->
                 <ul>
-                    <li><a href="../../../index.php?action=accueil"> Accueil </a> </li>
-                    <li><a href="../../../index.php?action=plats"> Plats </a></li>
-                    <li><a href="../../../index.php?action=ordre"> Ordre et clubs </a></li>
+                    <li><a href="/index.php?action=accueil"> Accueil </a> </li>
+                    <li><a href="/index.php?action=plats"> Plats </a></li>
+                    <li><a href="/index.php?action=ordre"> Ordre et clubs </a></li>
                 </ul>
             </nav>
+            <img src="/_assets/images/logo.webp"/>
       </header>
-      <?= $this->content; ?> <!-- Contenu de la page, avec $content-->
+      <main>
+          <?= $this->content; ?> <!-- Contenu de la page, avec $content-->
+      </main>
       <footer> <!-- Notre footer contiendra la fin de la page, avec les réseaux et les informations importantes -->
           <hr>
           <section class="contact">
@@ -31,11 +34,10 @@ class layout // La classe Layout nous permet de poser la base de nos pages HTML
               <p>Conditions générales d'utilisations</p>
           </section>
           <section class="reseaux">
-              <img src="#" />
-              <img src="#" />
-              <img src="#" />
+              <a href=""><img src="/_assets/images/icons/facebook.webp" /></a>
+              <a href=""><img src="/_assets/images/icons/twitter.webp" /></a>
+              <a href=""><img src="/_assets/images/icons/instagram.webp" /></a>
           </section>
-
           <p>Tenrac-Lovers© <?php date('Y'); ?></p> <!-- Ajout de l'année actuelle de manière dynamique -->
       </footer>
       </body>
