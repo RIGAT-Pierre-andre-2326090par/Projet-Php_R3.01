@@ -15,7 +15,7 @@ class club
             <section>
 
             </section>
-        <img src="<?php echo  $image ?>" />
+        <img src="<?php echo '/_assets/images/club/' . $image ?>" />
         <h2><?php echo  $nom ?></h2>
         <h4><?php echo  $adr ?></h4>
         <p> <?php echo  $description ?></p>
