@@ -9,7 +9,12 @@ try{
         } elseif ($_GET['action'] == 'ordre') {
             (new blog\controllers\ordre())->execute();
         } elseif ($_GET['action'] == 'plat') {
-            (new blog\controllers\plat())->execute();
+            if (isset($_GET['nom'])) {
+                $nom = urldecode($_GET['nom']);
+                (new blog\controllers\plat())->execute();
+            } else {
+                throw new Exception("Nom du plat non spécifié.");
+            }
         } elseif ($_GET['action'] == 'accueil') {
             (new blog\controllers\homepage())->execute();
         } elseif ($_GET['action'] == 'login') {

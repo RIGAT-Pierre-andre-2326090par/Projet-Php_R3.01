@@ -13,15 +13,17 @@ class layout // La classe Layout nous permet de poser la base de nos pages HTML
           <link href="../../../_assets/styles/style.css" rel="stylesheet"/> <!-- Lien jusqu'au CSS -->
       </head>
       <body>
-      <nav class="bandeau"> <!-- On crée notre bandeau de navigation -->
-          <ul>
-              <li><a href="../../../index.php?action=accueil"> Accueil </a> </li>
-              <li><a href="../../../index.php?action=plats"> Plats </a></li>
-              <li><a href="../../../index.php?action=ordre"> Ordre et clubs </a></li>
-          </ul>
-      </nav>
+      <header>
+            <nav class="bandeau"> <!-- On crée notre bandeau de navigation -->
+                <ul>
+                    <li><a href="../../../index.php?action=accueil"> Accueil </a> </li>
+                    <li><a href="../../../index.php?action=plats"> Plats </a></li>
+                    <li><a href="../../../index.php?action=ordre"> Ordre et clubs </a></li>
+                </ul>
+            </nav>
+      </header>
       <?= $this->content; ?> <!-- Contenu de la page, avec $content-->
-      <footer>
+      <footer> <!-- Notre footer contiendra la fin de la page, avec les réseaux et les informations importantes -->
           <hr>
           <section class="contact">
               <p>Contact</p>
@@ -34,7 +36,7 @@ class layout // La classe Layout nous permet de poser la base de nos pages HTML
               <img src="#" />
           </section>
 
-          <p>Tenrac-Lovers©</p>
+          <p>Tenrac-Lovers© <?php date('Y'); ?></p> <!-- Ajout de l'année actuelle de manière dynamique -->
       </footer>
       </body>
 </html>

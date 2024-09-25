@@ -1,17 +1,28 @@
-.bandeau{
-    background-color: orange;
-    display:flex;
-    flex-direction: row;
-    font-size:15px;
-    color:antiquewhite;
+nav {
+    background-color: #ff8c00; /* Couleur orange */
+    padding: 10px;
+    font-family: "Times New Roman", sans-serif;
 }
 
-.bandeau a:hover{
-    color: #ee801f;
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: inline;
+    justify-content: space-around;
 }
 
-.bandeau a:visited{
-    color:antiquewhite;
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    display: block;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .bandeau a:active{
@@ -20,9 +31,12 @@
 
 footer{
     background-color: orange;
-    display: flex;
     color:antiquewhite;
     font-size: 13px;
+}
+
+footer hr {
+  margin : 20px;
 }
 
 body{
@@ -30,6 +44,23 @@ body{
     color:antiquewhite;
 
 }
+
+.plat img, .infoClub img{
+    max-width: 150px;
+    border-radius: 5px;
+}
+
+
+.plat, .infoClub{
+    border: 5px inset #1C6EA4;
+    border-radius: 0px 25px 0px 0px;
+    background-color: antiquewhite;
+    color: black;
+    display: flex;
+    -webkit-box-shadow: 9px 10px 12px 6px rgba(0,0,0,0.61);
+    box-shadow: 9px 10px 12px 6px rgba(0,0,0,0.61);
+}
+
 
 @media (max-width: 480px) {
     .bandeau{
