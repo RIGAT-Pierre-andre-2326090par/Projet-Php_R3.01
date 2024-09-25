@@ -1,15 +1,13 @@
 nav {
     background-color: #ff8c00; /* Couleur orange */
     padding: 10px;
-    font-family: "Times New Roman", sans-serif;
 }
 
 nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    display: inline;
-    justify-content: space-around;
+    display: flex;
 }
 
 nav ul li {
@@ -19,10 +17,11 @@ nav ul li {
 nav ul li a {
     text-decoration: none;
     color: white;
-    padding: 10px 20px;
+    padding: 13px 25px;
     display: block;
     font-size: 16px;
     transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 700;
 }
 
 .bandeau a:active{
@@ -36,29 +35,45 @@ footer{
 }
 
 footer hr {
-  margin : 20px;
+    margin : 20px;
 }
 
 body{
     background-color: orange;
     color:antiquewhite;
+    margin: 0;
+    font-family: Inter, sans-serif;
+}
 
+main {
+    width: 1700px;
+    max-width: 100%;
+    margin: auto;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.plat div, .infoClub div {
+    flex: 1 1;
 }
 
 .plat img, .infoClub img{
     max-width: 150px;
-    border-radius: 5px;
+    border-radius: 1em;
+    aspect-ratio: 1/1;
+    object-fit: cover;
 }
 
-
 .plat, .infoClub{
-    border: 5px inset #1C6EA4;
-    border-radius: 0px 25px 0px 0px;
+    border: 3px solid #dbdbdb;
+    margin: 8px;
+    padding: 5px;
+    border-radius: 1.2em;
     background-color: antiquewhite;
     color: black;
     display: flex;
     -webkit-box-shadow: 9px 10px 12px 6px rgba(0,0,0,0.61);
-    box-shadow: 9px 10px 12px 6px rgba(0,0,0,0.61);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.61);
 }
 
 
