@@ -25,6 +25,6 @@ try{
     }
     else (new blog\controllers\homepage())->execute();
 }	
-catch(Exception $e){
+catch(Exception $e){ // On crée une exception dans le cas où $_GET['action'] échoue.
     (new \blog\views\error())->show($e->getMessage());
 }
