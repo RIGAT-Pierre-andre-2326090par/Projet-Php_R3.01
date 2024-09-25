@@ -8,16 +8,16 @@ class homepage {
         <p>Découvre une myriade de plats plus gras les uns que les autres !</p>
         <h2>De superbes plats</h2>
         <?php foreach ($plats as $plat) { ?>
-            <a href="../../../index.php?action=plat&nom=<?= urlencode($plat->getNom()); ?>">
-            <section class="plat">
+            <a href="">
+                <section class="plat">
                     <div>
                         <h3><?= htmlspecialchars($plat->getNom()); ?></h3>
                         <p><?= htmlspecialchars($plat->getDescription()); ?></p>
                     </div>
-                    <img src="<?= htmlspecialchars($plat->getImage()); ?>">
+                    <img src="<?= htmlspecialchars('/_assets/images/plat/' . $plat->getImage()); ?>">
                 </section>
             </a>
-        <?php }?>d
+        <?php }?>
         <a>Voir plus</a>
         <h2>Des clubs a votre portée</h2>
         <?php foreach ($clubs as $club) { ?>
@@ -27,7 +27,7 @@ class homepage {
                         <h3><?= htmlspecialchars($club->getNom()); ?></h3>
                         <p><?= htmlspecialchars($club->getAdresse()); ?></p>
                     </div>
-                    <img src="<?= htmlspecialchars($club->getImage()); ?>">
+                    <img src="<?= htmlspecialchars('/_assets/images/club/' . $club->getImage()); ?>">
                 </section>
             </a>
         <?php }?>

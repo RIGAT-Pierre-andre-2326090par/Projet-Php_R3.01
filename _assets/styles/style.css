@@ -31,9 +31,12 @@ nav ul li a {
 
 footer{
     background-color: orange;
-    display: flex;
     color:antiquewhite;
     font-size: 13px;
+}
+
+footer hr {
+  margin : 20px;
 }
 
 body{
@@ -41,6 +44,23 @@ body{
     color:antiquewhite;
 
 }
+
+.plat img, .infoClub img{
+    max-width: 150px;
+    border-radius: 5px;
+}
+
+
+.plat, .infoClub{
+    border: 5px inset #1C6EA4;
+    border-radius: 0px 25px 0px 0px;
+    background-color: antiquewhite;
+    color: black;
+    display: flex;
+    -webkit-box-shadow: 9px 10px 12px 6px rgba(0,0,0,0.61);
+    box-shadow: 9px 10px 12px 6px rgba(0,0,0,0.61);
+}
+
 
 @media (max-width: 480px) {
     .bandeau{
