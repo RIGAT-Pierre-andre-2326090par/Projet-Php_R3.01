@@ -1,6 +1,10 @@
 <?php
 
+
 namespace blog\models;
+
+use PDO;
+use PDOException;
 
 class plat
 {
@@ -8,11 +12,16 @@ class plat
     public $description;
     public $image;
 
-    public function __construct($nom, $description, $image) {
+    public function __construct($nom = null, $description = null, $image = null) {
         $this->nom = $nom;
         $this->description = $description;
         $this->image = $image;
     }
+
+    public static function createEmpty() {
+        return new self();
+    }
+
     public function getNom(): string {
         return $this->nom;
     }
@@ -25,27 +34,26 @@ class plat
         return $this->image;
     }
 
-    public function getPlat(){
+    public function getPlat($nom) {
         $pdo = (new \includes\database())->getInstance();
-        $stmt = $pdo->prepare('SELECT * FROM PLAT WHERE NOM_PL=:id');
-        if ($stmt->rowCount() === 0) {
-            return null; // Pas de résultat, retourne null
-        }
-        try
-        {
-            $stmt->bindParam(':id', $nom);
+        $stmt = $pdo->prepare('SELECT * FROM PLAT WHERE NOM_PL = :nom');
+
+        try {
+            // Bind du paramètre nom
+            $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
             $stmt->execute();
-        }
-        catch (PDOException $e)
-        {
-            // Affichage de l'erreur et rappel de la requête.
+
+            // Vérification si des résultats sont retournés
+            if ($stmt->rowCount() === 0) {
+                return null; // Pas de plat trouvé
+            }
+
+            // Récupération du plat sous forme de tableau associatif
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
             echo 'Erreur : ', $e->getMessage(), PHP_EOL;
-            echo 'Requête : ', $sql, PHP_EOL;
             exit();
         }
-
-        // Récupération des résultats sous forme de tableau associatif
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-
     }
 }

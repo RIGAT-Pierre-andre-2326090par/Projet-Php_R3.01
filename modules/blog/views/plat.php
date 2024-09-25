@@ -4,6 +4,7 @@ namespace blog\views;
 
 class plat
 {
+    public function __construct(){}
 
 public function show($plat):void{
     $nom = $plat['NOM_PL']; // Nom du plat
