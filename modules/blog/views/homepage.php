@@ -4,7 +4,7 @@ class homepage {
     public function show($plats, $clubs): void {
         ob_start();
         ?>
-        <h1>Bienvenue sur Tenrac-Lovers TEST2</h1>
+        <h1>Bienvenue sur Tenrac-Lovers TEST3</h1>
         <p>Découvre une myriade de plats plus gras les uns que les autres !</p>
         <h2>De superbes plats</h2>
         <?php foreach ($plats as $plat) { ?>
@@ -18,7 +18,7 @@ class homepage {
                 </section>
             </a>
         <?php }?>
-        <a>Voir plus</a>
+        <a href="/index.php?action=plats"> Voir plus </a>
         <h2>Des clubs a votre portée</h2>
         <?php foreach ($clubs as $club) { ?>
             <a href="">
@@ -31,7 +31,7 @@ class homepage {
                 </section>
             </a>
         <?php }?>
-        <a>Voir plus</a>
+        <a href="/index.php?action=ordre"> Voir plus </a>
         <?php
         (new layout('Accueil', ob_get_clean()))->show();
     }
