@@ -9,7 +9,7 @@ class sign_in
         ob_start();
         ?>
         <h1>Créer un compte</h1>
-        <form action="../controllers/login.php" method="post">
+        <form action="../controllers/sign_in.php" method="post">
             <label for="nom">Nom :</label>
             <input type="text" name="Nom" id="nom" required>
             <label for="pwd">Mot de Passe :</label>

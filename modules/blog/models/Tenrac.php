@@ -4,15 +4,28 @@ namespace blog\models;
 
 class Tenrac
 {
-    public function __construct(){
+    private $id;
+    private $nom;
+    private $email;
+    private $password;
+    private $grade;
+    private $rang;
+    private $titre;
+    private $dignite;
 
+
+    public function __construct($id, $nom, $email, $password, $grade, $rang, $titre, $dignite){
+        $this->id = $id;
+        $this->nom = $nom;
+        $this->email = $email;
+        $this->password = $password;
+        $this->grade = $grade;
+        $this->rang = $rang;
+        $this->titre = $titre;
+        $this->dignite = $dignite;
     }
-    public function show(): void
-    {
 
-    }
-
-    // FOnction nous permettant d'ajouter un utilisateur
+    // Fonction nous permettant d'ajouter un utilisateur
     public function insertTenrac($nom, $email, $telephone, $adresse)
     {
         $sql = 'INSERT INTO TENRAC (NOM_TR, COURRIEL_TR, TELEPHONE_TR, ADRESSE_TR) VALUES (:nom, :email, :telephone, :adresse)';

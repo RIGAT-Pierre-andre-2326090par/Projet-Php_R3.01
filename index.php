@@ -2,7 +2,7 @@
 
 require '_assets/includes/autoloader.php';
 
-try{
+try {
     if (filter_input(INPUT_GET, 'action')) {
         if ($_GET['action'] == 'plats') {
             (new blog\controllers\plats())->execute();
@@ -20,16 +20,16 @@ try{
         } elseif ($_GET['action'] == 'login') {
             (new blog\controllers\login())->execute();
         } elseif ($_GET['action'] == 'club') {
-        if (isset($_GET['id'])) {
-            $id = urldecode($_GET['id']);
-            (new blog\controllers\club())->execute();
-        } else {
-            throw new Exception("Nom du club non spécifié.");
+            if (isset($_GET['id'])) {
+                $id = urldecode($_GET['id']);
+                (new blog\controllers\club())->execute();
+            } else {
+                throw new Exception("Nom du club non spécifié.");
+            }
         }
+    } else {
+        (new blog\controllers\homepage())->execute();
     }
-        else (new blog\controllers\homepage())->execute();
-    }
-    }
-    catch(Exception $e){
-        (new \blog\views\error())->show($e->getMessage());
-    }
+} catch (Exception $e) {
+    (new \blog\views\error())->show($e->getMessage());
+}

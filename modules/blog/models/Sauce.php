@@ -4,10 +4,13 @@ namespace blog\models;
 
 class Sauce
 {
-    public function __construct(private $nom_sc, private $img_sc){}
-
-    public function show()
-    {
+    private $nom_sc;
+    private $img_sc;
+    public function __construct($nom_sc, $img_sc){
+        $this->nom_sc = $nom_sc;
+        $this->img_sc = $img_sc;
 
     }
+
+
 }

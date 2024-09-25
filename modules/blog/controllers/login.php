@@ -28,8 +28,9 @@ class login
                 header('location:index.php?action=login');
                 echo 'Mot de passe incorrect !';
             }
-            (new \blog\views\login())->show();
+
         }
+        (new \blog\views\login())->show();
     }
 }
 
