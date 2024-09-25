@@ -19,12 +19,17 @@ try{
             (new blog\controllers\homepage())->execute();
         } elseif ($_GET['action'] == 'login') {
             (new blog\controllers\login())->execute();
+        } elseif ($_GET['action'] == 'club') {
+        if (isset($_GET['id'])) {
+            $id = urldecode($_GET['id']);
+            (new blog\controllers\club())->execute();
+        } else {
+            throw new Exception("Nom du club non spécifié.");
         }
-
-
     }
-    else (new blog\controllers\homepage())->execute();
-}	
-catch(Exception $e){
-    (new \blog\views\error())->show($e->getMessage());
-}
+        else (new blog\controllers\homepage())->execute();
+    }
+    }
+    catch(Exception $e){
+        (new \blog\views\error())->show($e->getMessage());
+    }

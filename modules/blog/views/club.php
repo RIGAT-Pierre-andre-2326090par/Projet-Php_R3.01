@@ -4,13 +4,21 @@ namespace blog\views;
 
 class club
 {
-    public function show($plat): void {
+    public function show($club): void {
+        $id=$club['ID_CL'];
+        $nom=$club['NOM_CL'];
+        $adr=$club['ADRESSE_CL'];
+        $description=$club['DESC_CL'];
+        $image=$club['IMG_CL'];
         ob_start();
         ?>
-        <img src="#" />
-        <h2>Nom du club</h2>
-        <h4>Adresse</h4>
-        <p> Une description absolument pas intéressante blabla</p>
+            <section>
+
+            </section>
+        <img src="<?php echo  $image ?>" />
+        <h2><?php echo  $nom ?></h2>
+        <h4><?php echo  $adr ?></h4>
+        <p> <?php echo  $description ?></p>
 
         <strong>Photos</strong>
         <img src="#" />

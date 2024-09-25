@@ -8,7 +8,7 @@ class homepage {
         <p>Découvre une myriade de plats plus gras les uns que les autres !</p>
         <h2>De superbes plats</h2>
         <?php foreach ($plats as $plat) { ?>
-            <a href="index.php?action=plat&nom=<?= urlencode($plat->getNom()); ?>">
+            <a href="../../../index.php?action=plat&nom=<?= urlencode($plat->getNom()); ?>">
                 <section class="plat">
                     <div>
                         <h3><?= htmlspecialchars($plat->getNom()); ?></h3>
@@ -21,7 +21,7 @@ class homepage {
         <a>Voir plus</a>
         <h2>Des clubs a votre portée</h2>
         <?php foreach ($clubs as $club) { ?>
-            <a href="">
+            <a href="../../../index.php?action=club&id=<?= urlencode($club->getId()); ?>">
                 <section class="infoClub">
                     <div>
                         <h3><?= htmlspecialchars($club->getNom()); ?></h3>

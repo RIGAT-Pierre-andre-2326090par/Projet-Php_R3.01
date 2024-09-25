@@ -2,20 +2,39 @@
 
 namespace blog\models;
 
+use PDO;
+use PDOException;
+
+
 class Club
 {
-    public function __construct(private $nom_cl, private $adresse_cl, private $img_cl){}
+    public $id_cl;
+    public $nom_cl;
+    public $adresse_cl;
+    public $img_cl;
 
-    public function getClub(){
+    public function __construct($id_cl = null,$nom_cl = null,$adresse_cl = null,$img_cl = null){
+        $this->id_cl = $id_cl;
+        $this->nom_cl = $nom_cl;
+        $this->adresse_cl = $adresse_cl;
+        $this->img_cl = $img_cl;
+    }
+    public static function createEmpty() {
+        return new self();
+    }
+
+    public function getClub($id_cl){
         $pdo = (new \includes\database())->getInstance();
-        $stmt = $pdo->prepare('SELECT * FROM CLUB WHERE ID_CL=:id');
-        if ($stmt->rowCount() === 0) {
-            return null; // Pas de résultat, retourne null
-        }
+        $stmt = $pdo->prepare('SELECT ID_CL,NOM_CL,ADRESSE_CL,IMG_CL,DESC_CL FROM CLUB WHERE ID_CL=:id');
         try
         {
-            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':id', $id_cl, \PDO::PARAM_INT);
             $stmt->execute();
+            if ($stmt->rowCount() === 0) {
+                return null; // Pas de résultat, retourne null
+            }
+            // Récupération des résultats sous forme de tableau associatif
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         }
         catch (PDOException $e)
         {
@@ -25,11 +44,10 @@ class Club
             exit();
         }
 
-        // Récupération des résultats sous forme de tableau associatif
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-
     }
-
+    public function getId(): int {
+        return $this->id_cl;
+    }
     public function getNom() :string
     {
         return $this->nom_cl;
