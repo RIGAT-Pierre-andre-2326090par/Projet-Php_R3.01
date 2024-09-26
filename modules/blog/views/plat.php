@@ -16,8 +16,8 @@ public function show($plat):void{
             <section id="topSide">
                 <section id="leftside">
                     <section id="top">
-                        <h2 id="nom_plat"> <?php echo  $nom ?> </h2>
-                        <img id="note" src="<?php echo  $image ?>">
+                        <h2 id="nom_plat"> <?php echo $nom ?> </h2>
+                        <img id="note" src="<?php echo '/_assets/images/plat/' . $image ?>">
                     </section>
                     <section id="bottom">
                         <img id="plat"> <!--import depuis la BD-->
