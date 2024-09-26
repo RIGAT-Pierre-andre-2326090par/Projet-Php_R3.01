@@ -7,8 +7,8 @@ class homepage {
         <section class="hautdepage">
             <h1>Bienvenue sur Tenrac-Lovers TEST3</h1>
             <p>Découvre une myriade de plats plus gras les uns que les autres !</p>
-            <h2>De superbes plats</h2>
         </section>
+        <h2>De superbes plats</h2>
         <div class="liste">
         <?php foreach ($plats as $plat) { ?>
             <a href="/index.php?action=plat&nom=<?= urlencode($plat->getNom()); ?>">

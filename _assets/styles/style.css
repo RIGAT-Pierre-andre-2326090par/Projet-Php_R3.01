@@ -96,6 +96,8 @@ main {
     border-radius: 1em;
     aspect-ratio: 1/1;
     object-fit: cover;
+    margin-right: 12px;
+    background-color: rgb(209 125 0 / 22%);
 }
 
 .plat, .infoClub{
@@ -119,6 +121,7 @@ main {
 .liste > a, .liste div {
     width: 800px;
     max-width: 100%;
+    text-decoration: none;
 }
 
 .hautdepage {
