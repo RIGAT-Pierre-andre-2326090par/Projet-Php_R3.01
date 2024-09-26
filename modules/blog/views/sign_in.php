@@ -12,16 +12,16 @@ class sign_in
         <br>
         <form action="../controllers/sign_in.php" method="post">
             <label for="nom">Nom :</label>
-            <input type="text" name="Nom" id="nom" required>
+            <input type="text" name="Nom" id="nom" required><?= PHP_EOL; ?>
             <label for="pwd">Mot de Passe :</label>
-            <input type="password" name="Mot de Passe" id="password" required>
+            <input type="password" name="Mot de Passe" id="password" required><?= PHP_EOL; ?>
             <label for="adr">Adresse :</label>
-            <input type="text" name="Adresse" id="adr" required>
+            <input type="text" name="Adresse" id="adr" required><?= PHP_EOL; ?>
             <label for="mail">Email :</label>
-            <input type="email" name="Email" id="email" required>
+            <input type="email" name="Email" id="email" required><?= PHP_EOL; ?>
             <label for="tel">Téléphone :</label>
-            <input type="tel" name="Téléphone" id="tel" required>
-            <input type="submit" value="sign_in">
+            <input type="tel" name="Téléphone" id="tel" required><?= PHP_EOL; ?>
+            <input type="submit" id="sign_in" value="Soumettre">
         </form>
         <?php
         (new layout('Inscription', ob_get_clean()))->show();
