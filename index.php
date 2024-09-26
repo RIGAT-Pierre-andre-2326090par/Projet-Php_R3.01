@@ -37,6 +37,8 @@ try {
             }
         } elseif ($_GET['action'] === 'repas') {
             (new blog\controllers\repas())->execute();
+        } elseif ($_GET['action'] == 'recherche') {
+            (new blog\controllers\ControllerRecherche())->execute();
         }
     } else {
         (new blog\controllers\homepage())->execute();
