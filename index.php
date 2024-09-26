@@ -5,44 +5,44 @@ require '_assets/includes/autoloader.php';
 try {
     if (filter_input(INPUT_GET, 'action')) {
         if ($_GET['action'] === 'plats') {
-            (new blog\controllers\plats())->execute();
+            (new \controllers\ControllerPlats())->execute();
         } elseif ($_GET['action'] === 'ordre') {
-            (new blog\controllers\ordre())->execute();
+            (new \controllers\ControllerOrdre())->execute();
         } elseif ($_GET['action'] === 'plat') {
             if (isset($_GET['nom'])) {
                 $nom = urldecode($_GET['nom']);
-                (new blog\controllers\plat())->execute();
+                (new \controllers\ControllerPlat())->execute();
             } else {
                 throw new Exception("Nom du plat non spécifié.");
             }
         } elseif ($_GET['action'] === 'accueil') {
-            (new blog\controllers\homepage())->execute();
+            (new \controllers\ControllerHomepage())->execute();
         } elseif ($_GET['action'] === 'login') {
-            (new blog\controllers\login())->execute();
+            (new \controllers\ControllerLogin())->execute();
         } elseif ($_GET['action'] === 'sign_in') {
-            (new blog\controllers\sign_in())->execute();
+            (new \controllers\ControllerSignIn())->execute();
         } elseif ($_GET['action'] === 'club') {
             if (isset($_GET['id'])) {
                 $id = urldecode($_GET['id']);
-                (new blog\controllers\club())->execute();
+                (new \controllers\ControllerClub())->execute();
             } else {
                 throw new Exception("Nom du club non spécifié.");
             }
         } elseif ($_GET['action'] === 'unrepas') {
             if (isset($_GET['id'])) {
                 $id = urldecode($_GET['id']);
-                (new blog\controllers\unrepas())->execute();
+                (new \controllers\ControllerUnRepas())->execute();
             } else {
                 throw new Exception("ID du repas non spécifié.");
             }
         } elseif ($_GET['action'] === 'repas') {
-            (new blog\controllers\repas())->execute();
+            (new \controllers\ControllerRepas())->execute();
         } elseif ($_GET['action'] == 'recherche') {
-            (new blog\controllers\ControllerRecherche())->execute();
+            (new \controllers\ControllerRecherche())->execute();
         }
     } else {
-        (new blog\controllers\homepage())->execute();
+        (new \controllers\ControllerHomepage())->execute();
     }
 } catch (Exception $e) {
-    (new \blog\views\error())->show($e->getMessage());
+    (new \views\ViewError())->show($e->getMessage());
 }

@@ -24,12 +24,12 @@ class database {
             $pdo = new PDO($dsn, $username, $password);
             // Character encoding
             $pdo->exec('SET CHARACTER SET utf8');
-            // Enable exception-based error handling
+            // Enable exception-based viewError handling
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             return $pdo;
         } catch (PDOException $e) {
-            // Display the error
+            // Display the viewError
             die('Erreur : ' . $e->getMessage());
         }
     }
