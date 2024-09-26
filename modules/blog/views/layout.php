@@ -24,7 +24,8 @@ class layout // La classe Layout nous permet de poser la base de nos pages HTML
                     <li><a href="/index.php?action=accueil"> Accueil </a> </li>
                     <li><a href="/index.php?action=plats"> Plats </a></li>
                     <li><a href="/index.php?action=ordre"> Ordre et clubs </a></li>
-                    <li><a href="/index.php?action=login"> Login </a></li>
+                    <li><a href="/index.php?action=login"> Se Connecter </a></li>
+                    <li><a href="/index.php?action=sign_in"> S'Inscrire </a></li>
                 </ul>
             </nav>
             <img src="/_assets/images/logo.webp"/>

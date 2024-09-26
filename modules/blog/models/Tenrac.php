@@ -43,6 +43,8 @@ class Tenrac
     // Fonction nous permettant de supprimer un utilisateur
     public function deleteTenrac($id_tr) {
         $sql = 'DELETE FROM TENRAC WHERE ID_TR = :id_tr';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
     }
 
 

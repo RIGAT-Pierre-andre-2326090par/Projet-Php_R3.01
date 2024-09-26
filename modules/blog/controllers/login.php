@@ -1,7 +1,7 @@
 <?php
 
 namespace blog\controllers;
-//include '_assets/includes/autoloader.php';
+include '_assets/includes/autoloader.php';
 
 use blog\models\Tenrac;
 

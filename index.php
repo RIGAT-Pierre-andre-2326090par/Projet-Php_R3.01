@@ -19,6 +19,8 @@ try {
             (new blog\controllers\homepage())->execute();
         } elseif ($_GET['action'] === 'login') {
             (new blog\controllers\login())->execute();
+        } elseif ($_GET['action'] === 'sign_in') {
+            (new blog\controllers\sign_in())->execute();
         } elseif ($_GET['action'] === 'club') {
             if (isset($_GET['id'])) {
                 $id = urldecode($_GET['id']);
