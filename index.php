@@ -26,6 +26,15 @@ try {
             } else {
                 throw new Exception("Nom du club non spécifié.");
             }
+        } elseif ($_GET['action'] == 'unrepas') {
+            if (isset($_GET['nom'])) {
+                $id = urldecode($_GET['id']);
+                (new blog\controllers\unrepas())->execute();
+            } else {
+                throw new Exception("Nom du repas non spécifié.");
+            }
+        } elseif ($_GET['action'] == 'repas') {
+            (new blog\controllers\repas())->execute();
         }
     } else {
         (new blog\controllers\homepage())->execute();
