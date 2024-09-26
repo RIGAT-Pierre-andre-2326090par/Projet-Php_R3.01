@@ -10,13 +10,13 @@ class sign_in
         ?>
         <h1>Créer un compte</h1>
         <br>
-        <form action="../controllers/sign_in.php" method="post">
+        <form action="/index.php?action=sign_in" method="post">
             <label for="nom">Nom :</label>
             <input type="text" name="Nom" id="nom" required><?= PHP_EOL; ?>
             <label for="pwd">Mot de Passe :</label>
             <input type="password" name="Mot de Passe" id="password" required><?= PHP_EOL; ?>
             <label for="adr">Adresse :</label>
-            <input type="text" name="Adresse" id="adr" required><?= PHP_EOL; ?>
+            <input type="text" name="Adresse" id="adr" required><br>
             <label for="mail">Email :</label>
             <input type="email" name="Email" id="email" required><?= PHP_EOL; ?>
             <label for="tel">Téléphone :</label>
