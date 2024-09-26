@@ -4,25 +4,12 @@ namespace blog\models;
 
 class Tenrac
 {
-    private $id;
-    private $nom;
-    private $email;
-    private $password;
-    private $grade;
-    private $rang;
-    private $titre;
-    private $dignite;
+    private $pdo;
 
 
-    public function __construct($id, $nom, $email, $password, $grade, $rang, $titre, $dignite){
-        $this->id = $id;
-        $this->nom = $nom;
-        $this->email = $email;
-        $this->password = $password;
-        $this->grade = $grade;
-        $this->rang = $rang;
-        $this->titre = $titre;
-        $this->dignite = $dignite;
+    public function __construct(){
+        $this->pdo = (new \includes\database())->getInstance();
+
     }
 
     // Fonction nous permettant d'ajouter un utilisateur
