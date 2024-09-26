@@ -10,8 +10,8 @@ class login
     public function execute(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $email = $_POST['email'] ?? null; // On récupère l'adresse email du formulaire, sinon elle est NULL
-            $password = $_POST['password'] ?? null;
+            $email = $_POST['email']; // On récupère l'adresse email du formulaire, sinon elle est NULL
+            $password = $_POST['password'];
             if (empty($email) || empty($password)) { // Si l'adresse ou le mdp sont vides, il faut les remplir, réactualise la page.
                 echo 'Veuillez renseigner tous les champs.';
                 (new \blog\views\login())->show();
