@@ -13,16 +13,16 @@ class Tenrac
     }
 
     // Fonction nous permettant d'ajouter un utilisateur
-    public function insertTenrac($nom, $email, $telephone, $adresse)
+    public function insertTenrac($nom, $mdp, $email, $telephone, $adresse): void
     {
-        $sql = 'INSERT INTO TENRAC (NOM_TR, COURRIEL_TR, TELEPHONE_TR, ADRESSE_TR) VALUES (:nom, :email, :telephone, :adresse)';
+        $sql = 'INSERT INTO TENRAC (NOM_TR, MDP_TR, COURRIEL_TR, TELEPHONE_TR, ADRESSE_TR) VALUES (:nom, :mdp, :email, :telephone, :adresse)';
 
     }
 
     // Fonction nous permettant de changer certaines informations sur un utilisateur
-    public function updateTenrac($nom, $email, $telephone, $adresse, $id_tr)
+    public function updateTenrac($nom, $mdp, $email, $telephone, $adresse, $id_tr): void
     {
-        $sql = 'UPDATE TENRAC SET NOM_TR=:nom, COURRIEL_TR=:email, TELEPHONE_TR=:telephone, ADRESSE_TR=:adresse WHERE ID_TR=:id_tr';
+        $sql = 'UPDATE TENRAC SET NOM_TR=:nom, MDP_TR=:mdp COURRIEL_TR=:email, TELEPHONE_TR=:telephone, ADRESSE_TR=:adresse WHERE ID_TR=:id_tr';
     }
 
     // Fonction qui nous permet de récupérer l'email d'un utilisateur
@@ -37,7 +37,7 @@ class Tenrac
     }
 
     // Fonction nous permettant de supprimer un utilisateur
-    public function deleteTenrac($id_tr){
+    public function deleteTenrac($id_tr): void {
         $sql = 'DELETE FROM TENRAC WHERE ID_TR = :id_tr';
     }
 
