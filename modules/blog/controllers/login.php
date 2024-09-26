@@ -9,7 +9,7 @@ class login
 {
     public function execute(): void
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = $_POST['email'] ?? null; // On récupère l'adresse email du formulaire, sinon elle est NULL
             $password = $_POST['password'] ?? null;
             if (empty($email) || empty($password)) { // Si l'adresse ou le mdp sont vides, il faut les remplir, réactualise la page.
