@@ -5,6 +5,7 @@ namespace blog\controllers;
 class repas
 {
     public function execute(): void{
-        (new \blog\views\repas())->show();
+        $repas = (new \blog\models\Repas())->getRepas();
+        (new \blog\views\repas())->show($repas);
     }
 }
