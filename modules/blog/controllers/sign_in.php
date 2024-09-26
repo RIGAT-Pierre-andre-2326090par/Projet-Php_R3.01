@@ -16,7 +16,6 @@ class sign_in
             $Telephone = $_POST['Téléphone'];
             (new \blog\models\sign_in())->addUser($Nom, $Mot_de_Passe, $Adresse, $Email, $Telephone);
             header('location:index.php?action=login');
-
         }
         (new \blog\views\sign_in())->show();
     }
