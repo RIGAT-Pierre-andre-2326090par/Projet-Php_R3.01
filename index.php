@@ -28,14 +28,14 @@ try {
             } else {
                 throw new Exception("Nom du club non spécifié.");
             }
-        } elseif ($_GET['action'] == 'unrepas') {
+        } elseif ($_GET['action'] === 'unrepas') {
             if (isset($_GET['id'])) {
                 $id = urldecode($_GET['id']);
                 (new blog\controllers\unrepas())->execute();
             } else {
                 throw new Exception("ID du repas non spécifié.");
             }
-        } elseif ($_GET['action'] == 'repas') {
+        } elseif ($_GET['action'] === 'repas') {
             (new blog\controllers\repas())->execute();
         }
     } else {
