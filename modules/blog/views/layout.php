@@ -11,6 +11,11 @@ class layout // La classe Layout nous permet de poser la base de nos pages HTML
           <meta charset="utf-8"/>
           <title><?= $this->title; ?></title> <!-- Prend la valeur de $title -->
           <link href="/_assets/styles/style.css" rel="stylesheet"/> <!-- Lien jusqu'au CSS -->
+          <meta name="author" content="Théo, Mathéo, Baptiste, Estelle, Pierre-André, Cyril">
+          <meta name="description" content="Découvre une myriade de plats plus gras les uns que les autres !">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="icon" href="/_assets/images/favicon.ico">
+          <link rel="icon" type="image/png" href="/_assets/images/logo.webp">
       </head>
       <body>
       <header>
