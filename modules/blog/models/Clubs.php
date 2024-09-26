@@ -9,7 +9,7 @@ class Clubs
 {
     public function getClubs() {
         $pdo = (new \includes\database())->getInstance();
-        $sql = 'SELECT NOM_CL nomclub, ID_CL id, ADRESSE_CL adresse, IMG_CL imageclub FROM CLUB LIMIT 10';
+        $sql = 'SELECT NOM_CL nomclub, ID_CL id, ADRESSE_CL adresse, IMG_CL imageclub FROM CLUB LIMIT 3';
         $stmt = $pdo->prepare($sql); // Préparation d'une requête.
         try
         {

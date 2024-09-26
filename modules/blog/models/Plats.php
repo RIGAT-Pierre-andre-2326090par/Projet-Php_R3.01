@@ -9,7 +9,7 @@ class Plats
     public function __construct(){}
     public function getPlats(){
         $pdo = (new \includes\database())->getInstance();
-        $sql = 'SELECT NOM_PL nomplat, DESC_PL descplat, IMG_PL imgplat FROM PLAT LIMIT 5';
+        $sql = 'SELECT NOM_PL nomplat, DESC_PL descplat, IMG_PL imgplat FROM PLAT LIMIT 3';
         $stmt = $pdo->prepare($sql); // Préparation d'une requête.
         try
         {
