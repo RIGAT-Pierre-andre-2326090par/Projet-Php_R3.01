@@ -16,9 +16,13 @@ class club
 
             </section>
         <img src="<?php echo '/_assets/images/club/' . $image ?>" />
-        <h2><?php echo  $nom ?></h2>
-        <h4><?php echo  $adr ?></h4>
-        <p> <?php echo  $description ?></p>
+        <span>
+            <h2><?php echo  $nom ?></h2>
+            <h4><?php echo  $adr ?></h4>
+        </span>
+        <span>
+            <p> <?php echo  $description ?></p>
+        </span>
 
         <strong>Photos</strong>
         <img src="#" />

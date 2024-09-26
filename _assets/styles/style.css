@@ -150,3 +150,8 @@ main {
 .formulaire {
     background-color: white;
 }
+
+.note {
+    width: 500px;
+    height: 500px;
+}
