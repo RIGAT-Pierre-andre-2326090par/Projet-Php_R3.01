@@ -40,9 +40,9 @@ class layout // La classe Layout nous permet de poser la base de nos pages HTML
               <p>Conditions générales d'utilisations</p>
           </section>
           <section class="reseaux">
-              <a href=""><img id="media" src="/_assets/images/icons/facebook.webp" /></a>
-              <a href=""><img id="media" src="/_assets/images/icons/twitter.webp" /></a>
-              <a href=""><img id="media" src="/_assets/images/icons/instagram.webp" /></a>
+              <a href=""><img src="/_assets/images/icons/facebook.webp" /></a>
+              <a href=""><img src="/_assets/images/icons/twitter.webp" /></a>
+              <a href=""><img src="/_assets/images/icons/instagram.webp" /></a>
           </section>
           <p>Tenrac-Lovers© <?php date('Y'); ?></p> <!-- Ajout de l'année actuelle de manière dynamique -->
       </footer>

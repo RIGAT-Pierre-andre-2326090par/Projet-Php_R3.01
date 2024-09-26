@@ -10,12 +10,12 @@ class sign_in
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $Nom = $_POST['Nom'];
-            $Mot_de_Passe = $_POST['Mot de Passe'];
+            $Mot_de_Passe = $_POST['password'];
             $Adresse = $_POST['Adresse'];
-            $Email = $_POST['Email'];
+            $Email = $_POST['email'];
             $Telephone = $_POST['Téléphone'];
-            (new \blog\models\sign_in())->addUser($Nom, $Mot_de_Passe, $Adresse, $Email ,$Telephone);
-            (new \blog\controllers\login());
+            (new \blog\models\sign_in())->addUser($Nom, $Mot_de_Passe, $Adresse, $Email, $Telephone);
+            header('location:index.php?action=login');
 
         }
         (new \blog\views\sign_in())->show();

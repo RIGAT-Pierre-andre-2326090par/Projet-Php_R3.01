@@ -14,11 +14,11 @@ class sign_in
             <label for="nom">Nom :</label>
             <input type="text" name="Nom" id="nom" required>
             <label for="pwd">Mot de Passe :</label>
-            <input type="password" name="Mot de Passe" id="pwd" required>
+            <input type="password" name="Mot de Passe" id="password" required>
             <label for="adr">Adresse :</label>
             <input type="text" name="Adresse" id="adr" required>
             <label for="mail">Email :</label>
-            <input type="email" name="Email" id="mail" required>
+            <input type="email" name="Email" id="email" required>
             <label for="tel">Téléphone :</label>
             <input type="tel" name="Téléphone" id="tel" required>
             <input type="submit" value="sign_in">
