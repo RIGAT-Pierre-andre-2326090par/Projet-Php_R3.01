@@ -12,7 +12,7 @@ class repas
 
         <div class="liste">
             <?php foreach ($repas as $unrepas) { ?>
-                <a href="/index.php?action=repas&id=<?= urlencode($unrepas->getNom()); ?>">
+                <a href="/index.php?action=unrepas&id=<?= urlencode($unrepas->getIdrp()); ?>">
                     <section class="infoClub">
                         <img src="<?= htmlspecialchars('/_assets/images/plat/' . $unrepas->getImageplat()); ?>" alt="<?= htmlspecialchars($unrepas->getDates()); ?>" style="max-width: 200px; height: auto;" />
                         <div>
@@ -30,4 +30,3 @@ class repas
     }
 }
 ?>
-}

@@ -20,7 +20,7 @@ class unrepas
                 echo 'Repas non trouvé.';
             }
         } else {
-            echo 'Aucun nom de repas fourni.';
+            echo 'Aucun id de repas fourni.';
         }
     }
 

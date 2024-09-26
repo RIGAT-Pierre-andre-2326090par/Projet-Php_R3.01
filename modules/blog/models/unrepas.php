@@ -11,22 +11,20 @@ class unrepas
     public $dates;
     public $idrp;
     public $idcl;
-    public $idpl;
     public $nomclub;
     public $imageclub;
     public $nomplat;
     public $imageplat;
 
-    public function __construct($idrp = null, $dates = null, $idcl = null, $idpl = null,
+    public function __construct($idrp = null, $dates = null, $idcl = null,
                                 $nomclub = null, $imageclub = null, $nomplat = null, $imageplat = null) {
-        $this->$dates = $dates;
-        $this->$idrp = $idrp;
-        $this->$idcl = $idcl;
-        $this->$idpl = $idpl;
-        $this->$nomclub = $nomclub;
-        $this->$imageclub = $imageclub;
-        $this->$nomplat = $nomplat;
-        $this->$imageplat = $imageplat;
+        $this->dates = $dates;
+        $this->idrp = $idrp;
+        $this->idcl = $idcl;
+        $this->nomclub = $nomclub;
+        $this->imageclub = $imageclub;
+        $this->nomplat = $nomplat;
+        $this->imageplat = $imageplat;
     }
 
     public function getImageplat()
@@ -49,11 +47,6 @@ class unrepas
         return $this->nomclub;
     }
 
-    public function getIdpl()
-    {
-        return $this->idpl;
-    }
-
     public function getIdcl()
     {
         return $this->idcl;
@@ -73,13 +66,22 @@ class unrepas
         return new self();
     }
 
-    public function getRepas($nom) {
+    public function getRepas($idrp) {
         $pdo = (new \includes\database())->getInstance();
-        $stmt = $pdo->prepare('SELECT * FROM REPAS WHERE ID_RP = :idrepas AND ID_Cl = :idclub');
+        $stmt = $pdo->prepare(
+        'SELECT REPAS.ID_RP idrepas, DATES dates,
+                REPAS.ID_CL idclub,
+                IMG_CL imageclub, NOM_CL nomclub,
+                IMG_PL imageplat, PLAT.NOM_PL nomplat
+                FROM REPAS, PLAT, CLUB, est_compose EC
+                WHERE REPAS.ID_CL = CLUB.ID_CL
+                AND EC.NOM_PL = PLAT.NOM_PL
+                AND EC.ID_RP = REPAS.ID_RP
+                AND REPAS.ID_RP = :idrepas'
+        );
 
         try {
             // Bind du paramètre nom
-            $stmt->bindParam(':idclub', $idcl, PDO::PARAM_STR);
             $stmt->bindParam(':idrepas', $idrp, PDO::PARAM_STR);
             $stmt->execute();
 

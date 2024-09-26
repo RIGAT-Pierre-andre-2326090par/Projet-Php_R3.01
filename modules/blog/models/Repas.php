@@ -8,13 +8,15 @@ class Repas
 {
     public function getRepas() {
         $pdo = (new \includes\database())->getInstance();
-        $sql = 'SELECT ID_RP idrepas, ID_CL idclub, PLAT.ID_PL idplat, DATES dates,
-                   IMG_CL imageclub, NOM_CL nomclub,
-                   IMG_PL imageplat, NOM_PL nomplat
+        $pdo = (new \includes\database())->getInstance();
+        $sql = 'SELECT REPAS.ID_RP idrepas, DATES dates,
+                REPAS.ID_CL idclub,
+                IMG_CL imageclub, NOM_CL nomclub,
+                IMG_PL imageplat, PLAT.NOM_PL nomplat
                 FROM REPAS, PLAT, CLUB, est_compose EC
-                WHERE idclub = CLUB.ID_CL
-                AND EC.ID_PL = idplat
-                AND EC.ID_RP = idrepas
+                WHERE REPAS.ID_CL = CLUB.ID_CL
+                AND EC.NOM_PL = PLAT.NOM_PL
+                AND EC.ID_RP = REPAS.ID_RP
                 LIMIT 5';
         $stmt = $pdo->prepare($sql); // Préparation d'une requête.
         try
@@ -28,7 +30,7 @@ class Repas
             {
                 $repas[] = new \blog\models\unrepas(
                     $result->idrepas,  $result->dates,
-                    $result->idclub, $result->idplat,
+                    $result->idclub,
                     $result->nomclub, $result->imageclub,
                     $result->nomplat, $result->imageplat
                 );

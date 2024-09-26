@@ -8,9 +8,8 @@ class unrepas
 
     public function show($repas):void{
         $dates = $repas['dates'];
-        $idrp = $repas['idrp'];
-        $idcl = $repas['idcl'];
-        $idpl = $repas['idpl'];
+        $idrp = $repas['idrepas'];
+        $idcl = $repas['idclub'];
         $nomclub = $repas['nomclub'];
         $imageclub = $repas['imageclub'];
         $nomplat = $repas['nomplat'];
