@@ -25,17 +25,19 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
                     <li><a href="/index.php?action=accueil"> Accueil </a> </li>
                     <li><a href="/index.php?action=plats"> Plats </a></li>
                     <li><a href="/index.php?action=ordre"> Ordre et clubs </a></li>
-                    <li>
-                        <form action="/index.php" method="GET">
-                            <input type="text" id="search" name="keyword" required>
-                            <button name="action" value="recherche" type="submit"> Rechercher </button>
-                        </form>
-                    </li>
-                    <li><a href="/index.php?action=login"> Se Connecter </a></li>
-                    <li><a href="/index.php?action=sign_in"> S'Inscrire </a></li>
                 </ul>
             </nav>
             <img src="/_assets/images/logo.webp"/>
+            <nav class="bandeau">
+                <li>
+                    <form action="/index.php" method="GET">
+                        <input type="text" id="search" name="keyword" required>
+                        <button name="action" value="recherche" type="submit"> Rechercher </button>
+                    </form>
+                </li>
+                <li><a href="/index.php?action=login"> Se Connecter </a></li>
+                <li><a href="/index.php?action=sign_in"> S'Inscrire </a></li>
+            </nav>
       </header>
       <main>
           <?= $this->content; ?> <!-- Contenu de la page, avec $content-->
