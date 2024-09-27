@@ -18,7 +18,7 @@ class ControllerClub
                 echo 'ModelClub non trouvé.';
             }
         } else {
-            echo 'Aucun nom de viewClub fourni.';
+            echo 'Aucun nom de club fourni.';
         }
     }
 }
