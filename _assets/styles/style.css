@@ -199,7 +199,7 @@ main {
     background-color: white;
 }
 
-.note {
-    width: 500px;
-    height: 500px;
+#plat {
+    width: 10px;
+    height: 10px;
 }
