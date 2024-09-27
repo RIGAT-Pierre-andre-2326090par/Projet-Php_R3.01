@@ -27,9 +27,10 @@ class ControllerLogin {
 
 
             // Vérifie si l'utilisateur existe et le mot de passe est correct
-            if (password_verify($password, $user['MDP_TR'])) {
+            if ($password === $user['password'] && $email === $user['email']) {
                 $_SESSION['user'] = $user; // Stocke l'utilisateur en session
                 echo 'Vous êtes connecté !';
+                session_start();
                 header('Location: /index.php?action=accueil');
                 exit();
             } else {
