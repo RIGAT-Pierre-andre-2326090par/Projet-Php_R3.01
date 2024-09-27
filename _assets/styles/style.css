@@ -181,6 +181,13 @@ main {
     align-items: center;
 }
 
+.hautdepage h1 {
+    font-size: 45px;
+}
+.hautdepage p {
+    font-size: 20px;
+}
+
 @media (max-width: 480px) {
     .bandeau{
         flex-direction: column;
@@ -237,4 +244,22 @@ header button {
 
 #note {
     width: 100%
+}
+
+.titrePartie {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    background-color: orange;
+    border-radius: 1em;
+    margin: 5px;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #e79000;
 }
