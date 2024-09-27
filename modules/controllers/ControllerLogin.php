@@ -7,6 +7,8 @@ use views\ViewLogin;
 
 class ControllerLogin {
     public function execute(): void {
+        session_start(); // Démarre la session au début de la fonction
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = $_POST['email'] ?? null;
             $password = $_POST['password'] ?? null;
@@ -23,22 +25,19 @@ class ControllerLogin {
             $model = new ModelTenrac();
             $user = $model->getMail($email); // Récupération de l'utilisateur
 
-            // Vérification des données récupérées de la base
+            if ($user === null) {
+                echo 'Aucun utilisateur trouvé avec cet email.<br>';
+                return;
+            }
 
-
-            // Vérifie si l'utilisateur existe et le mot de passe est correct
-            if ($password === $user['password'] && $email === $user['email']) {
+            // Vérification du mot de passe avec password_verify
+            if (password_verify($password, $user['MDP_TR'])) {
                 $_SESSION['user'] = $user; // Stocke l'utilisateur en session
                 echo 'Vous êtes connecté !';
-                session_start();
                 header('Location: /index.php?action=accueil');
                 exit();
             } else {
                 echo 'Mot de passe incorrect ou adresse e-mail incorrect !<br>';
-                echo 'Mot de passe (haché) récupéré: ' . $user['MDP_TR'] . "<br>";
-                echo "Email: " . htmlspecialchars($email) . "<br>";
-                echo "Mot de passe (avant hashage): " . htmlspecialchars($password) . "<br>";
-
             }
         }
 
