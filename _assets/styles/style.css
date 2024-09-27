@@ -126,7 +126,13 @@ main {
 
 
 
-
+.listeHome {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
 .listeHome > a, .listeHome > div {
     width: 400px;
