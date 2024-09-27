@@ -1,56 +1,34 @@
 <?php
 
 namespace controllers;
-include '_assets/includes/autoloader.php';
 
 use models\ModelTenrac;
+use views\ViewLogin;
 
-class ControllerLogin
-{
-    public function execute(): void
-    {
+class ControllerLogin {
+    public function execute(): void {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $email = $_POST['email']; // On récupère l'adresse email du formulaire, sinon elle est NULL
-            $password = $_POST['password'];
-            if (empty($email) || empty($password)) { // Si l'adresse ou le mdp sont vides, il faut les remplir, réactualise la page.
+            $email = $_POST['email'] ?? null;
+            $password = $_POST['password'] ?? null;
+
+            if (empty($email) || empty($password)) {
                 echo 'Veuillez renseigner tous les champs.';
-                (new \views\ViewLogin())->show();
                 return;
             }
 
-            $model = new ModelTenrac();
-            $user = $model->getMail($email); // On récupère l'email de notre Tenrac.
+            $model = new ModelTenrac(); // Assurez-vous de passer l'instance de PDO
+            $user = $model->getMail($email); // Récupération de l'utilisateur
 
-            if ($user && password_verify($password, $user['password'])) {
-                header('location:index.php?action=accueil');
-
+            // Vérifie si l'utilisateur existe
+            if ($user !== null && password_verify($password, $user['MDP_TR'])) {
+                $_SESSION['user'] = $user; // Stocke l'utilisateur en session
+                header('Location: /index.php?action=accueil');
+                exit();
             } else {
-                header('location:index.php?action=controllerLogin');
-                echo 'Mot de passe incorrect !';
+                echo 'Mot de passe ou adresse e-mail incorrect !';
             }
-
         }
-        (new \views\ViewLogin())->show();
+
+        (new ViewLogin())->show(); // Affiche la vue de connexion
     }
 }
-
-
-/*try{
-    if (filter_input(INPUT_POST, 'action')) {
-        if ($_POST['action'] === 'controllerSignIn') {
-            $pdo = (new \includes\database())->getInstance();
-            $sql = 'INSERT INTO CLIENT (NOM_CL, MDP_CL, ADR_CL, MAIL_CL, TEL_CL) VALUES 
-                                                                 (:nom, :mdp, :adr, :mail, :tel)';
-            $stmt = $pdo->prepare($sql); // Préparation d'une requête.
-            //(new blog\controllers\controllerPlats())->execute();
-        } elseif ($_POST['action'] === 'sign_up') {
-            (new blog\controllers\controllerOrdre())->execute();
-        } else{
-            (new blog\controllers\viewHomepage())->execute();
-        }
-    }
-    else (new blog\controllers\viewHomepage())->execute();
-}
-catch(Exception $e){
-    (new \blog\views\viewError())->show($e->getMessage());
-}*/
