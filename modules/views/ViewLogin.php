@@ -14,8 +14,9 @@ class ViewLogin
             <input type="email" id="email" name="email" required>
             <label for="password">Mot de passe</label>
             <input type="password" id="password" name="password" required>
-            <input type="submit" value="Se connecter">
+            <input type="submit" value="Se connecter"><br>
         </section>
+        <p>Mot de passe oublié ?</p>
         <?php
         (new ViewLayout('Connexion', ob_get_clean()))->show(); // On affiche la page avec le titre 'Connexion'
     }
