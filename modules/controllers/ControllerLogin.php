@@ -24,17 +24,7 @@ class ControllerLogin {
             $user = $model->getMail($email); // Récupération de l'utilisateur
 
             // Vérification des données récupérées de la base
-            if ($user === null) {
-                echo 'Aucun utilisateur trouvé avec cet email.<br>';
-                return;
-            } else {
-                echo '<pre>';
-                print_r($user); // Affiche les informations de l'utilisateur
-                echo '</pre>';
-            }
 
-            // Afficher le hash récupéré de la base de données
-            echo "Mot de passe (haché) récupéré: " . $user['MDP_TR'] . "<br>";
 
             // Vérifie si l'utilisateur existe et le mot de passe est correct
             if (password_verify($password, $user['MDP_TR'])) {
@@ -44,6 +34,10 @@ class ControllerLogin {
                 exit();
             } else {
                 echo 'Mot de passe incorrect ou adresse e-mail incorrect !<br>';
+                echo 'Mot de passe (haché) récupéré: ' . $user['MDP_TR'] . "<br>";
+                echo "Email: " . htmlspecialchars($email) . "<br>";
+                echo "Mot de passe (avant hashage): " . htmlspecialchars($password) . "<br>";
+
             }
         }
 
