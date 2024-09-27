@@ -2,6 +2,7 @@
 
 namespace models;
 
+use Exception;
 use PDOException;
 use PDO;
 
@@ -17,7 +18,8 @@ class ModelRecherche
         {
             $stmt->bindValue(':keyword', '%' . $keyword . '%', PDO::PARAM_STR);
             $stmt->execute(); // Exécution de la requête.
-            $stmt->rowCount() or die('Pas de résultat' . PHP_EOL); // S'il y a des résultats.
+            //$stmt->rowCount() or die('Pas de résultat' . PHP_EOL); // S'il y a des résultats.
+            $stmt->rowCount() or throw new Exception('Pas de résultat');
 
             $stmt->setFetchMode(PDO::FETCH_OBJ);
             $plats_searched = [];

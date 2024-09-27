@@ -9,7 +9,10 @@ class ViewHomepage {
             <h1>Bienvenue sur Tenrac-Lovers</h1>
             <p>Découvre une myriade de plats plus gras les uns que les autres !</p>
         </section>
-        <h2>De superbes plats</h2>
+        <div class="titrePartie">
+            <h2>De superbes plats</h2>
+            <a class="btn" href="/index.php?action=plats">Voir plus</a>
+        </div>
         <div class="listeHome">
         <?php foreach ($plats as $plat) { ?>
             <a href="/index.php?action=plat&nom=<?= urlencode($plat->getNom()); ?>">
@@ -23,8 +26,10 @@ class ViewHomepage {
             </a>
         <?php }?>
         </div>
-        <a href="/index.php?action=plats"> Voir plus </a>
-        <h2>Des clubs a votre portée</h2>
+        <div class="titrePartie">
+            <h2>Des clubs a votre portée</h2>
+            <a class="btn" href="/index.php?action=ordre"> Voir plus </a>
+        </div>
         <div class="listeHome">
         <?php foreach ($clubs as $club) { ?>
             <a href="/index.php?action=club&id=<?= urlencode($club->getId()); ?>">
@@ -38,7 +43,6 @@ class ViewHomepage {
             </a>
         <?php }?>
         </div>
-        <a href="/index.php?action=ordre"> Voir plus </a>
         <?php
         (new ViewLayout('Accueil', ob_get_clean()))->show();
     }
