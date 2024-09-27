@@ -64,8 +64,8 @@ footer hr {
 }
 
 .reseaux img {
-    width: 100px;
-    height: 100px;
+    width: 10px;
+    height: 10px;
     aspect-ratio: 1 / 1;
     object-fit: contain;
 }
