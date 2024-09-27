@@ -5,7 +5,7 @@ use views\ViewForgetPassword;
 
 class ControllerForgetPassword
 {
-public function show (): void{
+public function execute (): void{
     (new ViewForgetPassword())->show();
 }
 }
