@@ -21,7 +21,12 @@ try {
             (new \controllers\ControllerLogin())->execute();
         } elseif ($_GET['action'] === 'sign_in') {
             (new \controllers\ControllerSignIn())->execute();
-        } elseif ($_GET['action'] === 'club') {
+
+        }
+        elseif ($_GET['action'] === 'forget') {
+            (new \controllers\ControllerForgetPassword())->execute();
+        }
+        elseif ($_GET['action'] === 'club') {
             if (isset($_GET['id'])) {
                 $id = urldecode($_GET['id']);
                 (new \controllers\ControllerClub())->execute();
