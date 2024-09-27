@@ -16,6 +16,7 @@ class ViewLogin
             <input type="password" id="password" name="password" required>
             <input type="submit" value="Se connecter"><br>
         </section>
+        <!-- Redirige vers d'autres pages en rapport avec la connexion -->
         <p><a href="/index.php?action=forget">Mot de passe oublié ?</a></p>
         <p><a href="/index.php?action=sign_in">S'inscrire ?</a></p>
         <?php

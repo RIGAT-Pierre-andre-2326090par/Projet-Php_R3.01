@@ -35,12 +35,12 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
             <nav class="bandeau">
                 <ul>
                     <li>
-                        <form action="/index.php" method="GET">
+                        <form action="/index.php" method="GET"> <!-- Utilisation de la barre de recherche. -->
                             <input type="text" id="search" name="keyword" required>
                             <button name="action" value="recherche" type="submit"> Rechercher </button>
                         </form>
                     </li>
-                    <?php if (!isset($_SESSION['user'])): ?>
+                    <?php if (!isset($_SESSION['user'])): ?> <!-- Dans le cas où l'utilisateur n'est pas connecté, pouvoir se connecter -->
                         <li><a href="/index.php?action=login"> Se Connecter </a></li>
                         <li><a href="/index.php?action=sign_in"> S'Inscrire </a></li>
                     <?php endif; ?>

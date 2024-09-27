@@ -4,7 +4,7 @@ namespace views;
 
 class ViewOrdre
 {
-    public function show($clubs):void{
+    public function show($clubs, $page, $pagemax):void{
         ?>
 
         <h1>Ordre</h1>
@@ -26,6 +26,11 @@ class ViewOrdre
             </a>
         <?php }?>
         </div>
+        <ul>
+            <?php for ($i = ($page-2 >= 0) ? ($page-2) : 0; ($i <= $page+2) && ($i <= $pagemax); $i++) { ?>
+                <li><a href="<?php echo '/index.php?action=ordre&page='.$i ?>"><?php echo $i ?></a></li>
+            <?php } ?>
+        </ul>
         <?php
         (new ViewLayout('Ordre et clubs', ob_get_clean()))->show();
     }
