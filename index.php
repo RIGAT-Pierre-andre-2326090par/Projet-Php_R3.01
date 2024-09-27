@@ -2,8 +2,6 @@
 
 require '_assets/includes/autoloader.php';
 
-
-
 try {
     if (filter_input(INPUT_GET, 'action')) {
         if ($_GET['action'] === 'plats') {
@@ -50,7 +48,7 @@ try {
             $page = 0;
             if (isset($_GET['page'])) $page = urldecode($_GET['page']);
             (new \controllers\ControllerRepas())->execute($page);
-        } elseif ($_GET['action'] == 'recherche') {
+        } elseif ($_GET['action'] === 'recherche') {
             (new \controllers\ControllerRecherche())->execute();
         }
     } else {
