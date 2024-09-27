@@ -47,6 +47,10 @@ try {
         } elseif ($_GET['action'] == 'recherche') {
             (new \controllers\ControllerRecherche())->execute();
         }
+        elseif ($_GET['action'] === 'gestionClub') {
+            (new \controllers\ControllerGestion())->execute();
+        }
+
     } else {
         (new \controllers\ControllerHomepage())->execute();
     }

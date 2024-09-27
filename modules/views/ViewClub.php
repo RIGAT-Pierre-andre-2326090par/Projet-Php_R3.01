@@ -23,7 +23,7 @@ class ViewClub
         <span>
             <p> <?php echo  $description ?></p>
         </span>
-
+        <a href="/index.php?action=gestionClub&id=<?= $id ?>" class="button">Modifier / Supprimer Club</a>
         <strong>Photos</strong>
         <img src="#" />
         <strong>Membres</strong>

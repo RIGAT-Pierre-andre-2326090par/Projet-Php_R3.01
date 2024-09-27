@@ -45,6 +45,28 @@ class ModelClub
         }
 
     }
+
+    public function getClubByName($nom){
+        $pdo = (new \includes\database())->getInstance();
+        $stmt = $pdo->prepare('SELECT ID_CL,NOM_CL,ADRESSE_CL,IMG_CL,DESC_CL FROM CLUB WHERE NOM_CL=:nom');
+        try
+        {
+            $stmt->bindParam(':nom', $nom, \PDO::PARAM_STR);
+            $stmt->execute();
+            if ($stmt->rowCount() === 0) {
+                return null; // Pas de résultat, retourne null
+            }
+            // Récupération des résultats sous forme de tableau associatif
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $e)
+        {
+            // Affichage de l'erreur et rappel de la requête.
+            echo 'Erreur : ', $e->getMessage(), PHP_EOL;
+            echo 'Requête : ', $sql, PHP_EOL;
+            exit();
+        }
+    }
     public function getId(): int {
         return $this->id_cl;
     }
