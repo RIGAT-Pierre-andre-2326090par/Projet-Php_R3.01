@@ -26,9 +26,6 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
                     <li><a href="/index.php?action=plats"> Plats </a></li>
                     <?php if (isset($_SESSION['user'])): ?> <!-- Si l'utilisateur est connecté -->
                         <li><a href="/index.php?action=repas">Repas</a></li>
-                    <?php else: ?> <!-- Sinon on redirige à la page de connection -->
-                        <li><a href="/index.php?action=login"> Se Connecter </a></li>
-                        <li><a href="/index.php?action=sign_in"> S'Inscrire </a></li>
                     <?php endif; ?>
 
                     <li><a href="/index.php?action=ordre"> Ordre et clubs </a></li>
@@ -42,8 +39,10 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
                         <button name="action" value="recherche" type="submit"> Rechercher </button>
                     </form>
                 </li>
-                <li><a href="/index.php?action=login"> Se Connecter </a></li>
-                <li><a href="/index.php?action=sign_in"> S'Inscrire </a></li>
+                <?php if (!isset($_SESSION['user'])): ?>
+                    <li><a href="/index.php?action=login"> Se Connecter </a></li>
+                    <li><a href="/index.php?action=sign_in"> S'Inscrire </a></li>
+                <?php endif; ?>
             </nav>
       </header>
       <main>
