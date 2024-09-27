@@ -181,6 +181,13 @@ main {
     align-items: center;
 }
 
+.hautdepage h1 {
+    font-size: 45px;
+}
+.hautdepage p {
+    font-size: 20px;
+}
+
 @media (max-width: 480px) {
     .bandeau{
         flex-direction: column;
