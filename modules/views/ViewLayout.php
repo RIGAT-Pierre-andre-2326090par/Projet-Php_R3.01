@@ -13,10 +13,10 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
           <title><?= $this->title; ?> - Tenrac Lovers</title> <!-- Prend la valeur de $title -->
           <link href="/_assets/styles/style.css" rel="stylesheet"/> <!-- Lien jusqu'au CSS -->
           <meta name="author" content="Théo, Mathéo, Baptiste, Estelle, Pierre-André, Cyril">
-          <meta name="description" content="Découvre une myriade de plats plus gras les uns que les autres !">
+          <meta name="description" content="TenracLovers - Découvre une myriade de plats plus gras les uns que les autres !">
           <meta name="viewport" content="width=device-width, initial-scale=1">
           <link rel="icon" href="/_assets/images/favicon.ico">
-          <link rel="icon" type="image/png" href="/_assets/images/logo.webp">
+          <link rel="icon" type="image/png" href="/_assets/images/logo.webp"> <!-- On insère l'icone du site -->
       </head>
       <body>
       <header>
@@ -24,6 +24,13 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
                 <ul>
                     <li><a href="/index.php?action=accueil"> Accueil </a> </li>
                     <li><a href="/index.php?action=plats"> Plats </a></li>
+                    <?php if (isset($_SESSION['user'])): ?> <!-- Si l'utilisateur est connecté -->
+                        <li><a href="/index.php?action=repas">Repas</a></li>
+                    <?php else: ?> <!-- Sinon on redirige à la page de connection -->
+                        <li><a href="/index.php?action=login"> Se Connecter </a></li>
+                        <li><a href="/index.php?action=sign_in"> S'Inscrire </a></li>
+                    <?php endif; ?>
+
                     <li><a href="/index.php?action=ordre"> Ordre et clubs </a></li>
                     <li>
                         <form action="/index.php" method="GET">
