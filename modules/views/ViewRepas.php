@@ -4,7 +4,7 @@ namespace views;
 
 class ViewRepas
 {
-    public function show($repas): void {
+    public function show($repas, $page): void {
         ob_start();
         ?>
         <h2>Les Repas</h2>
@@ -25,6 +25,11 @@ class ViewRepas
                 </a>
             <?php }?>
         </div>
+        <ul>
+            <?php for ($i = $page-2; $i <= $page+2; $i++) { ?>
+                <li><a href="<?php echo '/index.php?action=repas&page='.$i ?>"><?php echo $i ?></a></li>
+            <?php } ?>
+        </ul>
         <?php
         (new ViewLayout('Les Repas', ob_get_clean()))->show();
     }

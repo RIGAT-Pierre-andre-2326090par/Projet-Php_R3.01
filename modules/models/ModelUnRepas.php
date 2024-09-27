@@ -70,13 +70,16 @@ class ModelUnRepas
         $pdo = (new \includes\database())->getInstance();
         $stmt = $pdo->prepare(
         'SELECT REPAS.ID_RP idrepas, DATES dates,
-                REPAS.ID_CL idclub,
-                IMG_CL imageclub, NOM_CL nomclub,
-                IMG_PL imageplat, PLAT.NOM_PL nomplat
-                FROM REPAS, PLAT, CLUB, est_compose EC
-                WHERE REPAS.ID_CL = CLUB.ID_CL
-                AND EC.NOM_PL = PLAT.NOM_PL
-                AND EC.ID_RP = REPAS.ID_RP
+                CLUB.ID_CL idclub,
+                CLUB.IMG_CL imageclub, CLUB.NOM_CL nomclub,
+                PLAT.IMG_PL imageplat, PLAT.NOM_PL nomplat
+                FROM REPAS
+                LEFT JOIN CLUB
+                ON REPAS.ID_CL = CLUB.ID_CL
+                LEFT JOIN est_compose
+                ON REPAS.ID_RP = est_compose.ID_RP
+                LEFT JOIN PLAT
+                ON est_compose.NOM_PL = PLAT.NOM_PL
                 AND REPAS.ID_RP = :idrepas'
         );
 

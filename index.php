@@ -36,7 +36,9 @@ try {
                 throw new Exception("ID du repas non spécifié.");
             }
         } elseif ($_GET['action'] === 'repas') {
-            (new \controllers\ControllerRepas())->execute();
+            $page = 0;
+            if (isset($_GET['page'])) $page = urldecode($_GET['page']);
+            (new \controllers\ControllerRepas())->execute($page);
         } elseif ($_GET['action'] == 'recherche') {
             (new \controllers\ControllerRecherche())->execute();
         }
