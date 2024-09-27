@@ -33,16 +33,18 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
             </nav>
             <img src="/_assets/images/logo.webp"/>
             <nav class="bandeau">
-                <li>
-                    <form action="/index.php" method="GET">
-                        <input type="text" id="search" name="keyword" required>
-                        <button name="action" value="recherche" type="submit"> Rechercher </button>
-                    </form>
-                </li>
-                <?php if (!isset($_SESSION['user'])): ?>
-                    <li><a href="/index.php?action=login"> Se Connecter </a></li>
-                    <li><a href="/index.php?action=sign_in"> S'Inscrire </a></li>
-                <?php endif; ?>
+                <ul>
+                    <li>
+                        <form action="/index.php" method="GET">
+                            <input type="text" id="search" name="keyword" required>
+                            <button name="action" value="recherche" type="submit"> Rechercher </button>
+                        </form>
+                    </li>
+                    <?php if (!isset($_SESSION['user'])): ?>
+                        <li><a href="/index.php?action=login"> Se Connecter </a></li>
+                        <li><a href="/index.php?action=sign_in"> S'Inscrire </a></li>
+                    <?php endif; ?>
+                </ul>
             </nav>
       </header>
       <main>
