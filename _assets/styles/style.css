@@ -228,6 +228,7 @@ header button {
     font-weight: 600;
     background: orange;
     color: white;
+    cursor: pointer;
 }
 
 #topSide {
