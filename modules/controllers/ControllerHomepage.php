@@ -2,11 +2,13 @@
 namespace controllers;
 
 use views\ViewHomepage;
+use models\ModelPlats;
+use models\ModelClubs;
 
 class ControllerHomepage {
     public function execute(): void {
-        $plats = (new \models\ModelPlats())->getPlats();
-        $clubs = (new \models\ModelClubs())->getClubs();
+        $plats = (new ModelPlats())->getPlats();
+        $clubs = (new ModelClubs())->getClubs();
         (new ViewHomepage())->show($plats, $clubs);
     }
 }
