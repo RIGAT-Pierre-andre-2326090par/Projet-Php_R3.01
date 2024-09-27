@@ -8,7 +8,7 @@ class ControllerSignIn
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $Nom = $_POST['Nom'];
-            $Mot_de_Passe = $_POST['Mot_de_Passe'];
+            $Mot_de_Passe = password_hash($_POST['Mot_de_Passe'], PASSWORD_DEFAULT);
             $Adresse = $_POST['Adresse'];
             $Email = $_POST['Email'];
             $Telephone = $_POST['Téléphone'];

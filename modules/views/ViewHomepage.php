@@ -6,7 +6,7 @@ class ViewHomepage {
         ob_start();
         ?>
         <section class="hautdepage">
-            <h1>Bienvenue sur Tenrac-Lovers TEST3</h1>
+            <h1>Bienvenue sur Tenrac-Lovers</h1>
             <p>Découvre une myriade de plats plus gras les uns que les autres !</p>
         </section>
         <h2>De superbes plats</h2>
