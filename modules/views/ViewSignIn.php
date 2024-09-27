@@ -21,6 +21,7 @@ class ViewSignIn
             <input type="email" name="Email" id="email" required><br>
             <label for="tel">Téléphone :</label>
             <input type="tel" name="Téléphone" id="tel" required><br>
+
             <input type="submit" id="sign_in" value="Soumettre">
         </form>
         <a href="/index.php?action=login"><p>Retouner à la page de connexion</p></a> <!-- Retour à la page de connexion -->
