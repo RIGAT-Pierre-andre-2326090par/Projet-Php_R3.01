@@ -4,15 +4,27 @@ namespace models;
 
 use PDO;
 use PDOException;
+use includes\database;
 
 class ModelClubs
 {
-    public function getClubs() {
-        $pdo = (new \includes\database())->getInstance();
-        $sql = 'SELECT NOM_CL nomclub, ID_CL id, ADRESSE_CL adresse, IMG_CL imageclub FROM CLUB LIMIT 3';
+    public function getClubs($page = 0, $limit = 3) {
+        $pdo = (new database())->getInstance();
+
+        $sql = 'SELECT COUNT(*) as count FROM CLUB';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $count = $stmt->fetch(PDO::FETCH_ASSOC);
+        $count = $count['count'];
+
+        $sql = 'SELECT NOM_CL nomclub, ID_CL id, ADRESSE_CL adresse, IMG_CL imageclub FROM CLUB LIMIT :limit OFFSET :skipped';
         $stmt = $pdo->prepare($sql); // Préparation d'une requête.
         try
         {
+            $toskip = $page * $limit;
+            $stmt->bindParam(':skipped', $toskip, PDO::PARAM_INT);
+            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+
             $stmt->execute(); // Exécution de la requête.
             $stmt->rowCount() or die('Pas de résultat' . PHP_EOL); // S'il y a des résultats.
 
@@ -30,6 +42,11 @@ class ModelClubs
             echo 'Requête : ', $sql, PHP_EOL;
             exit();
         }
-        return $clubs;
+        // resultat : plats et page max
+        $resultat = [];
+        $resultat['pagemax'] = ceil($count / $limit)-1;
+        $resultat['clubs'] = $clubs;
+
+        return $resultat;
     }
 }

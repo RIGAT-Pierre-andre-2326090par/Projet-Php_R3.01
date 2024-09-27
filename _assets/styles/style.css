@@ -29,6 +29,8 @@ nav ul {
 
 nav ul li {
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 nav ul li a {
@@ -65,7 +67,7 @@ footer hr {
 
 .reseaux img {
     width: 100px;
-    height: 100px;
+    height: 70px;
     aspect-ratio: 1 / 1;
     object-fit: contain;
 }
@@ -124,8 +126,6 @@ main {
     text-decoration: none;
 }
 
-
-
 .listeHome {
     width: 100%;
     display: flex;
@@ -181,6 +181,13 @@ main {
     align-items: center;
 }
 
+.hautdepage h1 {
+    font-size: 45px;
+}
+.hautdepage p {
+    font-size: 20px;
+}
+
 @media (max-width: 480px) {
     .bandeau{
         flex-direction: column;
@@ -196,10 +203,63 @@ main {
 }
 
 .formulaire {
-    background-color: white;
+    align-items: center;
+
 }
 
-.note {
-    width: 500px;
-    height: 500px;
+.img_plat {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 1em;
+}
+
+header input {
+    padding: 8px;
+    border: none;
+    border-radius: 0.5em;
+}
+
+header button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 0.5em;
+    font-size: 13px;
+    font-weight: 600;
+    background: orange;
+    color: white;
+}
+
+#topSide {
+    display: flex;
+}
+
+#leftside {
+    width: 50%;
+}
+
+#right {
+    width: 50%;
+}
+
+#note {
+    width: 100%
+}
+
+.titrePartie {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    background-color: orange;
+    border-radius: 1em;
+    margin: 5px;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #e79000;
 }

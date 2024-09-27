@@ -3,6 +3,7 @@
 namespace controllers;
 
 use models\ModelClub;
+use views\ViewClub;
 
 class ControllerClub
 {
@@ -12,7 +13,7 @@ class ControllerClub
             $clubVide = ModelClub::createEmpty();
             $club = $clubVide->getClub($id);
             if ($club) {
-                (new \views\ViewClub())->show($club);
+                (new ViewClub())->show($club);
             } else {
                 echo 'ModelClub non trouvé.';
             }

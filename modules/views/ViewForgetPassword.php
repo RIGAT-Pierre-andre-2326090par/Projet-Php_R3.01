@@ -14,7 +14,7 @@ class ViewForgetPassword
                 <input type="email" id="email" name="email" required>
                 <input type="submit" value="Envoyer le mail de réinitialisation du mot de passe."><br>
         </section>
-        <p>Retouner à la page de connexion</p>
+        <a href="/index.php?action=login"><p>Retouner à la page de connexion</p></a> <!-- Une possibilité de retourner à la page de connexion -->
         <?php
         (new ViewLayout('Mot de passe oublié', ob_get_clean()))->show(); // On affiche la page avec le titre 'Connexion'
     }

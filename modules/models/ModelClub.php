@@ -4,6 +4,7 @@ namespace models;
 
 use PDO;
 use PDOException;
+use includes\database;
 
 
 class ModelClub
@@ -24,7 +25,7 @@ class ModelClub
     }
 
     public function getClub($id_cl){
-        $pdo = (new \includes\database())->getInstance();
+        $pdo = (new database())->getInstance();
         $stmt = $pdo->prepare('SELECT ID_CL,NOM_CL,ADRESSE_CL,IMG_CL,DESC_CL FROM CLUB WHERE ID_CL=:id');
         try
         {

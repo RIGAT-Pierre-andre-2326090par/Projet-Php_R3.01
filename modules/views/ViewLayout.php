@@ -31,18 +31,20 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
                     <li><a href="/index.php?action=ordre"> Ordre et clubs </a></li>
                 </ul>
             </nav>
-            <img src="/_assets/images/logo.webp"/>
+            <img src="/_assets/images/logo.webp"/> <!-- Affichage du logo. -->
             <nav class="bandeau">
-                <li>
-                    <form action="/index.php" method="GET">
-                        <input type="text" id="search" name="keyword" required>
-                        <button name="action" value="recherche" type="submit"> Rechercher </button>
-                    </form>
-                </li>
-                <?php if (!isset($_SESSION['user'])): ?>
-                    <li><a href="/index.php?action=login"> Se Connecter </a></li>
-                    <li><a href="/index.php?action=sign_in"> S'Inscrire </a></li>
-                <?php endif; ?>
+                <ul>
+                    <li>
+                        <form action="/index.php" method="GET"> <!-- Utilisation de la barre de recherche. -->
+                            <input type="text" id="search" name="keyword" required>
+                            <button name="action" value="recherche" type="submit"> Rechercher </button>
+                        </form>
+                    </li>
+                    <?php if (!isset($_SESSION['user'])): ?> <!-- Dans le cas où l'utilisateur n'est pas connecté, pouvoir se connecter -->
+                        <li><a href="/index.php?action=login"> Se Connecter </a></li>
+                        <li><a href="/index.php?action=sign_in"> S'Inscrire </a></li>
+                    <?php endif; ?>
+                </ul>
             </nav>
       </header>
       <main>
@@ -55,7 +57,7 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
               <p>Mentions légales</p>
               <p>Conditions générales d'utilisations</p>
           </section>
-          <section class="reseaux">
+          <section class="reseaux"> <!-- On place nos icônes en bas de la page -->
               <a href=""><img src="/_assets/images/icons/facebook.webp" /></a>
               <a href=""><img src="/_assets/images/icons/twitter.webp" /></a>
               <a href=""><img src="/_assets/images/icons/instagram.webp" /></a>

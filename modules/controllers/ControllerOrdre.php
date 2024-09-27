@@ -8,9 +8,11 @@ use views\ViewOrdre;
 
 class ControllerOrdre
 {
-    public function execute(): void{
+    public function execute($page): void{
         $Clubs = new ModelClubs();
-        $clubs = $Clubs->getClubs();
-        (new ViewOrdre())->show($clubs);
+        $resultat = $Clubs->getClubs($page, 5);
+        $clubs = $resultat['clubs'];
+        $pagemax = $resultat['pagemax'];
+        (new ViewOrdre())->show($clubs, $page, $pagemax);
     }
 }
