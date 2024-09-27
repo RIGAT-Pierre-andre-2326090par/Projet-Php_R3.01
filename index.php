@@ -7,9 +7,13 @@ require '_assets/includes/autoloader.php';
 try {
     if (filter_input(INPUT_GET, 'action')) {
         if ($_GET['action'] === 'plats') {
-            (new \controllers\ControllerPlats())->execute();
+            $page = 0;
+            if (isset($_GET['page'])) $page = urldecode($_GET['page']);
+            (new \controllers\ControllerPlats())->execute($page);
         } elseif ($_GET['action'] === 'ordre') {
-            (new \controllers\ControllerOrdre())->execute();
+            $page = 0;
+            if (isset($_GET['page'])) $page = urldecode($_GET['page']);
+            (new \controllers\ControllerOrdre())->execute($page);
         } elseif ($_GET['action'] === 'plat') {
             if (isset($_GET['nom'])) {
                 $nom = urldecode($_GET['nom']);

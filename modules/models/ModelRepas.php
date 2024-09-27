@@ -6,7 +6,7 @@ use PDOException;
 
 class ModelRepas
 {
-    public function getRepas($page, $limit = 3) {
+    public function getRepas($page = 0, $limit = 3) {
         $pdo = (new \includes\database())->getInstance();
 
         $sql = 'SELECT COUNT(*) as count FROM REPAS';
@@ -28,7 +28,7 @@ class ModelRepas
         $stmt = $pdo->prepare($sql); // Préparation d'une requête.
         try
         {
-            $toskip = $page * 5;
+            $toskip = $page * $limit;
             $stmt->bindParam(':skipped', $toskip, PDO::PARAM_INT);
             $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
 
