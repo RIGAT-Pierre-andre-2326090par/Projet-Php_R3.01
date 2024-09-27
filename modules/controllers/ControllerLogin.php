@@ -11,34 +11,44 @@ class ControllerLogin {
             $email = $_POST['email'] ?? null;
             $password = $_POST['password'] ?? null;
 
+            // Ajout de log pour vérifier les valeurs des inputs
+            echo "Email: " . htmlspecialchars($email) . "<br>";
+            echo "Mot de passe (avant hashage): " . htmlspecialchars($password) . "<br>";
+
             if (empty($email) || empty($password)) {
                 echo 'Veuillez renseigner tous les champs.';
                 return;
             }
 
-            $model = new ModelTenrac(); // Assurez-vous de passer l'instance de PDO
+            $model = new ModelTenrac();
             $user = $model->getMail($email); // Récupération de l'utilisateur
 
+            // Vérification des données récupérées de la base
             if ($user === null) {
-                echo 'Aucun utilisateur trouvé avec cet email.';
+                echo 'Aucun utilisateur trouvé avec cet email.<br>';
                 return;
             } else {
                 echo '<pre>';
-                print_r($user);  // Affiche les informations de l'utilisateur récupérées de la base de données
+                print_r($user); // Affiche les informations de l'utilisateur
                 echo '</pre>';
             }
 
-            // Vérifie si l'utilisateur existe
-            if ($user !== null && password_verify($password, $user['MDP_TR'])) {
+            // Afficher le hash récupéré de la base de données
+            echo "Mot de passe (haché) récupéré: " . $user['MDP_TR'] . "<br>";
+
+            // Vérifie si l'utilisateur existe et le mot de passe est correct
+            if (password_verify($password, $user['MDP_TR'])) {
                 $_SESSION['user'] = $user; // Stocke l'utilisateur en session
                 echo 'Vous êtes connecté !';
                 header('Location: /index.php?action=accueil');
                 exit();
             } else {
-                echo 'Mot de passe ou adresse e-mail incorrect !';
+                echo 'Mot de passe incorrect ou adresse e-mail incorrect !<br>';
             }
         }
 
         (new ViewLogin())->show(); // Affiche la vue de connexion
     }
 }
+
+?>
