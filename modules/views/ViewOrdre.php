@@ -9,7 +9,8 @@ class ViewOrdre
 
         <h1>Ordre</h1>
 
-        <p>Description de dingo wow</p>
+        <p>Dans l'univers des Tenracs, trois Ordres prestigieux veillent à la préservation et à la promotion de la culture fromagère, avec un accent particulier sur la raclette, un plat emblématique de la convivialité et du partage.
+            Chacun de ces Ordres a ses propres valeurs, traditions et missions.</p>
 
         <h2>Clubs</h2>
         <div class="liste">
