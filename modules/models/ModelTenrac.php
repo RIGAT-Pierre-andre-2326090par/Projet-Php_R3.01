@@ -53,11 +53,16 @@ class ModelTenrac
 
     // Fonction qui nous permet de récupérer l'email d'un utilisateur
     public function getMail($email): ?array {
-        $sql = 'SELECT * FROM TENRAC WHERE COURRIEL_TR = :email';
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->db->prepare('SELECT * FROM TENRAC WHERE COURRIEL_TR = :email');
         $stmt->bindValue(':email', $email);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC); // Retourne un tableau associatif
+
+        // Vérifie si un utilisateur a été trouvé
+        if ($stmt->rowCount() > 0) {
+            return $stmt->fetch(PDO::FETCH_ASSOC); // Retourne un tableau associatif
+        }
+
+        return null; // Retourne null si aucun utilisateur n'est trouvé
     }
 
 
