@@ -2,6 +2,8 @@
 
 namespace models;
 
+use PDO;
+
 class ModelTenrac
 {
     private $pdo;
@@ -13,17 +15,24 @@ class ModelTenrac
     }
 
     // Fonction nous permettant d'ajouter un utilisateur
-    public function insertTenrac($nom, $mdp, $email, $telephone, $adresse): void
+    public function insertTenrac($nom, $mdp, $adresse, $email,$telephone, $id): void
     {
-        $sql = 'INSERT INTO TENRAC (NOM_TR, MDP_TR, COURRIEL_TR, TELEPHONE_TR, ADRESSE_TR) VALUES (:nom, :mdp, :email, :telephone, :adresse)';
+        $sql = 'SELECT MAX(ID_TR) as max_id FROM TENRAC';
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $id = $result['max_id'] !== null ? $result['max_id'] + 1 : 1;
+        $sql2 = 'INSERT INTO TENRAC (NOM_TR, MDP_TR, COURRIEL_TR, TELEPHONE_TR, ADRESSE_TR,ID_TR) VALUES (:nom, :mdp, :email, :telephone, :adresse, :id)';
+        $stmt2 = $this->pdo->prepare($sql2);
+        $stmt2->execute([
             ':nom' => $nom,
             ':mdp' => $mdp,
             ':email' => $email,
             ':telephone' => $telephone,
-            ':adresse' => $adresse
+            ':adresse' => $adresse,
+            ':id'=>$id
         ]);
+
         // return $stmt->fetch();
     }
 
