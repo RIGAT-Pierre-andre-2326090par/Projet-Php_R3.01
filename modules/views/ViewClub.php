@@ -29,7 +29,7 @@ class ViewClub
         <strong>Membres</strong>
         <img src="#" />
         <?php
-        (new ViewLayout('ModelClub', ob_get_clean()))->show();
+        (new ViewLayout('Club', ob_get_clean()))->show();
     }
 
 }
