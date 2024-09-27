@@ -203,8 +203,18 @@ main {
 }
 
 .formulaire {
-    align-items: center;
+    text-align: center;
+}
 
+.formulaire form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.formulaire input {
+    border-radius: 0.5em;
 }
 
 .img_plat {
@@ -220,7 +230,7 @@ header input {
     border-radius: 0.5em;
 }
 
-header button {
+header button, .formulaire input[type="submit"] {
     padding: 8px 15px;
     border: none;
     border-radius: 0.5em;
