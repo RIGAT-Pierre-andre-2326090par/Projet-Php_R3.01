@@ -16,8 +16,8 @@ class ViewLogin
             <input type="password" id="password" name="password" required>
             <input type="submit" value="Se connecter"><br>
         </section>
-        <a href="/index.php?action=forget">Mot de passe oublié ?</a>
-        <a href="/index.php?action=sign_in">S'inscrire ?</a>
+        <p><a href="/index.php?action=forget">Mot de passe oublié ?</a></p>
+        <p><a href="/index.php?action=sign_in">S'inscrire ?</a></p>
         <?php
         (new ViewLayout('Connexion', ob_get_clean()))->show(); // On affiche la page avec le titre 'Connexion'
     }

@@ -8,7 +8,6 @@ class ModelTenrac
 {
     private $pdo;
 
-
     public function __construct(){
         $this->pdo = (new \includes\database())->getInstance();
 
@@ -53,7 +52,7 @@ class ModelTenrac
 
     // Fonction qui nous permet de récupérer l'email d'un utilisateur
     public function getMail($email): ?array {
-        $stmt = $this->db->prepare('SELECT * FROM TENRAC WHERE COURRIEL_TR = :email');
+        $stmt = $this->pdo->prepare('SELECT * FROM TENRAC WHERE COURRIEL_TR = :email');
         $stmt->bindValue(':email', $email);
         $stmt->execute();
 
