@@ -7,8 +7,11 @@ use models\ModelClubs;
 
 class ControllerHomepage {
     public function execute(): void {
-        $plats = (new ModelPlats())->getPlats();
-        $clubs = (new ModelClubs())->getClubs();
+        $resplat = (new ModelPlats())->getPlats();
+        $plats = $resplat['plats'];
+
+        $resclub = (new ModelClubs())->getClubs();
+        $clubs = $resclub['clubs'];
         (new ViewHomepage())->show($plats, $clubs);
     }
 }
