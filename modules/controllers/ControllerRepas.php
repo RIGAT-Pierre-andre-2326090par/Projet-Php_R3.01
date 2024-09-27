@@ -10,7 +10,11 @@ class ControllerRepas
             header('Location: /index.php?action=login');
             exit(); // Assurez-vous que le script s'arrête ici
         }
-        $repas = (new \models\ModelRepas())->getRepas($page);
-        (new \views\ViewRepas())->show($repas, $page);
+
+        $resultat = (new \models\ModelRepas())->getRepas($page);
+        $repas = $resultat['repas'];
+        $pagemax = $resultat['pagemax'];
+
+        (new \views\ViewRepas())->show($repas, $page, $pagemax);
     }
 }

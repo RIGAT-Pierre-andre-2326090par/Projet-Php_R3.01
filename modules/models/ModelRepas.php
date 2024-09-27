@@ -8,6 +8,13 @@ class ModelRepas
 {
     public function getRepas($page) {
         $pdo = (new \includes\database())->getInstance();
+
+        $sql = 'SELECT COUNT(*) as count FROM REPAS';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $count = $stmt->fetch(PDO::FETCH_ASSOC);
+        $count = $count->count;
+
         $sql = 'SELECT REPAS.ID_RP idrepas, DATES dates, REPAS.ID_CL idclub, CLUB.IMG_CL imageclub, CLUB.NOM_CL nomclub, PLAT.IMG_PL imageplat, PLAT.NOM_PL nomplat
                 FROM REPAS
                 LEFT JOIN CLUB
@@ -31,7 +38,7 @@ class ModelRepas
             while ($result = $stmt->fetch())
             {
                 $repas[] = new \models\ModelUnRepas(
-                    $result->idrepas,  $result->dates,
+                    $result->idrepas, $result->dates,
                     $result->idclub,
                     $result->nomclub, $result->imageclub,
                     $result->nomplat, $result->imageplat
@@ -45,6 +52,12 @@ class ModelRepas
             echo 'Requête : ', $sql, PHP_EOL;
             exit();
         }
-        return $repas;
+
+        // resultat : plats et page max
+        $resultat = [];
+        $resultat['pagemax'] = ceil($count / 5);
+        $resultat['repas'] = $repas;
+
+        return $resultat;
     }
 }
