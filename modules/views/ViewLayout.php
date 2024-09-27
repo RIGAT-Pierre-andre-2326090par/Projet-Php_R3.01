@@ -31,7 +31,7 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
                     <li><a href="/index.php?action=ordre"> Ordre et clubs </a></li>
                 </ul>
             </nav>
-            <img src="/_assets/images/logo.webp"/>
+            <img src="/_assets/images/logo.webp"/> <!-- Affichage du logo. -->
             <nav class="bandeau">
                 <ul>
                     <li>
@@ -57,7 +57,7 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
               <p>Mentions légales</p>
               <p>Conditions générales d'utilisations</p>
           </section>
-          <section class="reseaux">
+          <section class="reseaux"> <!-- On place nos icônes en bas de la page -->
               <a href=""><img src="/_assets/images/icons/facebook.webp" /></a>
               <a href=""><img src="/_assets/images/icons/twitter.webp" /></a>
               <a href=""><img src="/_assets/images/icons/instagram.webp" /></a>

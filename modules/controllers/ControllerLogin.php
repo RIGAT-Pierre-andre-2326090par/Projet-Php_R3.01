@@ -19,9 +19,19 @@ class ControllerLogin {
             $model = new ModelTenrac(); // Assurez-vous de passer l'instance de PDO
             $user = $model->getMail($email); // Récupération de l'utilisateur
 
+            if ($user === null) {
+                echo 'Aucun utilisateur trouvé avec cet email.';
+                return;
+            } else {
+                echo '<pre>';
+                print_r($user);  // Affiche les informations de l'utilisateur récupérées de la base de données
+                echo '</pre>';
+            }
+
             // Vérifie si l'utilisateur existe
             if ($user !== null && password_verify($password, $user['MDP_TR'])) {
                 $_SESSION['user'] = $user; // Stocke l'utilisateur en session
+                echo 'Vous êtes connecté !';
                 header('Location: /index.php?action=accueil');
                 exit();
             } else {

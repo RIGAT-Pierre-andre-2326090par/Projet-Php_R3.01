@@ -5,6 +5,7 @@ namespace models;
 use PDOException;
 use PDO;
 
+
 class ModelRecherche
 {
     public function __construct(){}

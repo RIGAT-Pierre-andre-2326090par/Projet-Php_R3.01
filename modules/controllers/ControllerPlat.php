@@ -1,15 +1,17 @@
 <?php
 
 namespace controllers;
+use views\ViewPlat;
+use models\ModelPlat;
 
 class ControllerPlat{
     public function execute(): void {
-        $nom = isset($_GET['nom']) ? $_GET['nom'] : null;
+        $nom = ($_GET['nom']) ?? null; // Soit GET['nom'], soit NULL
         if ($nom) {
-            $platVide = \models\ModelPlat::createEmpty();
+            $platVide = ModelPlat::createEmpty(); // On crée un modèle vide.
             $plat = $platVide->getPlat($nom);
             if ($plat) {
-                (new \views\ViewPlat())->show($plat);
+                (new ViewPlat())->show($plat); // Affiche la vue Plat, avec le plat en détail.
             } else {
                 echo 'Plat non trouvé.';
             }

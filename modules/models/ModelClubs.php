@@ -4,11 +4,12 @@ namespace models;
 
 use PDO;
 use PDOException;
+use includes\database;
 
 class ModelClubs
 {
     public function getClubs($page = 0, $limit = 3) {
-        $pdo = (new \includes\database())->getInstance();
+        $pdo = (new database())->getInstance();
 
         $sql = 'SELECT COUNT(*) as count FROM CLUB';
         $stmt = $pdo->prepare($sql);

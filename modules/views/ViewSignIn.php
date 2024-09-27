@@ -10,7 +10,7 @@ class ViewSignIn
         ?>
         <h1>Créer un compte</h1>
         <br>
-        <form action="/index.php?action=sign_in" method="post">
+        <form action="/index.php?action=sign_in" method="post"> <!-- On crée un formulaire afin de récupérer les informations d'inscription -->
             <label for="nom">Nom :</label>
             <input type="text" name="Nom" id="nom" required><?= PHP_EOL; ?>
             <label for="password">Mot de Passe :</label>
@@ -24,6 +24,6 @@ class ViewSignIn
             <input type="submit" id="sign_in" value="Soumettre">
         </form>
         <?php
-        (new ViewLayout('Inscription', ob_get_clean()))->show();
+        (new ViewLayout('Inscription', ob_get_clean()))->show(); // On affiche le formulaire en plus du layout.
     }
 }
