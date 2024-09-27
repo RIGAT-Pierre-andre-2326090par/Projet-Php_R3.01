@@ -53,6 +53,8 @@ try {
         }
         elseif ($_GET['action'] === 'gestionClub') {
             (new \controllers\ControllerGestionClub())->execute();
+        } elseif ($_GET['action'] === 'ajoutClub') {
+            (new \controllers\ControllerAjoutClub())->execute();
         }
 
     } else {
