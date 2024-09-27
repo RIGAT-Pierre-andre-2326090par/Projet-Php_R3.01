@@ -52,19 +52,17 @@ class ModelTenrac
     }
 
     // Fonction qui nous permet de récupérer l'email d'un utilisateur
-    public function getMail($email)
-    {
+    public function getMail($email): ?array {
         $sql = 'SELECT * FROM TENRAC WHERE COURRIEL_TR = :email';
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':email', $email);
-        $stmt->execute([
-            ':email' => $email
-        ]);
-        return $email; // $stmt->fetch();
+        $stmt->bindValue(':email', $email);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC); // Retourne un tableau associatif
     }
 
+
     // Fonction nous permettant de supprimer un utilisateur
-    public function deleteTenrac($id_tr) {
+    public function deleteTenrac($id_tr):void {
         $sql = 'DELETE FROM TENRAC WHERE ID_TR = :id_tr';
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([
