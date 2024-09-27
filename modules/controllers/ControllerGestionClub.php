@@ -2,7 +2,7 @@
 
 namespace controllers;
 
-class ControllerGestion
+class ControllerGestionClub
 {
     public function execute(): void
     {
@@ -13,14 +13,14 @@ class ControllerGestion
                 $nom = $_POST['nomClub'];
                 $adr = $_POST['adrClub'];
                 $desc = $_POST['descClub'];
-                (new \models\ModelGestion())->updateClub($id, $nom, $adr, $desc);
+                (new \models\ModelGestionClub())->updateClub($id, $nom, $adr, $desc);
             }
 
             // Vérifie si le bouton de suppression a été soumis
             if (isset($_POST['deleteBouton'])) {
-                (new \models\ModelGestion())->deleteClub();
+                (new \models\ModelGestionClub())->deleteClub();
             }
         }
-        (new \views\ViewGestion())->show((new \models\ModelClub())->getClub( $_GET['id']));
+        (new \views\ViewGestionClub())->show((new \models\ModelClub())->getClub( $_GET['id']));
     }
 }

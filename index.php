@@ -52,7 +52,7 @@ try {
             (new \controllers\ControllerRecherche())->execute();
         }
         elseif ($_GET['action'] === 'gestionClub') {
-            (new \controllers\ControllerGestion())->execute();
+            (new \controllers\ControllerGestionClub())->execute();
         }
 
     } else {

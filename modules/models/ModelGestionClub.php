@@ -4,7 +4,7 @@ namespace models;
 
 use PDOException;
 
-class ModelGestion
+class ModelGestionClub
 {
     private $pdo;
 

@@ -2,7 +2,7 @@
 
 namespace views;
 
-class ViewGestion
+class ViewGestionClub
 {
     public function show($club){
         $id=$club['ID_CL'];
