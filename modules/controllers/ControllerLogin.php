@@ -7,13 +7,13 @@ use views\ViewLogin;
 
 class ControllerLogin {
     public function execute(): void {
-        session_start(); // Démarre la session au début de la fonction
+        session_start(); // Démarre la session
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $email = $_POST['email'] ?? null;
-            $password = $_POST['password'] ?? null;
+            $email = trim($_POST['email'] ?? null);
+            $password = trim($_POST['password'] ?? null);
 
-            // Ajout de log pour vérifier les valeurs des inputs
+            // Log des valeurs entrées
             echo "Email: " . htmlspecialchars($email) . "<br>";
             echo "Mot de passe (avant hashage): " . htmlspecialchars($password) . "<br>";
 
@@ -30,7 +30,10 @@ class ControllerLogin {
                 return;
             }
 
-            // Vérification du mot de passe avec password_verify
+            // Vérification des données récupérées
+            echo "Mot de passe (haché) récupéré: " . htmlspecialchars($user['MDP_TR']) . "<br>";
+
+            // Vérifie si le mot de passe est correct
             if (password_verify($password, $user['MDP_TR'])) {
                 $_SESSION['user'] = $user; // Stocke l'utilisateur en session
                 echo 'Vous êtes connecté !';
