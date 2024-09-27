@@ -16,7 +16,7 @@ class ModelClubs
         $count = $stmt->fetch(PDO::FETCH_ASSOC);
         $count = $count['count'];
 
-        $sql = 'SELECT NOM_CL nomclub, ID_CL id, ADRESSE_CL adresse, IMG_CL imageclub FROM CLUB LIMIT 3';
+        $sql = 'SELECT NOM_CL nomclub, ID_CL id, ADRESSE_CL adresse, IMG_CL imageclub FROM CLUB LIMIT :limit OFFSET :skipped';
         $stmt = $pdo->prepare($sql); // Préparation d'une requête.
         try
         {
