@@ -34,7 +34,7 @@ class ControllerLogin {
             }
 
             // Vérifie si le mot de passe est correct
-            if (password_verify($password, $user['MDP_TR'])) {
+            if ($password === $user['MDP_TR'] && $email === $user['email']) {
                 // Authentification réussie
                 $_SESSION['user'] = $user; // Stocke l'utilisateur en session
                 echo 'Vous êtes connecté !<br>';

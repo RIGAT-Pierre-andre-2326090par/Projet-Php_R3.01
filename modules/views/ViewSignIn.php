@@ -23,6 +23,7 @@ class ViewSignIn
             <input type="tel" name="Téléphone" id="tel" required><br>
             <input type="submit" id="sign_in" value="Soumettre">
         </form>
+        <a href="/index.php?action=login"><p>Retouner à la page de connexion</p></a> <!-- Retour à la page de connexion -->
         <?php
         (new ViewLayout('Inscription', ob_get_clean()))->show(); // On affiche le formulaire en plus du layout.
     }
