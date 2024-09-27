@@ -11,7 +11,7 @@ class ControllerRepas
             exit(); // Assurez-vous que le script s'arrête ici
         }*/
 
-        $resultat = (new \models\ModelRepas())->getRepas($page);
+        $resultat = (new \models\ModelRepas())->getRepas($page, 5);
         $repas = $resultat['repas'];
         $pagemax = $resultat['pagemax'];
 

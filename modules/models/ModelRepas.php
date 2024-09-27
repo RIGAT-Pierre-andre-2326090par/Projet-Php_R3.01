@@ -6,14 +6,14 @@ use PDOException;
 
 class ModelRepas
 {
-    public function getRepas($page) {
+    public function getRepas($page, $limit = 3) {
         $pdo = (new \includes\database())->getInstance();
 
         $sql = 'SELECT COUNT(*) as count FROM REPAS';
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         $count = $stmt->fetch(PDO::FETCH_ASSOC);
-        $count = $count->count;
+        $count = $count['count'];
 
         $sql = 'SELECT REPAS.ID_RP idrepas, DATES dates, REPAS.ID_CL idclub, CLUB.IMG_CL imageclub, CLUB.NOM_CL nomclub, PLAT.IMG_PL imageplat, PLAT.NOM_PL nomplat
                 FROM REPAS
@@ -23,13 +23,15 @@ class ModelRepas
                 ON est_compose.ID_RP = REPAS.ID_RP
                 LEFT JOIN PLAT
                 ON est_compose.NOM_PL = PLAT.NOM_PL 
-                LIMIT 5
+                LIMIT :limit
                 OFFSET :skipped;';
         $stmt = $pdo->prepare($sql); // Préparation d'une requête.
         try
         {
             $toskip = $page * 5;
             $stmt->bindParam(':skipped', $toskip, PDO::PARAM_INT);
+            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+
             $stmt->execute(); // Exécution de la requête.
             $stmt->rowCount() or die('Pas de résultat' . PHP_EOL); // S'il y a des résultats.
 
@@ -55,7 +57,7 @@ class ModelRepas
 
         // resultat : plats et page max
         $resultat = [];
-        $resultat['pagemax'] = ceil($count / 5);
+        $resultat['pagemax'] = ceil($count / $limit)-1;
         $resultat['repas'] = $repas;
 
         return $resultat;
