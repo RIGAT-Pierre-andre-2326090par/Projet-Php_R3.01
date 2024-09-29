@@ -2,6 +2,8 @@
 
 require '_assets/includes/autoloader.php';
 
+
+
 try {
     if (filter_input(INPUT_GET, 'action')) {
         if ($_GET['action'] === 'plats') {
@@ -50,9 +52,15 @@ try {
             (new \controllers\ControllerRecherche())->execute();
         } elseif ($_GET['action'] === 'gestionClub') {
             (new \controllers\ControllerGestionClub())->execute();
-        } elseif ($_GET['action'] === 'tenrac') {
+        } elseif ($_GET['action'] === 'ajoutClub') {
+            (new \controllers\ControllerAjoutClub())->execute();
+        }
+        elseif ($_GET['action']==='clubsupprime'){
+            (new \views\ViewLayout('Club supprimé','<h2>Club supprimé</h2>'))->show();
+        }   elseif ($_GET['action'] === 'tenrac') {
             (new \controllers\ControllerTenrac())->execute();
         }
+
 
     } else {
         (new \controllers\ControllerHomepage())->execute();

@@ -4,7 +4,7 @@ namespace includes;
 use PDO;
 use PDOException;
 
-class database {
+class  database {
     private dbpass $pass; // Non-static property
 
     public function __construct() {
