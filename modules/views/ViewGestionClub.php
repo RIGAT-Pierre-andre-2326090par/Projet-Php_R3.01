@@ -4,7 +4,7 @@ namespace views;
 
 class ViewGestionClub
 {
-    public function show($club){
+    public function show($club):void{
         $id=$club['ID_CL'];
         ob_start();
         ?>

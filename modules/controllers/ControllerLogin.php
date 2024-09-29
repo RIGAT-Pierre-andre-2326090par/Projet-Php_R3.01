@@ -9,43 +9,48 @@ class ControllerLogin {
     private $tenracModel;
     private $view;
 
-
     public function __construct() {
         $this->tenracModel = new ModelTenrac();
         $this->view = new ViewLogin();
     }
 
     public function execute(): void {
+        // Si la méthode est POST (soumission du formulaire)
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            $password_hash = password_hash($password, PASSWORD_DEFAULT);
+            $email = htmlspecialchars($_POST['email']);
+            $password = htmlspecialchars($_POST['password']);
 
+            // Vérifie que tous les champs sont remplis
             if (empty($email) || empty($password)) {
                 echo 'Veuillez renseigner tous les champs.<br>';
                 return;
             }
 
-            $tenrac = $this->tenracModel->getTenracId($email, $password_hash);
+            // Récupère l'utilisateur par email
+            $tenrac = $this->tenracModel->getTenracByEmail($email);
 
-
-
-            // Vérifie si le mot de passe est correct
-            if ($tenrac !== -1) {
-                // Authentification réussie
-                session_start();
-                $_SESSION['user'] = $tenrac; // Stocke l'utilisateur en session
-                echo 'Vous êtes connecté !<br>';
-                header('Location: /index.php?action=tenrac');
+            // Si l'utilisateur existe
+            if ($tenrac) {
+                // Vérifie le mot de passe avec password_verify
+                if (password_verify($password, $tenrac['MDP_TR'])) {
+                    // Authentification réussie
+                    session_start();
+                    $_SESSION['user'] = $tenrac['Nom_TR'];
+                    $_SESSION['courriel'] = $tenrac['courriel'];
+                    echo 'Vous êtes connecté !<br>';
+                    header('Location: /index.php?action=tenrac');
+                    exit(); // Assurez-vous de quitter après la redirection
+                } else {
+                    // Si le mot de passe est incorrect
+                    echo 'Mot de passe incorrect !<br>';
+                }
             } else {
-                // Authentification échouée
-                echo 'Mot de passe ou adresse e-mail incorrect !<br>';
-                echo 'Mot de passe (haché) récupéré: ' . $password_hash . "<br>";
-                echo "Email: " . htmlspecialchars($email) . "<br>";
-                echo "Mot de passe (avant hashage): " . htmlspecialchars($password) . "<br>";
+                // Si l'utilisateur n'existe pas
+                echo 'Adresse e-mail non trouvée.<br>';
             }
         }
 
-        (new ViewLogin())->show(); // Affiche la vue de connexion
+        // Affiche la vue de connexion
+        $this->view->show();
     }
 }

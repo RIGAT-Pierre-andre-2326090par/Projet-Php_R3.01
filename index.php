@@ -2,6 +2,8 @@
 
 require '_assets/includes/autoloader.php';
 
+
+
 try {
     if (filter_input(INPUT_GET, 'action')) {
         if ($_GET['action'] === 'plats') {
@@ -61,6 +63,7 @@ try {
             (new \views\ViewLayout('Club supprimé','<h2>Club supprimé</h2>'))->show();
 
         }
+
 
     } else {
         (new \controllers\ControllerHomepage())->execute();
