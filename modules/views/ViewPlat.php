@@ -25,7 +25,7 @@ public function show($plat):void{
                         <img id="note" alt="<?= $nom ?>" class="img_plat" src="<?php echo '/_assets/images/plat/' . $image ?>">
                     </section>
                     <section id="bottom">
-                        <img id="plat"> <!--import depuis la BD-->
+                        <img id="plat" alt="<?= $nom ?>" src="<?php echo '/_assets/images/plat/' . $image ?>> <!--import depuis la BD-->
                     </section>
                 </section>
                 <section id="right">
