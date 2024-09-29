@@ -2,8 +2,6 @@
 
 namespace views;
 
-include '../models/ModelPlat.php';
-
 use models\ModelPlat;
 use PDO;
 
@@ -33,11 +31,8 @@ public function show($plat):void{
                     <p id="description"><?php echo  $description ?></p>
                     <h3 id="ingredients"><!--import depuis la BD--></h3>
                     <ol id="liste_ingredients">
-                        <!--fonction qui crée la liste des ingrédients-->
-                        <?php
-                            ModelPlat::getIngredients($plat);
-                        ?>
-                    </ol>
+
+                     </ol>
                     <!--boutons modification et suppression plats-->
                     <form action="/index.php?action=gestionPlat&id=<?= $id ?>" method="POST">
                         <button type="submit" class="modif">Modifier Plat</button>
