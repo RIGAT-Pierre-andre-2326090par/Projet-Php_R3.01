@@ -12,7 +12,7 @@ class ViewRecherche
             <?php foreach ($plats_searched as $plat) { ?>
                 <a href="/index.php?action=plat&nom=<?= urlencode($plat->getNom()); ?>">
                     <section class="plat">
-                        <img src="<?= htmlspecialchars('/_assets/images/plat/' . $plat->getImage()); ?>">
+                        <img alt="<?= htmlspecialchars($plat->getNom()); ?>" src="<?= htmlspecialchars('/_assets/images/plat/' . $plat->getImage()); ?>">
                         <div>
                             <h3><?= htmlspecialchars($plat->getNom()); ?></h3>
                             <p><?= htmlspecialchars($plat->getDescription()); ?></p>

@@ -3,9 +3,10 @@
 namespace models;
 
 use includes\Database;
+use PDO;
 
 class ModelLogin {
-    private $pdo;
+    private PDO $pdo;
 
     public function __construct() {
         $this->pdo = (new Database())->getInstance(); // Récupérer l'instance de PDO
@@ -16,12 +17,13 @@ class ModelLogin {
         $stmt = $this->pdo->prepare("SELECT NOM_TR, MDP_TR FROM TENRAC WHERE COURRIEL_TR = ?");
         $stmt->execute([$courriel]);
 
+        $verify = $_POST["password"];
         // Vérifier si l'utilisateur existe
         if ($stmt->rowCount() > 0) {
             $user = $stmt->fetch();
 
             // Vérifier le mot de passe
-            if (password_verify($password, $user['MDP_TR'])) { // Utiliser MDP_TR pour vérifier
+            if (password_verify($password, $verify)) { // Utiliser MDP_TR pour vérifier
                 // Démarrer la session et enregistrer les informations de l'utilisateur
                 session_start();
                 $_SESSION['loggedin'] = true;
@@ -29,9 +31,8 @@ class ModelLogin {
                 $_SESSION['nom'] = $user['NOM_TR'];
                 return true;
             } else {
-                echo "Mot de passe incorrect pour l'utilisateur : " . htmlspecialchars($courriel);
-                echo "Mot de passe incorrect :" . htmlspecialchars($password);
-                echo "Mot de passe correct : " . $user['MDP_TR'];
+                echo "Mot de passe incorrect pour l'utilisateur : " . htmlspecialchars($courriel) . '<br>';
+                echo "Mot de passe correct : " . $verify;
             }
         } else {
             echo "Aucun utilisateur trouvé avec cet e-mail : " . htmlspecialchars($courriel);
@@ -42,7 +43,7 @@ class ModelLogin {
     }
 
 
-    public function logout(): void {
+     public function logout(): void {
         session_start();
         session_unset(); // Effacer les variables de session
         session_destroy(); // Détruire la session
@@ -50,4 +51,4 @@ class ModelLogin {
         exit(); // Terminer le script
     }
 }
-?>
+

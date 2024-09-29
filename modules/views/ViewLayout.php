@@ -31,7 +31,7 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
                     <li><a href="/index.php?action=ordre"> Ordre et clubs </a></li>
                 </ul>
             </nav>
-            <img src="/_assets/images/logo.webp"/> <!-- Affichage du logo. -->
+            <img src="/_assets/images/logo.webp" alt="Logo du site"/> <!-- Affichage du logo. -->
             <nav class="bandeau">
                 <ul>
                     <li>
@@ -58,9 +58,9 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
               <p>Conditions générales d'utilisations</p>
           </section>
           <section class="reseaux"> <!-- On place nos icônes en bas de la page -->
-              <a href=""><img src="/_assets/images/icons/facebook.webp" /></a>
-              <a href=""><img src="/_assets/images/icons/twitter.webp" /></a>
-              <a href=""><img src="/_assets/images/icons/instagram.webp" /></a>
+              <a href=""><img src="/_assets/images/icons/facebook.webp" alt="Logo Facebook" /></a>
+              <a href=""><img src="/_assets/images/icons/twitter.webp" alt="Logo Twitter" /></a>
+              <a href=""><img src="/_assets/images/icons/instagram.webp" alt="Logo Instagram" /></a>
           </section>
           <p>Tenrac-Lovers© <?= date('Y'); ?> Tous droit réservé.</p> <!-- Ajout de l'année actuelle de manière dynamique -->
       </footer>
