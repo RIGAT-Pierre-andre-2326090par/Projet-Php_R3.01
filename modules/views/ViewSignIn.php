@@ -11,7 +11,7 @@ class ViewSignIn
         <section class="formulaire">
             <h1>Créer un compte</h1>
             <br>
-            <form action="/index.php?action=sign_in" method="post"> <!-- On crée un formulaire afin de récupérer les informations d'inscription -->
+            <form action="/index.php?action=login" method="post"> <!-- On crée un formulaire afin de récupérer les informations d'inscription -->
                 <label for="nom">Nom</label>
                 <input type="text" name="Nom" id="nom" required><br>
                 <label for="password">Mot de Passe</label>
