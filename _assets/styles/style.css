@@ -230,7 +230,7 @@ header input {
     border-radius: 0.5em;
 }
 
-header button, .formulaire input[type="submit"] {
+header button, .formulaire input[type="submit"], .modif, .delete {
     padding: 8px 15px;
     border: none;
     border-radius: 0.5em;
@@ -240,6 +240,11 @@ header button, .formulaire input[type="submit"] {
     color: white;
     cursor: pointer;
 }
+.delete{
+    margin: 1em 0;
+
+}
+
 
 #topSide {
     display: flex;
