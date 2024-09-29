@@ -25,6 +25,7 @@ try {
             (new \controllers\ControllerHomepage())->execute();
         } elseif ($_GET['action'] === 'login') {
             (new \controllers\ControllerLogin())->execute();
+
         } elseif ($_GET['action'] === 'sign_in') {
             (new \controllers\ControllerSignIn())->execute();
 
