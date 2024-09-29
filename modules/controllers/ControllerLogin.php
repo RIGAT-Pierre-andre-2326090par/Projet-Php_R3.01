@@ -28,14 +28,14 @@ class ControllerLogin {
         $this->view->show();
     }
 
-    #[NoReturn] public function connecter(array $post): void {
+     public function connecter(array $post): void {
         $courriel = htmlspecialchars($post["email"]);
         $password = htmlspecialchars($post["password"]);
 
 
         // Appeler la méthode login du modèle
         if ($this->model->login($courriel, $password)) {
-            header("Location: /home"); // Redirige vers la page d'accueil après la connexion
+            header("Location: /index.php?action:login;"); // Redirige vers la page d'accueil après la connexion
         } else {
             echo "Mail ou mot de passe incorrect";
         }
