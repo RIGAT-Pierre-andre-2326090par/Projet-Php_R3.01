@@ -6,7 +6,6 @@ use includes\Database;
 use PDO;
 
 class ModelLogin {
-
     public function __construct() {
     }
 
@@ -19,6 +18,7 @@ class ModelLogin {
         $stmt = $pdo->prepare($sql);
         $stmt->execute([':email' => $email]);
 
+        $verify = $_POST["password"];
         // Vérifier si l'utilisateur existe
         if ($stmt->rowCount() > 0) {
             $user = $stmt->fetch(PDO::FETCH_ASSOC); // Récupérer un tableau associatif
@@ -31,6 +31,7 @@ class ModelLogin {
                 }
 
                 // Enregistrer les informations dans la session
+
                 $_SESSION['loggedin'] = true;
                 $_SESSION['email'] = $email;
                 $_SESSION['nom'] = $user['NOM_TR'];
@@ -39,6 +40,7 @@ class ModelLogin {
             } else {
                 echo "Mot de passe incorrect pour l'utilisateur : " . htmlspecialchars($email);
                  // Mot de passe incorrect
+
             }
         } else {
             echo "Aucun utilisateur trouvé avec cet e-mail : " . htmlspecialchars($email);

@@ -70,7 +70,7 @@ class ModelUnRepas
         $pdo = (new \includes\database())->getInstance();
         $stmt = $pdo->prepare(
         'SELECT REPAS.ID_RP idrepas, DATES dates,
-                CLUB.ID_CL idclub,
+                CLUB.ID_CL idclub, PLAT.ID_PL idplat ,
                 CLUB.IMG_CL imageclub, CLUB.NOM_CL nomclub,
                 PLAT.IMG_PL imageplat, PLAT.NOM_PL nomplat
                 FROM REPAS
@@ -79,7 +79,7 @@ class ModelUnRepas
                 LEFT JOIN est_compose
                 ON REPAS.ID_RP = est_compose.ID_RP
                 LEFT JOIN PLAT
-                ON est_compose.NOM_PL = PLAT.NOM_PL
+                ON est_compose.ID_PL = PLAT.ID_PL
                 AND REPAS.ID_RP = :idrepas'
         );
 

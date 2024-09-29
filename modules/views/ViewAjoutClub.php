@@ -15,6 +15,8 @@ class ViewAjoutClub
             <input type="text" name="adrClub" id="adrClub" required><?= PHP_EOL; ?>
             <label for="descClub">Description :</label>
             <input type="text" name="descClub" id="descClub" required><br>
+            <label for="ordreClub">Ordre :</label>
+            <input type="text" name="ordreClub" id="ordreClub" required><br>
             <button type="submit" name="ajoutBouton">Ajouter</button>
         </form>
         <?php

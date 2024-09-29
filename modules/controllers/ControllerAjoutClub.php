@@ -10,7 +10,9 @@ class ControllerAjoutClub
                 $nom = $_POST['nomClub'];
                 $adr = $_POST['adrClub'];
                 $desc = $_POST['descClub'];
-                (new \models\ModelGestionClub())->insertClub($nom, $adr, $desc);
+                $ordre = $_POST['ordreClub'];
+                $img = strtolower(str_replace(' ', '_', $_POST['nomClub'])) . '.webp';
+                (new \models\ModelGestionClub())->insertClub($nom, $adr, $desc, $img, $ordre);
             }
         }
         (new \views\ViewAjoutClub())->show();
