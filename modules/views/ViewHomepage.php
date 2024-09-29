@@ -15,7 +15,7 @@ class ViewHomepage {
         </div>
         <div class="listeHome">
         <?php foreach ($plats as $plat) { ?>
-            <a href="/index.php?action=plat&nom=<?= urlencode($plat->getNom()); ?>">
+            <a href="/index.php?action=plat&id=<?= urlencode($plat->getId()); ?>">
                 <section class="platHome">
                     <img src="<?= htmlspecialchars('/_assets/images/plat/' . $plat->getImage()); ?>">
                     <div>

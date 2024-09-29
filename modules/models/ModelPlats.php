@@ -16,7 +16,7 @@ class ModelPlats
         $count = $stmt->fetch(PDO::FETCH_ASSOC);
         $count = $count['count'];
 
-        $sql = 'SELECT NOM_PL nomplat, DESC_PL descplat, IMG_PL imgplat FROM PLAT LIMIT :limit OFFSET :skipped';
+        $sql = 'SELECT ID_PL id, NOM_PL nomplat, DESC_PL descplat, IMG_PL imgplat FROM PLAT LIMIT :limit OFFSET :skipped';
         $stmt = $pdo->prepare($sql); // Préparation d'une requête.
         try
         {
@@ -31,7 +31,7 @@ class ModelPlats
             $plats = [];
             while ($result = $stmt->fetch())
             {
-                $plats[] = new ModelPlat($result->nomplat, $result->descplat, $result->imgplat) ;
+                $plats[] = new ModelPlat($result->id, $result->nomplat, $result->descplat, $result->imgplat) ;
             }
         }
         catch (PDOException $e)

@@ -6,10 +6,10 @@ use models\ModelPlat;
 
 class ControllerPlat{
     public function execute(): void {
-        $nom = ($_GET['nom']) ?? null; // Soit GET['nom'], soit NULL
-        if ($nom) {
+        $id = ($_GET['id']) ?? null; // Soit GET['id'], soit NULL
+        if ($id) {
             $platVide = ModelPlat::createEmpty(); // On crée un modèle vide.
-            $plat = $platVide->getPlat($nom);
+            $plat = $platVide->getPlat($id);
             if ($plat) {
                 (new ViewPlat())->show($plat); // Affiche la vue Plat, avec le plat en détail.
             } else {

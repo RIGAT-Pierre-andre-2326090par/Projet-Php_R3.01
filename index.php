@@ -15,8 +15,8 @@ try {
             if (isset($_GET['page'])) $page = urldecode($_GET['page']);
             (new \controllers\ControllerOrdre())->execute($page);
         } elseif ($_GET['action'] === 'plat') {
-            if (isset($_GET['nom'])) {
-                $nom = urldecode($_GET['nom']);
+            if (isset($_GET['id'])) {
+                $nom = urldecode($_GET['id']);
                 (new \controllers\ControllerPlat())->execute();
             } else {
                 throw new Exception("Nom du plat non spécifié.");
@@ -61,9 +61,13 @@ try {
         elseif ($_GET['action']==='clubsupprime'){
             (new \controllers\ControllerGestionClub())->execute();
             (new \views\ViewLayout('Club supprimé','<h2>Club supprimé</h2>'))->show();
-
         }
-
+        elseif ($_GET['action']==='gestionPlat'){
+            (new \controllers\ControllerGestionPlat())->execute();
+        } elseif ($_GET['action']==='suppressionPlat'){
+            (new \controllers\ControllerGestionClub())->execute();
+            (new \views\ViewLayout('Plat supprimé','<h2>Plat supprimé</h2>'))->show();
+        }
 
     } else {
         (new \controllers\ControllerHomepage())->execute();
