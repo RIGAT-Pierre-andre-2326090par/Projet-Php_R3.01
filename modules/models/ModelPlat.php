@@ -65,10 +65,10 @@ class ModelPlat
 
     /*public static function getIngredients($plat) {
         $pdo = (new \includes\database())->getInstance();
-        $stmt = $pdo->prepare('SELECT nom_ig FROM INGREDIENT JOIN plat_contient ON INGREDIENT.nom_ig = plat_contient.nom_ig WHERE plat_contient.nom_pl = "Burger Poulet et Raclette"');
+        $stmt = $pdo->prepare('SELECT nom_ig FROM INGREDIENT JOIN plat_contient ON INGREDIENT.nom_ig = plat_contient.nom_ig WHERE plat_contient.nom_pl = :nom_pl');
 
         try {
-            $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+            $stmt->bindParam(':nom_pl', $plat, PDO::PARAM_STR);
             $stmt->execute();
 
             if ($stmt->rowCount() === 0) {
