@@ -20,5 +20,11 @@ class ControllerClub
         } else {
             echo 'Aucun nom de club fourni.';
         }
+        if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+            if (isset($_POST['deleteBouton'])) {
+                (new \models\ModelGestionClub())->deleteClub($id);
+            }
+        }
+
     }
 }

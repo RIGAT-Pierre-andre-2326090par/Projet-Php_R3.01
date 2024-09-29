@@ -18,9 +18,6 @@ class ViewGestionClub
             <input type="text" name="descClub" id="descClub" required><br>
             <button type="submit" name="modifBouton">Modifier</button>
         </form>
-        <form action="/index.php?action=gestionClub" method="POST">
-            <button type="submit" name="deleteBouton">Supprimer Club</button>
-        </form>
         <?php
         (new ViewLayout('Gestion Club', ob_get_clean()))->show();
 

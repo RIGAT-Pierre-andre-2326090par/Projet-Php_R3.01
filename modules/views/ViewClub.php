@@ -23,7 +23,10 @@ class ViewClub
         <span>
             <p> <?php echo  $description ?></p>
         </span>
-        <a href="/index.php?action=gestionClub&id=<?= $id ?>" class="button">Modifier / Supprimer Club</a>
+        <a href="/index.php?action=gestionClub&id=<?= $id ?>" class="button">Modifier Club</a>
+        <form action="/index.php?action=clubsupprime" method="POST">
+            <button type="submit" name="deleteBouton">Supprimer Club</button>
+        </form>
         <strong>Photos</strong>
         <img src="#" />
         <strong>Membres</strong>

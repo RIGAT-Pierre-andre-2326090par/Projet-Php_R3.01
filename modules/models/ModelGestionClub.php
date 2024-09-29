@@ -56,10 +56,12 @@ class ModelGestionClub
         }
     }
 
-    public function deleteClub(): void
+    public function deleteClub($id): void
     {
         $sql = 'DELETE FROM CLUB WHERE ID_CL = :id';
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute();
+        $stmt->execute([
+            ':id'=> $id
+        ]);
     }
 }

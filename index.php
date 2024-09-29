@@ -56,6 +56,9 @@ try {
         } elseif ($_GET['action'] === 'ajoutClub') {
             (new \controllers\ControllerAjoutClub())->execute();
         }
+        elseif ($_GET['action']==='clubsupprime'){
+            (new \views\ViewLayout('Club supprimé','<h2>Club supprimé</h2>'))->show();
+        }
 
     } else {
         (new \controllers\ControllerHomepage())->execute();
