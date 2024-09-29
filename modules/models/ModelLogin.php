@@ -6,7 +6,27 @@ use includes\Database;
 use PDO;
 
 class ModelLogin {
-    public function __construct() {
+
+    private $messageError;
+    private $nb;
+    public function __construct() {}
+
+    public function setMessageError($messageError): void
+    {
+        $this->messageError = $messageError;
+    }
+    public function getMessageError()
+    {
+        return $this->messageError;
+    }
+
+    public function getNb()
+    {
+        return $this->nb;
+    }
+    public function setNb($nb): void
+    {
+        $this->nb = $nb;
     }
 
     public function login($email, $password): void  {
@@ -38,13 +58,16 @@ class ModelLogin {
 
                 // Connexion réussie
             } else {
-                echo "Mot de passe incorrect pour l'utilisateur : " . htmlspecialchars($email);
-                 // Mot de passe incorrect
-
+                $this->setMessageError("<h2>Mot de passe incorrect pour l'utilisateur : " . htmlspecialchars($email) . "</h2>");
+                $this->setNb(1);
             }
         } else {
-            echo "Aucun utilisateur trouvé avec cet e-mail : " . htmlspecialchars($email);
-
+                $this->setMessageError("<h2>Aucun utilisateur trouvé avec cet e-mail : " . htmlspecialchars($email) . "</h2>");
+                $this->setNb(2);
         }
     }
+
+
+
+
 }
