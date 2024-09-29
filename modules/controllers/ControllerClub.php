@@ -17,14 +17,12 @@ class ControllerClub
             } else {
                 echo 'ModelClub non trouvé.';
             }
-        } else {
+
+        }
+        else {
             echo 'Aucun nom de club fourni.';
         }
-        if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-            if (isset($_POST['deleteBouton'])) {
-                (new \models\ModelGestionClub())->deleteClub($id);
-            }
-        }
+
 
     }
 }

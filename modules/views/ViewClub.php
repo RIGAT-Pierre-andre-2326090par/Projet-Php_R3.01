@@ -12,16 +12,15 @@ class ViewClub
         $image=$club['IMG_CL'];
         ob_start();
         ?>
-            <section>
-
-            </section>
         <img src="<?php echo '/_assets/images/club/' . $image ?>" />
         <h2><?php echo  $nom ?></h2>
         <h4><?php echo  $adr ?></h4>
         <p> <?php echo  $description ?></p>
-        <button action="/index.php?action=gestionClub&id=<?= $id ?>" class="modif">Modifier Club</button>
-        <form action="/index.php?action=clubsupprime" method="POST">
-            <button class="delete" type="submit" name="deleteBouton">Supprimer Club</button>
+        <form action="/index.php?action=gestionClub&id=<?= $id ?>" method="POST">
+            <button type="submit" class="modif">Modifier Club</button>
+        </form>
+        <form action="/index.php?action=clubsupprime&id=<?= $id ?>" method="POST">
+            <button type="submit" name="deleteBouton">Supprimer Club</button>
         </form>
         <strong>Photos</strong>
         <img src="#" />
