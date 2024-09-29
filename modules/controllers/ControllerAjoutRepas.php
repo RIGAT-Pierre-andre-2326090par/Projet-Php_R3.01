@@ -13,6 +13,6 @@ class ControllerAjoutRepas
                 (new \models\ModelGestionRepas())->insertRepas($date, $club);
             }
         }
-        (new \views\ViewAjoutClub())->show();
+        (new \views\ViewAjoutRepas())->show();
     }
 }
