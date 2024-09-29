@@ -16,13 +16,9 @@ class ViewClub
 
             </section>
         <img src="<?php echo '/_assets/images/club/' . $image ?>" />
-        <span>
-            <h2><?php echo  $nom ?></h2>
-            <h4><?php echo  $adr ?></h4>
-        </span>
-        <span>
-            <p> <?php echo  $description ?></p>
-        </span>
+        <h2><?php echo  $nom ?></h2>
+        <h4><?php echo  $adr ?></h4>
+        <p> <?php echo  $description ?></p>
         <button action="/index.php?action=gestionClub&id=<?= $id ?>" class="modif">Modifier Club</button>
         <form action="/index.php?action=clubsupprime" method="POST">
             <button class="delete" type="submit" name="deleteBouton">Supprimer Club</button>

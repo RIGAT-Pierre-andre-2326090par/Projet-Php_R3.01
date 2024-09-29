@@ -26,11 +26,9 @@ try {
         } elseif ($_GET['action'] === 'sign_in') {
             (new \controllers\ControllerSignIn())->execute();
 
-        }
-        elseif ($_GET['action'] === 'forget') {
+        } elseif ($_GET['action'] === 'forget') {
             (new \controllers\ControllerForgetPassword())->execute();
-        }
-        elseif ($_GET['action'] === 'club') {
+        } elseif ($_GET['action'] === 'club') {
             if (isset($_GET['id'])) {
                 $id = urldecode($_GET['id']);
                 (new \controllers\ControllerClub())->execute();
@@ -50,14 +48,10 @@ try {
             (new \controllers\ControllerRepas())->execute($page);
         } elseif ($_GET['action'] === 'recherche') {
             (new \controllers\ControllerRecherche())->execute();
-        }
-        elseif ($_GET['action'] === 'gestionClub') {
+        } elseif ($_GET['action'] === 'gestionClub') {
             (new \controllers\ControllerGestionClub())->execute();
-        } elseif ($_GET['action'] === 'ajoutClub') {
-            (new \controllers\ControllerAjoutClub())->execute();
-        }
-        elseif ($_GET['action']==='clubsupprime'){
-            (new \views\ViewLayout('Club supprimé','<h2>Club supprimé</h2>'))->show();
+        } elseif ($_GET['action'] === 'tenrac') {
+            (new \controllers\ControllerTenrac())->execute();
         }
 
     } else {
