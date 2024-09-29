@@ -12,6 +12,7 @@ class ViewPlat
     public function __construct(){}
 
 public function show($plat):void{
+    $id = $plat['ID_PL'];
     $nom = $plat['NOM_PL']; // Nom du controllerPlat
     $description = $plat['DESC_PL']; // Description du controllerPlat
     $image = $plat['IMG_PL'];
@@ -37,6 +38,13 @@ public function show($plat):void{
                             ModelPlat::getIngredients($plat);
                         ?>
                     </ol>
+                    <!--boutons modification et suppression plats-->
+                    <form action="/index.php?action=gestionPlat&id=<?= $id ?>" method="POST">
+                        <button type="submit" class="modif">Modifier Plat</button>
+                    </form>
+                    <form action="/index.php?action=suppressionPlat&id=<?= $id ?>" method="POST">
+                        <button class="delete" type="submit" name="deleteBouton">Supprimer plat</button>
+                    </form>
                 </section>
             </section>
             <section id="bottomSide">

@@ -11,7 +11,7 @@ class ViewPlats{
 
         <div class="liste">
         <?php foreach ($plats as $plat) { ?>
-            <a href="/index.php?action=plat&nom=<?= urlencode($plat->getNom()); ?>">
+            <a href="/index.php?action=plat&id=<?= urlencode($plat->getId()); ?>">
                 <section class="infoClub">
                     <img src="<?= htmlspecialchars('/_assets/images/plat/' . $plat->getImage()); ?>" alt="<?= htmlspecialchars($plat->getNom()); ?>" style="max-width: 200px; height: auto;" />
                     <div>
