@@ -21,7 +21,7 @@ class ViewUnRepas
                 <section id="leftside">
                     <section id="top">
                         <h2 id="dates"> <?php echo $dates ?> </h2>
-                        <img alt="<? htmlspecialchars($repas->getNom()); ?>" id="platimg" <?= htmlspecialchars($repas->getNom()); ?> src="<?php echo '/_assets/images/plat/' . $imageplat ?>">
+                        <img alt="<? htmlspecialchars($dates); ?>" id="platimg" <?= htmlspecialchars($dates); ?> src="<?php echo '/_assets/images/plat/' . $imageplat ?>">
                         <img id="clubimg" alt="Images d'un plat" src="<?php echo '/_assets/images/club/' . $imageclub ?>">
                     </section>
                 </section>
@@ -31,6 +31,12 @@ class ViewUnRepas
                 </section>
             </section>
             <section id="bottomSide">
+                <form action="/index.php?action=gestionRepas&id=<?= $id ?>" method="POST">
+                    <button type="submit" class="modif">Modifier Repas</button>
+                </form>
+                <form action="/index.php?action=repassupprime&id=<?= $id ?>" method="POST">
+                    <button type="submit" name="deleteBouton" class="delete">Supprimer Repas</button>
+                </form>
                 <p id=""> <!--a voir--></p>
             </section>
         </section>

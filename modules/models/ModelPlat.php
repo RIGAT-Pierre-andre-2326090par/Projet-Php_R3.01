@@ -45,7 +45,7 @@ class ModelPlat
         $stmt = $pdo->prepare('SELECT * FROM PLAT WHERE ID_PL = :id');
 
         try {
-            // Bind du paramètre nom
+            // Bind du paramètre id
             $stmt->bindParam(':id', $id, PDO::PARAM_STR);
             $stmt->execute();
 
@@ -63,12 +63,12 @@ class ModelPlat
         }
     }
 
-    public static function getIngredients($plat) {
+    /*public static function getIngredients($plat) {
         $pdo = (new \includes\database())->getInstance();
-        $stmt = $pdo->prepare('SELECT nom_ig FROM INGREDIENT JOIN plat_contient ON INGREDIENT.nom_ig = plat_contient.nom_ig WHERE plat_contient.nom_pl = "Burger Poulet et Raclette"');
+        $stmt = $pdo->prepare('SELECT nom_ig FROM INGREDIENT JOIN plat_contient ON INGREDIENT.nom_ig = plat_contient.nom_ig WHERE plat_contient.nom_pl = :nom_pl');
 
         try {
-            $stmt->bindParam(':plat', $plat, PDO::PARAM_STR);
+            $stmt->bindParam(':nom_pl', $plat, PDO::PARAM_STR);
             $stmt->execute();
 
             if ($stmt->rowCount() === 0) {
@@ -80,5 +80,5 @@ class ModelPlat
             echo 'Erreur : ', $e->getMessage(), PHP_EOL;
             exit();
         }
-    }
+    }*/
 }

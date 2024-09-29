@@ -4,13 +4,13 @@ namespace views;
 
 class ViewRecherche
 {
-    public function show($plats_searched): void {
+    public function show($search, $plats_searched): void {
         ob_start();
         ?>
         <h3> Résultats de recherche :</h3>
         <div class="liste">
             <?php foreach ($plats_searched as $plat) { ?>
-                <a href="/index.php?action=plat&nom=<?= urlencode($plat->getNom()); ?>">
+                <a href="/index.php?action=plat&id=<?= urlencode($plat->getId()); ?>">
                     <section class="plat">
                         <img alt="<?= htmlspecialchars($plat->getNom()); ?>" src="<?= htmlspecialchars('/_assets/images/plat/' . $plat->getImage()); ?>">
                         <div>
@@ -22,7 +22,7 @@ class ViewRecherche
             <?php }?>
         </div>
         <?php
-        (new ViewLayout('Résultats', ob_get_clean()))->show();
+        (new ViewLayout('Résultats de la recherche ' . $search, ob_get_clean()))->show();
     }
 }
 ?>

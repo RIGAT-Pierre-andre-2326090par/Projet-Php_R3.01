@@ -13,6 +13,8 @@ class ViewOrdre
             Chacun de ces Ordres a ses propres valeurs, traditions et missions.</p>
 
         <h2>Clubs</h2>
+        <a class="btn" href="/index.php?action=ajoutClub">Ajouter un Club</a>
+
         <div class="liste">
         <?php foreach ($clubs as $club) { ?>
             <a href="/index.php?action=club&id=<?= urlencode($club->getId()); ?>">

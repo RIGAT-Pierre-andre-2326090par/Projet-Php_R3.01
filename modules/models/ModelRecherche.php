@@ -12,7 +12,7 @@ class ModelRecherche
     public function __construct(){}
     public function getPlats($keyword){
         $pdo = (new \includes\database())->getInstance();
-        $sql = 'SELECT NOM_PL nomplat, DESC_PL descplat, IMG_PL imgplat FROM PLAT WHERE NOM_PL LIKE :keyword OR DESC_PL LIKE :keyword LIMIT 5';
+        $sql = 'SELECT ID_PL id, NOM_PL nomplat, DESC_PL descplat, IMG_PL imgplat FROM PLAT WHERE NOM_PL LIKE :keyword OR DESC_PL LIKE :keyword LIMIT 5';
         $stmt = $pdo->prepare($sql); // Préparation d'une requête.
         try
         {
@@ -25,7 +25,7 @@ class ModelRecherche
             $plats_searched = [];
             while ($result = $stmt->fetch())
             {
-                $plats_searched[] = new ModelPlat($result->nomplat, $result->descplat, $result->imgplat) ;
+                $plats_searched[] = new ModelPlat($result->id, $result->nomplat, $result->descplat, $result->imgplat) ;
             }
         }
         catch (PDOException $e)

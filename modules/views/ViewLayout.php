@@ -20,8 +20,10 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
       </head>
       <body>
       <header>
+            <img src="/_assets/images/logo.webp" alt="Logo du site"/> <!-- Affichage du logo. -->
             <nav class="bandeau"> <!-- On crée notre bandeau de navigation -->
                 <ul>
+                    <li><img src="/_assets/images/logo.webp" alt="Logo du site"/> <!-- Affichage du logo. --></li>
                     <li><a href="/index.php?action=accueil"> Accueil </a> </li>
                     <li><a href="/index.php?action=plats"> Plats </a></li>
                     <?php if (isset($_SESSION['user'])): ?> <!-- Si l'utilisateur est connecté -->
@@ -31,11 +33,10 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
                     <li><a href="/index.php?action=ordre"> Ordre et clubs </a></li>
                 </ul>
             </nav>
-            <img src="/_assets/images/logo.webp" alt="Logo du site"/> <!-- Affichage du logo. -->
             <nav class="bandeau">
                 <ul>
                     <li>
-                        <form action="/index.php" method="GET"> <!-- Utilisation de la barre de recherche. -->
+                        <form action="/index.php?action=recherche" method="GET"> <!-- Utilisation de la barre de recherche. -->
                             <input type="text" id="search" name="keyword" required>
                             <button name="action" value="recherche" type="submit"> Rechercher </button>
                         </form>

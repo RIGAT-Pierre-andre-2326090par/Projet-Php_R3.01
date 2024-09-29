@@ -2,8 +2,6 @@
 
 namespace views;
 
-include '../models/ModelPlat.php';
-
 use models\ModelPlat;
 use PDO;
 
@@ -26,18 +24,15 @@ public function show($plat):void{
                         <img id="note" alt="<?= $nom ?>" class="img_plat" src="<?php echo '/_assets/images/plat/' . $image ?>">
                     </section>
                     <section id="bottom">
-                        <img id="plat" alt="<?= $nom ?>" src="<?php echo '/_assets/images/plat/' . $image ?>> <!--import depuis la BD-->
+                        <img id="plat" alt="<?= $nom ?>" src="<?php echo '/_assets/images/plat/' . $image ?>"> <!--import depuis la BD-->
                     </section>
                 </section>
                 <section id="right">
                     <p id="description"><?php echo  $description ?></p>
                     <h3 id="ingredients"><!--import depuis la BD--></h3>
                     <ol id="liste_ingredients">
-                        <!--fonction qui crée la liste des ingrédients-->
-                        <?php
-                            ModelPlat::getIngredients($plat);
-                        ?>
-                    </ol>
+
+                     </ol>
                     <!--boutons modification et suppression plats-->
                     <form action="/index.php?action=gestionPlat&id=<?= $id ?>" method="POST">
                         <button type="submit" class="modif">Modifier Plat</button>
