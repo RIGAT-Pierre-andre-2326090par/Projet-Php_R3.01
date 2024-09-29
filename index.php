@@ -59,9 +59,16 @@ try {
         } elseif ($_GET['action'] === 'ajoutClub') {
             (new \controllers\ControllerAjoutClub())->execute();
         }
-        elseif ($_GET['action']==='clubsupprime'){
+        elseif ($_GET['action']==='clubsupprime') {
             (new \controllers\ControllerGestionClub())->execute();
-            (new \views\ViewLayout('Club supprimé','<h2>Club supprimé</h2>'))->show();
+            (new \views\ViewLayout('Club supprimé', '<h2>Club supprimé</h2>'))->show();
+        } elseif ($_GET['action'] === 'gestionRepas') {
+            (new \controllers\ControllerGestionRepas())->execute();
+        } elseif ($_GET['action'] === 'ajoutRepas') {
+            (new \controllers\ControllerAjoutRepas())->execute();
+        } elseif ($_GET['action']==='repassupprime'){
+            (new \controllers\ControllerGestionRepas())->execute();
+            (new \views\ViewLayout('Repas supprimé','<h2>Repas supprimé</h2>'))->show();
         }
         elseif ($_GET['action']==='gestionPlat'){
             (new \controllers\ControllerGestionPlat())->execute();

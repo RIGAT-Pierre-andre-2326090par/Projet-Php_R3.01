@@ -12,7 +12,7 @@ class ViewClub
         $image=$club['IMG_CL'];
         ob_start();
         ?>
-        <img alt="<? htmlspecialchars($club->getNom()); ?>" src="<?php echo '/_assets/images/club/' . $image ?>" />
+        <img alt="<? echo htmlspecialchars($nom); ?>" src="<?php echo '/_assets/images/club/' . $image ?>" />
         <h2><?php echo  $nom ?></h2>
         <h4><?php echo  $adr ?></h4>
         <p> <?php echo  $description ?></p>
