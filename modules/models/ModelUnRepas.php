@@ -70,7 +70,7 @@ class ModelUnRepas
         $pdo = (new \includes\database())->getInstance();
         $stmt = $pdo->prepare(
         'SELECT REPAS.ID_RP idrepas, DATES dates,
-                CLUB.ID_CL idclub, PLAT.ID_PLAT idplat ,
+                CLUB.ID_CL idclub, PLAT.ID_PL idplat ,
                 CLUB.IMG_CL imageclub, CLUB.NOM_CL nomclub,
                 PLAT.IMG_PL imageplat, PLAT.NOM_PL nomplat
                 FROM REPAS
