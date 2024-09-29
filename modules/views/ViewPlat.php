@@ -2,6 +2,11 @@
 
 namespace views;
 
+include '../models/ModelPlat.php';
+
+use models\ModelPlat;
+use PDO;
+
 class ViewPlat
 {
     public function __construct(){}
@@ -17,10 +22,10 @@ public function show($plat):void{
                 <section id="leftside">
                     <section id="top">
                         <h2 id="nom_plat"> <?php echo $nom ?> </h2>
-                        <img id="note" src="<?php echo '/_assets/images/plat/' . $image ?>">
+                        <img id="note" alt="<?= $nom ?>" class="img_plat" src="<?php echo '/_assets/images/plat/' . $image ?>">
                     </section>
                     <section id="bottom">
-                        <img id="plat" class="img_plat"> <!--import depuis la BD-->
+                        <img id="plat"> <!--import depuis la BD-->
                     </section>
                 </section>
                 <section id="right">
@@ -28,6 +33,9 @@ public function show($plat):void{
                     <h3 id="ingredients"><!--import depuis la BD--></h3>
                     <ol id="liste_ingredients">
                         <!--fonction qui crée la liste des ingrédients-->
+                        <?php
+                            ModelPlat::getIngredients($plat);
+                        ?>
                     </ol>
                 </section>
             </section>
