@@ -14,12 +14,15 @@ class ControllerGestionClub
                 $adr = $_POST['adrClub'];
                 $desc = $_POST['descClub'];
                 (new \models\ModelGestionClub())->updateClub($id, $nom, $adr, $desc);
-                (new \views\ViewGestionClub())->show((new \models\ModelClub())->getClub( $_GET['id']));
+
 
             }
             if (isset($_POST['deleteBouton'])) {
                 $id = $_GET['id'];
                 (new \models\ModelGestionClub())->deleteClub($id);
+            }
+            else{
+                (new \views\ViewGestionClub())->show((new \models\ModelClub())->getClub( $_GET['id']));
             }
         }
 

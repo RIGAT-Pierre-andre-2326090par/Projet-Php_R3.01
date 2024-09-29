@@ -20,7 +20,7 @@ class ViewClub
             <button type="submit" class="modif">Modifier Club</button>
         </form>
         <form action="/index.php?action=clubsupprime&id=<?= $id ?>" method="POST">
-            <button type="submit" name="deleteBouton">Supprimer Club</button>
+            <button type="submit" name="deleteBouton" class="delete">Supprimer Club</button>
         </form>
         <strong>Photos</strong>
         <img src="#" />
