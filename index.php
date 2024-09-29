@@ -76,6 +76,9 @@ try {
             (new \controllers\ControllerGestionClub())->execute();
             (new \views\ViewLayout('Plat supprimé','<h2>Plat supprimé</h2>'))->show();
         }
+        elseif ($_GET['action']==='confirmReset'){
+            (new \controllers\ControllerForgetPassword())->execute();
+        }
 
     } else {
         (new \controllers\ControllerHomepage())->execute();
