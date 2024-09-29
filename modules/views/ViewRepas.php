@@ -9,6 +9,7 @@ class ViewRepas
         ?>
         <h2>Les Repas</h2>
         <p>Car c'est bien de se réunir</p>
+        <a class="btn" href="/index.php?action=ajoutRepas">Ajouter un Repas</a>
 
         <div class="liste">
             <?php foreach ($repas as $unrepas) { ?>

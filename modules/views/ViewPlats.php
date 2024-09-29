@@ -9,7 +9,7 @@ class ViewPlats{
         <h2>De superbes plats</h2>
         <p>Découvrez nos plats sensationnels</p>
 
-        <a class="btn" href="/index.php?action=ajoutRepas">Ajouter un Repas</a>
+        <a class="btn" href="/index.php?action=ajoutPlat">Ajouter un Plat</a>
 
         <div class="liste">
         <?php foreach ($plats as $plat) { ?>
