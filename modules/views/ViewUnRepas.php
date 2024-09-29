@@ -31,6 +31,12 @@ class ViewUnRepas
                 </section>
             </section>
             <section id="bottomSide">
+                <form action="/index.php?action=gestionRepas&id=<?= $id ?>" method="POST">
+                    <button type="submit" class="modif">Modifier Repas</button>
+                </form>
+                <form action="/index.php?action=repassupprime&id=<?= $id ?>" method="POST">
+                    <button type="submit" name="deleteBouton" class="delete">Supprimer Repas</button>
+                </form>
                 <p id=""> <!--a voir--></p>
             </section>
         </section>
