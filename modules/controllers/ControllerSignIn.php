@@ -14,8 +14,11 @@ class ControllerSignIn
             $Telephone = $_POST['Téléphone'];
             $id = (new \models\ModelSignIn())->addUser($Nom, $Mot_de_Passe, $Adresse, $Email, $Telephone);
             $_SESSION['user'] = $id;
-            header('location:index.php?action=tenrac');
+            (new \views\ViewLogin())->show();
         }
-        (new \views\ViewSignIn())->show();
+        else{
+            (new \views\ViewSignIn())->show();
+        }
+
     }
 }
