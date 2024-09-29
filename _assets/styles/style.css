@@ -5,6 +5,10 @@ header {
     justify-content: space-between;
 }
 
+header img {
+    height: 44px;
+}
+
 h1 {
     margin: 0;
     padding: 12px 0px;
