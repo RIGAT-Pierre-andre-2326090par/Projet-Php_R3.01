@@ -4,7 +4,7 @@ namespace views;
 
 class ViewRecherche
 {
-    public function show($plats_searched): void {
+    public function show($search, $plats_searched): void {
         ob_start();
         ?>
         <h3> Résultats de recherche :</h3>
@@ -22,7 +22,7 @@ class ViewRecherche
             <?php }?>
         </div>
         <?php
-        (new ViewLayout('Résultats', ob_get_clean()))->show();
+        (new ViewLayout('Résultats de la recherche ' . $search, ob_get_clean()))->show();
     }
 }
 ?>

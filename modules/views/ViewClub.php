@@ -23,7 +23,7 @@ class ViewClub
             <button type="submit" name="deleteBouton" class="delete">Supprimer Club</button>
         </form>
         <strong>Photos</strong>
-        <img src="#" />
+        <img src="#" alt="<?= $nom ?>"/>
         <strong>Membres</strong>
         <img src="#" />
         <?php
