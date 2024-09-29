@@ -11,7 +11,7 @@ class ControllerAjoutClub
                 $adr = $_POST['adrClub'];
                 $desc = $_POST['descClub'];
                 $ordre = $_POST['ordreClub'];
-                $img = null;
+                $img = strtolower(str_replace(' ', '_', $_POST['nomClub'])) . '.webp';
                 (new \models\ModelGestionClub())->insertClub($nom, $adr, $desc, $img, $ordre);
             }
         }

@@ -2,6 +2,7 @@
 
 namespace models;
 
+use Exception;
 use PDO;
 use PDOException;
 
@@ -19,7 +20,7 @@ class ModelGestionClub
     {
 
         try {
-            $sql = 'SELECT NOM_OR ordre WHERE NOM_OR = :ordre';
+            $sql = 'SELECT NOM_OR ordre FROM ORDRE WHERE NOM_OR = :ordre';
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindParam(':ordre', $ordre, PDO::PARAM_STR);
             $stmt->execute();
@@ -42,7 +43,7 @@ class ModelGestionClub
         $id = $result['max_id'] !== null ? $result['max_id'] + 1 : 0;
 
         try {
-            $sql = 'INSERT INTO CLUB (NOM_CL, ADRESSE_CL, DESC_CL, IMG_CL, NOM_OR)
+            $sql = 'INSERT INTO CLUB (NOM_CL, ADRESSE_CL, DESC_CL, IMG_CL, NOM_OR, ID_CL)
                     VALUES (:nom, :adresse, :description, :image, :ordre, :id)';
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([
