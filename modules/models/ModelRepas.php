@@ -15,14 +15,14 @@ class ModelRepas
         $count = $stmt->fetch(PDO::FETCH_ASSOC);
         $count = $count['count'];
 
-        $sql = 'SELECT REPAS.ID_RP idrepas, DATES dates, REPAS.ID_CL idclub, CLUB.IMG_CL imageclub, CLUB.NOM_CL nomclub, PLAT.IMG_PL imageplat, PLAT.NOM_PL nomplat
+        $sql = 'SELECT REPAS.ID_RP idrepas, DATES dates, REPAS.ID_CL idclub, PLAT.ID_PL idplat, CLUB.IMG_CL imageclub, CLUB.NOM_CL nomclub, PLAT.IMG_PL imageplat, PLAT.NOM_PL nomplat
                 FROM REPAS
                 LEFT JOIN CLUB
                 ON REPAS.ID_CL = CLUB.ID_CL
                 LEFT JOIN est_compose
                 ON est_compose.ID_RP = REPAS.ID_RP
                 LEFT JOIN PLAT
-                ON est_compose.NOM_PL = PLAT.NOM_PL 
+                ON est_compose.ID_PL = PLAT.ID_PL 
                 LIMIT :limit
                 OFFSET :skipped;';
         $stmt = $pdo->prepare($sql); // Préparation d'une requête.
