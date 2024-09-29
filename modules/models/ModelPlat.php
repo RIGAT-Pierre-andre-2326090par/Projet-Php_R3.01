@@ -45,7 +45,7 @@ class ModelPlat
         $stmt = $pdo->prepare('SELECT * FROM PLAT WHERE ID_PL = :id');
 
         try {
-            // Bind du paramètre nom
+            // Bind du paramètre id
             $stmt->bindParam(':id', $id, PDO::PARAM_STR);
             $stmt->execute();
 
@@ -68,7 +68,7 @@ class ModelPlat
         $stmt = $pdo->prepare('SELECT nom_ig FROM INGREDIENT JOIN plat_contient ON INGREDIENT.nom_ig = plat_contient.nom_ig WHERE plat_contient.nom_pl = "Burger Poulet et Raclette"');
 
         try {
-            $stmt->bindParam(':plat', $plat, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $id, PDO::PARAM_STR);
             $stmt->execute();
 
             if ($stmt->rowCount() === 0) {

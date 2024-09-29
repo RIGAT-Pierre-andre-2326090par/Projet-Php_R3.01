@@ -10,7 +10,7 @@ class ViewRecherche
         <h3> Résultats de recherche :</h3>
         <div class="liste">
             <?php foreach ($plats_searched as $plat) { ?>
-                <a href="/index.php?action=plat&nom=<?= urlencode($plat->getNom()); ?>">
+                <a href="/index.php?action=plat&id=<?= urlencode($plat->getId()); ?>">
                     <section class="plat">
                         <img alt="<?= htmlspecialchars($plat->getNom()); ?>" src="<?= htmlspecialchars('/_assets/images/plat/' . $plat->getImage()); ?>">
                         <div>
