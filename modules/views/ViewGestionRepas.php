@@ -5,7 +5,7 @@ namespace views;
 class ViewGestionRepas
 {
     public function show($repas):void{
-        $id=$repas['ID_RP'];
+        $id=$repas['idrepas'];
         ob_start();
         ?>
         <section class="formulaire">

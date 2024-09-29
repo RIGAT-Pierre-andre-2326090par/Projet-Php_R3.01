@@ -19,7 +19,7 @@ class ControllerGestionRepas
                 (new \models\ModelGestionRepas())->deleteRepas($id);
             }
             else{
-                (new \views\ViewGestionRepas())->show((new \models\ModelRepas())->getRepas( $_GET['id']));
+                (new \views\ViewGestionRepas())->show((new \models\ModelUnRepas())->getRepas( $_GET['id']));
             }
         }
 
