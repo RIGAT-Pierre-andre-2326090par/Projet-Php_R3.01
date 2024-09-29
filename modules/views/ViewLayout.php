@@ -20,6 +20,7 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
       </head>
       <body>
       <header>
+            <img src="/_assets/images/logo.webp" alt="Logo du site"/> <!-- Affichage du logo. -->
             <nav class="bandeau"> <!-- On crée notre bandeau de navigation -->
                 <ul>
                     <li><a href="/index.php?action=accueil"> Accueil </a> </li>
@@ -31,7 +32,6 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
                     <li><a href="/index.php?action=ordre"> Ordre et clubs </a></li>
                 </ul>
             </nav>
-            <img src="/_assets/images/logo.webp" alt="Logo du site"/> <!-- Affichage du logo. -->
             <nav class="bandeau">
                 <ul>
                     <li>
