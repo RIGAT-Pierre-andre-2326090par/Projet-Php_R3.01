@@ -3,51 +3,46 @@
 namespace models;
 
 use includes\Database;
+use PDO;
 
 class ModelLogin {
-    private $pdo;
 
     public function __construct() {
-        $this->pdo = (new Database())->getInstance(); // Récupérer l'instance de PDO
     }
 
-    public function login($courriel, $password): bool {
-        // Préparer la requête pour récupérer l'utilisateur
-        $stmt = $this->pdo->prepare("SELECT NOM_TR, MDP_TR FROM TENRAC WHERE COURRIEL_TR = ?");
-        $stmt->execute([$courriel]);
+    public function login($email, $password): void  {
+        // Obtenir une instance PDO
+        $pdo = (new Database())->getInstance();
+
+        // Préparer la requête pour récupérer l'utilisateur par email
+        $sql = 'SELECT MDP_TR, NOM_TR FROM TENRAC WHERE COURRIEL_TR = :email';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([':email' => $email]);
 
         // Vérifier si l'utilisateur existe
         if ($stmt->rowCount() > 0) {
-            $user = $stmt->fetch();
+            $user = $stmt->fetch(PDO::FETCH_ASSOC); // Récupérer un tableau associatif
 
-            // Vérifier le mot de passe
-            if (password_verify($password, $user['MDP_TR'])) { // Utiliser MDP_TR pour vérifier
-                // Démarrer la session et enregistrer les informations de l'utilisateur
-                session_start();
+            // Vérifier le mot de passe fourni par l'utilisateur avec le mot de passe haché
+            if (password_verify($password, $user['MDP_TR'])) {
+                // Démarrer la session (si elle n'est pas déjà démarrée)
+                if (session_status() == PHP_SESSION_NONE) {
+                    session_start();
+                }
+
+                // Enregistrer les informations dans la session
                 $_SESSION['loggedin'] = true;
-                $_SESSION['courriel'] = $courriel;
+                $_SESSION['email'] = $email;
                 $_SESSION['nom'] = $user['NOM_TR'];
-                return true;
+
+                // Connexion réussie
             } else {
-                echo "Mot de passe incorrect pour l'utilisateur : " . htmlspecialchars($courriel);
-                echo "Mot de passe incorrect :" . htmlspecialchars($password);
-                echo "Mot de passe correct : " . $user['MDP_TR'];
+                echo "Mot de passe incorrect pour l'utilisateur : " . htmlspecialchars($email);
+                 // Mot de passe incorrect
             }
         } else {
-            echo "Aucun utilisateur trouvé avec cet e-mail : " . htmlspecialchars($courriel);
+            echo "Aucun utilisateur trouvé avec cet e-mail : " . htmlspecialchars($email);
+
         }
-
-        // Si l'utilisateur n'existe pas ou le mot de passe est incorrect
-        return false;
-    }
-
-
-    public function logout(): void {
-        session_start();
-        session_unset(); // Effacer les variables de session
-        session_destroy(); // Détruire la session
-        header('Location: /'); // Rediriger vers la page d'accueil
-        exit(); // Terminer le script
     }
 }
-?>

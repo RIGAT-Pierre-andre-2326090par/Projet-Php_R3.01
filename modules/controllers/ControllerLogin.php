@@ -2,49 +2,20 @@
 
 namespace controllers;
 
-use JetBrains\PhpStorm\NoReturn;
-use models\ModelLogin;
-use views\ViewLogin;
-
 class ControllerLogin {
-    private $model;
-    private $view;
 
     public function __construct() {
-        $this->model = new ModelLogin(); // Instanciation du modèle
-        $this->view = new ViewLogin(); // Instanciation de la vue
     }
 
     public function execute(): void {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->connecter($_POST);
-        } else {
-            $this->afficherPage();
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            (new \models\ModelLogin())->login($email, $password);
         }
-    }
-
-    public function afficherPage(): void {
-        // Affiche la vue de connexion
-        $this->view->show();
-    }
-
-     public function connecter(array $post): void {
-        $courriel = htmlspecialchars($post["email"]);
-        $password = htmlspecialchars($post["password"]);
-
-
-        // Appeler la méthode login du modèle
-        if ($this->model->login($courriel, $password)) {
-            header("Location: /index.php?action:login;"); // Redirige vers la page d'accueil après la connexion
-        } else {
-            echo "Mail ou mot de passe incorrect";
-        }
-        exit();
+        (new \views\ViewLogin())->show();
 
     }
 
-    public function deconnecter(): void {
-        $this->model->logout(); // Appeler la méthode logout du modèle
-    }
 }
 
