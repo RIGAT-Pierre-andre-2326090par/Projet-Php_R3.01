@@ -35,7 +35,7 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
             <nav class="bandeau">
                 <ul>
                     <li>
-                        <form action="/index.php" method="GET"> <!-- Utilisation de la barre de recherche. -->
+                        <form action="/index.php?action=recherche" method="GET"> <!-- Utilisation de la barre de recherche. -->
                             <input type="text" id="search" name="keyword" required>
                             <button name="action" value="recherche" type="submit"> Rechercher </button>
                         </form>
