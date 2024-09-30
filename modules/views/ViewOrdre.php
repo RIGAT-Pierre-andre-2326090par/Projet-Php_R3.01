@@ -18,17 +18,17 @@ class ViewOrdre
         <?php endif ?>
 
         <div class="liste">
-        <?php foreach ($clubs as $club) { ?>
-            <a href="/index.php?action=club&id=<?= urlencode($club->getId()); ?>">
-                <section class="infoClub">
-                    <img src="<?= htmlspecialchars('/_assets/images/club/' . $club->getImage()); ?>" alt="<?= htmlspecialchars($club->getAdresse()); ?>" style="max-width: 200px; height: auto;" />
-                    <div>
-                        <h3><em><?= htmlspecialchars($club->getNom()); ?></em></h3>
-                        <p><em><?= htmlspecialchars($club->getAdresse()); ?></em></p>
-                    </div>
-                </section>
-            </a>
-        <?php }?>
+            <?php foreach ($clubs as $club) { ?>
+                <a href="/index.php?action=club&id=<?= urlencode($club->getId()); ?>">
+                    <section class="infoClub">
+                        <img src="<?= htmlspecialchars('/_assets/images/club/' . $club->getImage()); ?>" alt="<?= htmlspecialchars($club->getAdresse()); ?>" style="max-width: 200px; height: auto;" />
+                        <div>
+                            <h3><em><?= htmlspecialchars($club->getNom()); ?></em></h3>
+                            <p><em><?= htmlspecialchars($club->getAdresse()); ?></em></p>
+                        </div>
+                    </section>
+                </a>
+            <?php }?>
         </div>
         <ul>
             <?php for ($i = ($page-2 >= 0) ? ($page-2) : 0; ($i <= $page+2) && ($i <= $pagemax); $i++) { ?>

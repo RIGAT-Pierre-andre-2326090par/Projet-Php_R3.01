@@ -1,8 +1,10 @@
 <?php
 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 require '_assets/includes/autoloader.php';
-
-
 
 try {
     if (filter_input(INPUT_GET, 'action')) {
@@ -25,11 +27,18 @@ try {
             (new \controllers\ControllerHomepage())->execute();
         } elseif ($_GET['action'] === 'login') {
             (new \controllers\ControllerLogin())->execute();
-        } elseif ($_GET['action'] === 'sign_in') {
+
+        }elseif ($_GET['action'] === 'logout') {
+            (new \controllers\ControllerLogin())->logout();
+        }
+        elseif ($_GET['action'] === 'sign_in') {
             (new \controllers\ControllerSignIn())->execute();
-        } elseif ($_GET['action'] === 'forget') {
+
+        }
+        elseif ($_GET['action'] === 'forget') {
             (new \controllers\ControllerForgetPassword())->execute();
-        } elseif ($_GET['action'] === 'club') {
+        }
+        elseif ($_GET['action'] === 'club') {
             if (isset($_GET['id'])) {
                 $id = urldecode($_GET['id']);
                 (new \controllers\ControllerClub())->execute();
@@ -49,30 +58,34 @@ try {
             (new \controllers\ControllerRepas())->execute($page);
         } elseif ($_GET['action'] === 'recherche') {
             (new \controllers\ControllerRecherche())->execute();
+        } elseif ($_GET['action'] === 'profilTenrac') {
+            (new \controllers\ControllerTenrac())->execute();
         } elseif ($_GET['action'] === 'gestionClub') {
             (new \controllers\ControllerGestionClub())->execute();
         } elseif ($_GET['action'] === 'ajoutClub') {
             (new \controllers\ControllerAjoutClub())->execute();
-        } elseif ($_GET['action'] === 'clubsupprime') {
+        }
+        elseif ($_GET['action']==='clubsupprime') {
             (new \controllers\ControllerGestionClub())->execute();
             (new \views\ViewLayout('Club supprimé', '<h2>Club supprimé</h2>'))->show();
         } elseif ($_GET['action'] === 'gestionRepas') {
             (new \controllers\ControllerGestionRepas())->execute();
         } elseif ($_GET['action'] === 'ajoutRepas') {
             (new \controllers\ControllerAjoutRepas())->execute();
-        } elseif ($_GET['action'] === 'repassupprime') {
+        } elseif ($_GET['action']==='repassupprime'){
             (new \controllers\ControllerGestionRepas())->execute();
-            (new \views\ViewLayout('Repas supprimé', '<h2>Repas supprimé</h2>'))->show();
-        } elseif ($_GET['action'] === 'gestionPlat') {
-            (new \controllers\ControllerGestionPlat())->execute();
-        } elseif ($_GET['action'] === 'suppressionPlat') {
-            (new \controllers\ControllerGestionClub())->execute();
-            (new \views\ViewLayout('Plat supprimé', '<h2>Plat supprimé</h2>'))->show();
-        } elseif ($_GET['action'] === 'profilTenrac') {
-            (new \controllers\ControllerTenrac())->execute();
-        } elseif ($_GET['action'] === 'confirmReset') {
-            (new \views\ViewPasswordResetConfirmation())->show(); // Affiche la vue de confirmation
+            (new \views\ViewLayout('Repas supprimé','<h2>Repas supprimé</h2>'))->show();
         }
+        elseif ($_GET['action']==='gestionPlat'){
+            (new \controllers\ControllerGestionPlat())->execute();
+        } elseif ($_GET['action']==='suppressionPlat'){
+            (new \controllers\ControllerGestionClub())->execute();
+            (new \views\ViewLayout('Plat supprimé','<h2>Plat supprimé</h2>'))->show();
+        }
+        elseif ($_GET['action']==='confirmReset'){
+            (new \controllers\ControllerForgetPassword())->execute();
+        }
+
     } else {
         (new \controllers\ControllerHomepage())->execute();
     }

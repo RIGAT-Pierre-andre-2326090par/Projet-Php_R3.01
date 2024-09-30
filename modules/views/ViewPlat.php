@@ -9,13 +9,13 @@ class ViewPlat
 {
     public function __construct(){}
 
-public function show($plat):void{
-    $id = $plat['ID_PL'];
-    $nom = $plat['NOM_PL']; // Nom du controllerPlat
-    $description = $plat['DESC_PL']; // Description du controllerPlat
-    $image = $plat['IMG_PL'];
-    ob_start();
-?>
+    public function show($plat):void{
+        $id = $plat['ID_PL'];
+        $nom = $plat['NOM_PL']; // Nom du controllerPlat
+        $description = $plat['DESC_PL']; // Description du controllerPlat
+        $image = $plat['IMG_PL'];
+        ob_start();
+        ?>
         <section>
             <section id="topSide">
                 <section id="leftside">
@@ -32,7 +32,7 @@ public function show($plat):void{
                     <h3 id="ingredients"><!--import depuis la BD--></h3>
                     <ol id="liste_ingredients">
 
-                     </ol>
+                    </ol>
                     <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
                         <!--boutons modification et suppression plats-->
                         <form action="/index.php?action=gestionPlat&id=<?= $id ?>" method="POST">
@@ -48,6 +48,6 @@ public function show($plat):void{
                 <p id="preparation"> <!--fonction qui crée la liste des ingrédients--></p>
             </section>
         </section>
-            <?php
+        <?php
         (new ViewLayout('Plat', ob_get_clean()))->show();}
 }
