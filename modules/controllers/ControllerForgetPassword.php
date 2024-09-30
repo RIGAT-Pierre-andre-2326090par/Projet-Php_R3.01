@@ -10,7 +10,8 @@ class ControllerForgetPassword
 public function execute (): void{
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $_POST["email"];
-        if (isset($email)) {
+        $user = (new ModelTenrac())->getMail($email);
+        if ($user) {
             $subject = 'Réinitialisation de votre mot de passe';
             $message = "Bonjour,\n\nVoici le lien pour réinitialiser votre mot de passe : [lien ici]";
             $headers = 'From: no-reply@tenraclovers.com' . "\r\n" .
@@ -34,6 +35,9 @@ public function execute (): void{
         }
     }
 }
+
+
+
 
 }
 }
