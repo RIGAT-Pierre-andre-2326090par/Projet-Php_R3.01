@@ -33,7 +33,12 @@ class ModelRepas
             $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
 
             $stmt->execute(); // Exécution de la requête.
-            $stmt->rowCount() or die('Pas de résultat' . PHP_EOL); // S'il y a des résultats.
+            if ($stmt->rowCount() == 0) {
+                (new \views\ViewLayout('Erreur', '<h2>Pas de repas</h2>'))->show();
+                exit(); }// Facultatif, pour s'assurer que le reste du code ne s'exécute pas
+            else {
+                $stmt->rowCount();
+            }
 
             $stmt->setFetchMode(PDO::FETCH_OBJ);
             $repas = [];

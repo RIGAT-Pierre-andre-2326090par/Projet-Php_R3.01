@@ -33,13 +33,15 @@ public function show($plat):void{
                     <ol id="liste_ingredients">
 
                      </ol>
-                    <!--boutons modification et suppression plats-->
-                    <form action="/index.php?action=gestionPlat&id=<?= $id ?>" method="POST">
-                        <button type="submit" class="modif">Modifier Plat</button>
-                    </form>
-                    <form action="/index.php?action=suppressionPlat&id=<?= $id ?>" method="POST">
-                        <button class="delete" type="submit" name="deleteBouton">Supprimer plat</button>
-                    </form>
+                    <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                        <!--boutons modification et suppression plats-->
+                        <form action="/index.php?action=gestionPlat&id=<?= $id ?>" method="POST">
+                            <button type="submit" class="modif">Modifier Plat</button>
+                        </form>
+                        <form action="/index.php?action=suppressionPlat&id=<?= $id ?>" method="POST">
+                            <button class="delete" type="submit" name="deleteBouton">Supprimer plat</button>
+                        </form>
+                    <?php endif ?>
                 </section>
             </section>
             <section id="bottomSide">

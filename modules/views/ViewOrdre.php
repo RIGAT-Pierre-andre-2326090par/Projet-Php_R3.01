@@ -13,7 +13,9 @@ class ViewOrdre
             Chacun de ces Ordres a ses propres valeurs, traditions et missions.</p>
 
         <h2>Clubs</h2>
-        <a class="btn" href="/index.php?action=ajoutClub">Ajouter un Club</a>
+        <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+            <a class="btn" href="/index.php?action=ajoutClub">Ajouter un Club</a>
+        <?php endif ?>
 
         <div class="liste">
         <?php foreach ($clubs as $club) { ?>

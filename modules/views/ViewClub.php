@@ -16,12 +16,14 @@ class ViewClub
         <h2><?php echo  $nom ?></h2>
         <h4><?php echo  $adr ?></h4>
         <p> <?php echo  $description ?></p>
-        <form action="/index.php?action=gestionClub&id=<?= $id ?>" method="POST">
-            <button type="submit" class="modif">Modifier Club</button>
-        </form>
-        <form action="/index.php?action=clubsupprime&id=<?= $id ?>" method="POST">
-            <button type="submit" name="deleteBouton" class="delete">Supprimer Club</button>
-        </form>
+        <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+            <form action="/index.php?action=gestionClub&id=<?= $id ?>" method="POST">
+                <button type="submit" class="modif">Modifier Club</button>
+            </form>
+            <form action="/index.php?action=clubsupprime&id=<?= $id ?>" method="POST">
+                <button type="submit" name="deleteBouton" class="delete">Supprimer Club</button>
+            </form>
+        <?php endif ?>
         <strong>Photos</strong>
         <img src="#" alt="<?= $nom ?>"/>
         <strong>Membres</strong>

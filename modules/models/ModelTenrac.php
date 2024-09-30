@@ -63,6 +63,15 @@ class ModelTenrac
         // return $stmt->fetch();
     }
 
+    public function getMail($email){
+        $stmt = $this->pdo->prepare('SELECT EMAIL FROM TENRAC WHERE EMAIL = :email');
+        $stmt->bindValue(':email', $email);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+    }
+
     // Fonction qui nous permet de récupérer l'id d'un utilisateur grace à son email et son mot de passe
     public function getTenracId($email, $pwd): int
     {
