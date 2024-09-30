@@ -58,8 +58,11 @@ try {
             (new \controllers\ControllerRepas())->execute($page);
         } elseif ($_GET['action'] === 'recherche') {
             (new \controllers\ControllerRecherche())->execute();
-        } elseif ($_GET['action'] === 'profilTenrac') {
+        } elseif ($_GET['action'] === 'gestionTenrac') {
             (new \controllers\ControllerTenrac())->execute();
+        } elseif ($_GET['action'] === 'supprTenrac') {
+            (new \models\ModelTenrac())->deleteTenrac((new \models\ModelTenrac())->getTenracId($_POST['email'], $_POST['password'])['ID_TR']);
+            (new \views\ViewLayout('Votre compte à été supprimé', '<h2>Votre compte à été supprimé</h2>'))->show();
         } elseif ($_GET['action'] === 'gestionClub') {
             (new \controllers\ControllerGestionClub())->execute();
         } elseif ($_GET['action'] === 'ajoutClub') {
