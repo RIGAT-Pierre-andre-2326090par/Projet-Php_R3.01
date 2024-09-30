@@ -87,4 +87,31 @@ class ModelTenrac
             ':id_tr' => $id_tr
         ]);
     }
+
+    public function findUserByEmail(string $email) {
+        $stmt = $this->pdo->prepare("SELECT * FROM TENRAC WHERE COURRIEL_TR = :email");
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        return $stmt->fetch(); // Retourne l'utilisateur ou false si non trouvé
+    }
+
+    public function updatePassword(string $email, string $newPassword): bool
+    {
+        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+        $stmt = $this->pdo->prepare("UPDATE TENRAC SET MDP_TR = :password WHERE email = :email");
+        $stmt->bindParam(':password', $hashedPassword);
+        $stmt->bindParam(':email', $email);
+
+        return $stmt->execute(); // Retourne true si la mise à jour a réussi
+    }
+
+    public function createPasswordReset(string $email, string $token): void
+    {
+        $stmt = $this->pdo->prepare("INSERT INTO password_resets (email, token, created_at) VALUES (:email, :token, NOW())");
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':token', $token);
+        $stmt->execute();
+    }
+
+
 }
