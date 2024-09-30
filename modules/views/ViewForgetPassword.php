@@ -9,7 +9,7 @@ class ViewForgetPassword
         ?>
         <section class="formulaire"> <!-- On crée un formulaire afin de gérer la connexion à notre site -->
             <h2> Connexion </h2>
-            <form method="POST" action="/index.php?action=forgetpassword"> <!-- La méthode POST nous permet de réobtenir les valeurs du formulaire -->
+            <form method="POST" action="/index.php?action=confirmReset"> <!-- La méthode POST nous permet de réobtenir les valeurs du formulaire -->
                 <label for="email">Envoyez votre e-mail</label>
                 <input type="email" id="email" name="email" required>
                 <input type="submit" value="Envoyer le mail de réinitialisation du mot de passe."><br>

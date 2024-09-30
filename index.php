@@ -78,6 +78,9 @@ try {
         } elseif ($_GET['action']==='profilTenrac'){
             (new \controllers\ControllerTenrac())->execute();
         }
+        elseif ($_GET['action']==='confirmReset'){
+            (new \controllers\ControllerForgetPassword())->execute();
+        }
 
     } else {
         (new \controllers\ControllerHomepage())->execute();
