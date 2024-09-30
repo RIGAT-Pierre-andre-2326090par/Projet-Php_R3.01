@@ -26,7 +26,7 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
                     <li><img src="/_assets/images/logo.webp" alt="Logo du site"/> <!-- Affichage du logo. --></li>
                     <li><a href="/index.php?action=accueil"> Accueil </a> </li>
                     <li><a href="/index.php?action=plats"> Plats </a></li>
-                    <?php if (isset($_SESSION['user'])): ?> <!-- Si l'utilisateur est connecté -->
+                    <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']): ?> <!-- Si l'utilisateur est connecté -->
                         <li><a href="/index.php?action=repas">Repas</a></li>
                     <?php endif; ?>
 
