@@ -8,9 +8,9 @@ class ViewPlats{
         ?>
         <h2>De superbes plats</h2>
         <p>Découvrez nos plats sensationnels</p>
-
-        <a class="btn" href="/index.php?action=ajoutPlat">Ajouter un Plat</a>
-
+        <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+            <a class="btn" href="/index.php?action=ajoutPlat">Ajouter un Plat</a>
+        <?php endif; ?>
         <div class="liste">
         <?php foreach ($plats as $plat) { ?>
             <a href="/index.php?action=plat&id=<?= urlencode($plat->getId()); ?>">

@@ -1,8 +1,10 @@
 <?php
 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 require '_assets/includes/autoloader.php';
-
-
 
 try {
     if (filter_input(INPUT_GET, 'action')) {
@@ -26,7 +28,10 @@ try {
         } elseif ($_GET['action'] === 'login') {
             (new \controllers\ControllerLogin())->execute();
 
-        } elseif ($_GET['action'] === 'sign_in') {
+        }elseif ($_GET['action'] === 'logout') {
+            (new \controllers\ControllerLogin())->logout();
+        }
+        elseif ($_GET['action'] === 'sign_in') {
             (new \controllers\ControllerSignIn())->execute();
 
         }

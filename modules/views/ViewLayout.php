@@ -25,7 +25,7 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
                     <li><img src="/_assets/images/logo.webp" alt="Logo du site"/> <!-- Affichage du logo. --></li>
                     <li><a href="/index.php?action=accueil"> Accueil </a> </li>
                     <li><a href="/index.php?action=plats"> Plats </a></li>
-                    <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']): ?> <!-- Si l'utilisateur est connecté -->
+                    <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
                         <li><a href="/index.php?action=repas">Repas</a></li>
                     <?php endif; ?>
 
@@ -40,11 +40,13 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
                             <button name="action" value="recherche" type="submit"> Rechercher </button>
                         </form>
                     </li>
-                    <?php if (!isset($_SESSION['user'])): ?> <!-- Dans le cas où l'utilisateur n'est pas connecté, pouvoir se connecter -->
+                    <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                        <li><a href="/index.php?action=logout">Déconnexion</a></li>
+                        <!-- <li><a href="/index.php?action=profilTenrac"> Se Déconnecter </a></li>-->
+                    <?php else: ?> <!-- Sinon, pouvoir se déconnecter -->
                         <li><a href="/index.php?action=login"> Se Connecter </a></li>
                         <li><a href="/index.php?action=sign_in"> S'Inscrire </a></li>
-                    <?php else: ?> <!-- Sinon, pouvoir se déconnecter -->
-                        <li><a href="/index.php?action=profilTenrac"> Se Déconnecter </a></li>
+
                     <?php endif; ?>
                 </ul>
             </nav>
