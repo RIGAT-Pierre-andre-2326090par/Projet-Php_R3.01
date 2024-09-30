@@ -53,8 +53,9 @@ try {
             (new \controllers\ControllerRepas())->execute($page);
         } elseif ($_GET['action'] === 'recherche') {
             (new \controllers\ControllerRecherche())->execute();
-        }
-        elseif ($_GET['action'] === 'gestionClub') {
+        } elseif ($_GET['action'] === 'profilTenrac') {
+            (new \controllers\ControllerTenrac())->execute();
+        } elseif ($_GET['action'] === 'gestionClub') {
             (new \controllers\ControllerGestionClub())->execute();
         } elseif ($_GET['action'] === 'ajoutClub') {
             (new \controllers\ControllerAjoutClub())->execute();
