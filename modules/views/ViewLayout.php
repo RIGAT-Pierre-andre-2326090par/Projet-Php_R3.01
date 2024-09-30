@@ -41,7 +41,7 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
                         </form>
                     </li>
                     <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
-                        <li><a href="/index.php?action=logout">Déconnexion</a></li>
+                        <li><a href="/index.php?action=gestionTenrac">Profil</a></li>
                         <!-- <li><a href="/index.php?action=profilTenrac"> Se Déconnecter </a></li>-->
                     <?php else: ?> <!-- Sinon, pouvoir se déconnecter -->
                         <li><a href="/index.php?action=login"> Se Connecter </a></li>
