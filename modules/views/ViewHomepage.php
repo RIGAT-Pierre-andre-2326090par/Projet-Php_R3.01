@@ -17,7 +17,7 @@ class ViewHomepage {
         <?php foreach ($plats as $plat) { ?>
             <a href="/index.php?action=plat&id=<?= urlencode($plat->getId()); ?>">
                 <section class="platHome">
-                    <img src="<?= htmlspecialchars('/_assets/images/plat/' . $plat->getImage()); ?>">
+                    <img src="<?= htmlspecialchars('/_assets/images/plat/' . $plat->getImage()); ?>" alt="<?= htmlspecialchars($plat->getNom()); ?>">
                     <div>
                         <h3><?= htmlspecialchars($plat->getNom()); ?></h3>
                         <p><?= htmlspecialchars($plat->getDescription()); ?></p>
@@ -34,7 +34,7 @@ class ViewHomepage {
         <?php foreach ($clubs as $club) { ?>
             <a href="/index.php?action=club&id=<?= urlencode($club->getId()); ?>">
                 <section class="infoClubHome">
-                    <img src="<?= htmlspecialchars('/_assets/images/club/' . $club->getImage()); ?>">
+                    <img src="<?= htmlspecialchars('/_assets/images/club/' . $club->getImage()); ?>" alt="<?= htmlspecialchars($club->getNom()); ?>">
                     <div>
                         <h3><?= htmlspecialchars($club->getNom()); ?></h3>
                         <p><?= htmlspecialchars($club->getAdresse()); ?></p>
