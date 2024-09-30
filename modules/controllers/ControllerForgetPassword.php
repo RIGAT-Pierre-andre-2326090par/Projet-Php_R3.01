@@ -7,7 +7,8 @@ use views\ViewPasswordResetConfirmation;
 
 class ControllerForgetPassword
 {
-public function execute (): void{
+public function execute (): void
+{
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $_POST["email"];
         $user = (new ModelTenrac())->getMail($email);
@@ -18,23 +19,15 @@ public function execute (): void{
                 'Reply-To: no-reply@tenraclovers.com' . "\r\n" .
                 'X-Mailer: PHP/' . phpversion();
 
-            if ($user) {
-                // Tentative d'envoi de l'e-mail
-                if (mail($email, $subject, $message, $headers)) {
-                    (new ViewPasswordResetConfirmation())->show();
-                }
-            } else {
-                // Toujours afficher un message générique, même si l'utilisateur n'existe pas
+            // Tentative d'envoi de l'e-mail
+            if (mail($email, $subject, $message, $headers)) {
                 (new ViewPasswordResetConfirmation())->show();
             }
         } else {
             // Si pas de soumission de formulaire, affichage du formulaire
             (new ViewForgetPassword())->show();
-        else{
-            echo "Aucun utilisateur n'utilise cette adresse. Veuillez réessayer.";
         }
     }
-}
 
 
 

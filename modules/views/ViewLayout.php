@@ -20,7 +20,6 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
       </head>
       <body>
       <header>
-            <img src="/_assets/images/logo.webp" alt="Logo du site"/> <!-- Affichage du logo. -->
             <nav class="bandeau"> <!-- On crée notre bandeau de navigation -->
                 <ul>
                     <li><img src="/_assets/images/logo.webp" alt="Logo du site"/> <!-- Affichage du logo. --></li>
@@ -44,6 +43,8 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
                     <?php if (!isset($_SESSION['user'])): ?> <!-- Dans le cas où l'utilisateur n'est pas connecté, pouvoir se connecter -->
                         <li><a href="/index.php?action=login"> Se Connecter </a></li>
                         <li><a href="/index.php?action=sign_in"> S'Inscrire </a></li>
+                    <?php else: ?> <!-- Sinon, pouvoir se déconnecter -->
+                        <li><a href="/index.php?action=profilTenrac"> Se Déconnecter </a></li>
                     <?php endif; ?>
                 </ul>
             </nav>
