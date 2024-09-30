@@ -1,7 +1,7 @@
 <?php
 namespace views;
 
-class ViewLayout // La classe Layout nous permet de poser la base de nos pages HTML
+readonly class ViewLayout // La classe Layout nous permet de poser la base de nos pages HTML
 {
   public function __construct(private string $title, private string $content){} // On définit notre constructeur
   public function show():void{ // Création de la fonction show, qui permet d'afficher le contenu de la page
@@ -15,7 +15,7 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
           <meta name="author" content="Théo, Mathéo, Baptiste, Estelle, Pierre-André, Cyril">
           <meta name="description" content="TenracLovers - Découvre une myriade de plats plus gras les uns que les autres !">
           <meta name="viewport" content="width=device-width, initial-scale=1">
-          <link rel="icon" href="/_assets/images/favicon.ico">
+          <!--<link rel="icon" href="/_assets/images/favicon.ico"> -->
           <link rel="icon" type="image/png" href="/_assets/images/logo.webp"> <!-- On insère l'icone du site -->
       </head>
       <body>
@@ -37,13 +37,16 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
                 <ul>
                     <li>
                         <form action="/index.php?action=recherche" method="GET"> <!-- Utilisation de la barre de recherche. -->
+                            <label for="search">Recherche</label>
                             <input type="text" id="search" name="keyword" required>
                             <button name="action" value="recherche" type="submit"> Rechercher </button>
                         </form>
                     </li>
-                    <?php if (!isset($_SESSION['user'])): ?> <!-- Dans le cas où l'utilisateur n'est pas connecté, pouvoir se connecter -->
+                    <?php if (!$_SESSION['loggedin']): ?> <!-- Dans le cas où l'utilisateur n'est pas connecté, pouvoir se connecter -->
                         <li><a href="/index.php?action=login"> Se Connecter </a></li>
                         <li><a href="/index.php?action=sign_in"> S'Inscrire </a></li>
+                    <?php else: ?> <!-- Sinon, pouvoir se déconnecter -->
+                        <li><a href="/index.php?action=profilTenrac"> Mon Compte </a></li>
                     <?php endif; ?>
                 </ul>
             </nav>
@@ -62,6 +65,7 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
               <a href=""><img src="/_assets/images/icons/facebook.webp" alt="Logo Facebook" /></a>
               <a href=""><img src="/_assets/images/icons/twitter.webp" alt="Logo Twitter" /></a>
               <a href=""><img src="/_assets/images/icons/instagram.webp" alt="Logo Instagram" /></a>
+              <a href=""><img src="/_assets/images/icons/youtube.webp" alt="Logo Youtube" /></a>
           </section>
           <p>Tenrac-Lovers© <?= date('Y'); ?> Tous droit réservé.</p> <!-- Ajout de l'année actuelle de manière dynamique -->
       </footer>

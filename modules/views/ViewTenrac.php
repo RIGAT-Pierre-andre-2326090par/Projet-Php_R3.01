@@ -6,7 +6,6 @@ use models\ModelTenrac;
 
 class ViewTenrac
 {
-    private array $user; // On crée un tableau pour stocker les informations de l'utilisateur
     function show(): void
     {
         $user = (new ModelTenrac())->getTenrac($_SESSION['user']); // On récupère les informations de l'utilisateur

@@ -75,6 +75,8 @@ try {
         } elseif ($_GET['action']==='suppressionPlat'){
             (new \controllers\ControllerGestionClub())->execute();
             (new \views\ViewLayout('Plat supprimé','<h2>Plat supprimé</h2>'))->show();
+        } elseif ($_GET['action']==='profilTenrac'){
+            (new \controllers\ControllerTenrac())->execute();
         }
 
     } else {
