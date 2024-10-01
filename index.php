@@ -61,9 +61,9 @@ try {
         } elseif ($_GET['action'] === 'recherche') {
             (new \controllers\ControllerRecherche())->execute();
         } elseif ($_GET['action'] === 'gestionTenrac') {
-            (new \controllers\ControllerTenrac())->execute();
+            (new \controllers\ControllerTenrac())->execute($_SESSION['ID_TR']);
         } elseif ($_GET['action'] === 'supprTenrac') {
-            (new \models\ModelTenrac())->deleteTenrac((new \models\ModelTenrac())->getTenracId($_POST['email'], $_POST['password'])['ID_TR']);
+            (new \models\ModelTenrac())->deleteTenrac((new \models\ModelTenrac())->getTenracId($_POST['email'], $_POST['password']));
             (new \views\ViewLayout('Votre compte à été supprimé', '<h2>Votre compte à été supprimé</h2>'))->show();
         } elseif ($_GET['action'] === 'gestionClub') {
             (new \controllers\ControllerGestionClub())->execute();

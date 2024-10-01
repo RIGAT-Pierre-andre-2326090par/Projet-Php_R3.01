@@ -10,9 +10,8 @@ class ViewTenrac
      * Affiche la page d'accueil de l'utilisateura
      * @return void
      */
-    function show(): void
+    function show($user): void
     {
-        $user = (new ModelTenrac())->getTenrac($_SESSION['user']); // On récupère les informations de l'utilisateur
         ob_start();
         ?>
         <h1>Bienvenue <?= $user['NOM_TR'] ?> !</h1>

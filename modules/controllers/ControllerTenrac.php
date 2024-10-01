@@ -5,9 +5,10 @@ namespace controllers;
 class ControllerTenrac {
     /**
      * Traite la requête de la page Tenrac
+     * @param $id: l'id du Tenrac
      * @return void
      */
-    public function execute(): void {
+    public function execute($id): void {
         // Démarrer la session si ce n'est pas déjà fait
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
@@ -21,7 +22,7 @@ class ControllerTenrac {
         }
 
         // Utilisateur connecté, récupérer les données de l'utilisateur
-        $user = (new \models\ModelTenrac())->getTenrac($_SESSION['user']);
+        $user = (new \models\ModelTenrac())->getTenrac($id);
         (new \views\ViewTenrac())->show($user);
     }
 }
