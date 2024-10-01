@@ -16,7 +16,7 @@ class ControllerGestionPlat
                 (new \models\ModelGestionPlat())->updatePlat($id, $nom, $desc);
             }
             // Vérifie si le bouton de suppression a été soumis
-            elseif (isset($_POST['deleteBouton'])) {
+            if (isset($_POST['deleteBouton'])) {
                 $id = $_GET['id'];
                 (new \models\ModelGestionPlat())->deletePlat($id);
             }

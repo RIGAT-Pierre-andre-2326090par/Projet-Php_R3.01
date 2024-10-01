@@ -2,6 +2,8 @@
 
 namespace models;
 
+use PDOException;
+
 class ModelGestionPlat
 {
     private $pdo;
