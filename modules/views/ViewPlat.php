@@ -17,7 +17,7 @@ class ViewPlat
      * @param $plat: array
      * @return void
      */
-    public function show($plat):void{
+    public function show($plat, $ingredients):void{
         $id = $plat['ID_PL'];
         $nom = $plat['NOM_PL']; // Nom du controllerPlat
         $description = $plat['DESC_PL']; // Description du controllerPlat
@@ -37,10 +37,16 @@ class ViewPlat
                 </section>
                 <section id="right">
                     <p id="description"><?php echo  $description ?></p>
-                    <h3 id="ingredients"><!--import depuis la BD--></h3>
-                    <ol id="liste_ingredients">
 
-                    </ol>
+                    <h3 id="ingredients">Ingrédients :</h3>
+                    <div class="listeIngredients">
+                        <?php foreach ($ingredients as $ingredient) { ?>
+                            <ul>
+                                <li><?= htmlspecialchars($ingredient->getNom()); ?></li>
+                            </ul>
+                        <?php }?>
+                    </div>
+
                     <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
                         <!--boutons modification et suppression plats-->
                         <form action="/index.php?action=gestionPlat&id=<?= $id ?>" method="POST">
