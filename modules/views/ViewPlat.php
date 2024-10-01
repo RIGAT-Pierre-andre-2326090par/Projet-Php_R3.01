@@ -7,8 +7,16 @@ use PDO;
 
 class ViewPlat
 {
+    /**
+     * constructeur de la classe ViewPlat
+     */
     public function __construct(){}
 
+    /**
+     * renvoie la page du plat
+     * @param $plat: array
+     * @return void
+     */
     public function show($plat):void{
         $id = $plat['ID_PL'];
         $nom = $plat['NOM_PL']; // Nom du controllerPlat

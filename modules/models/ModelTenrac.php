@@ -8,12 +8,23 @@ class ModelTenrac
 {
     private $pdo;
 
+    /**
+     * Constructeur de la classe
+     */
     public function __construct(){
         $this->pdo = (new \includes\database())->getInstance();
 
     }
 
-    // Fonction nous permettant d'ajouter un utilisateur
+    /**
+     * Fonction nous permettant d'ajouter un utilisateur
+     * @param $nom: nom de l'utilisateur
+     * @param $mdp: mot de passe de l'utilisateur
+     * @param $adresse: adresse de l'utilisateur
+     * @param $email: email de l'utilisateur
+     * @param $telephone: téléphone de l'utilisateur
+     * @return int: id de l'utilisateur ajouté
+     */
     public function insertTenrac($nom, $mdp, $adresse, $email, $telephone): int
     {
         $sql = 'SELECT MAX(ID_TR) as max_id FROM TENRAC';
@@ -34,6 +45,11 @@ class ModelTenrac
         return $id; // Retourne l'id de l'utilisateur ajouté
     }
 
+    /**
+     * Fonction nous permettant de récupérer un utilisateur
+     * @param $id_tr: id de l'utilisateur
+     * @return array|null: tableau associatif de l'utilisateur ou null si aucun utilisateur n'est trouvé
+     */
     public function getTenrac($id_tr): ?array {
         $stmt = $this->pdo->prepare('SELECT NOM_TR, COURRIEL_TR, TELEPHONE_TR, ADRESSE_TR FROM TENRAC WHERE ID_TR = :id_tr');
         $stmt->bindValue(':id_tr', $id_tr);
@@ -47,7 +63,16 @@ class ModelTenrac
         return null; // Retourne null si aucun utilisateur n'est trouvé
     }
 
-    // Fonction nous permettant de changer certaines informations sur un utilisateur
+    /**
+     * Fonction nous permettant de changer certaines informations sur un utilisateur
+     * @param $nom: nom de l'utilisateur
+     * @param $mdp: mot de passe de l'utilisateur
+     * @param $email: email de l'utilisateur
+     * @param $telephone: téléphone de l'utilisateur
+     * @param $adresse: adresse de l'utilisateur
+     * @param $id_tr: id de l'utilisateur
+     * @return void
+     */
     public function updateTenrac($nom, $mdp, $email, $telephone, $adresse, $id_tr): void
     {
         $sql = 'UPDATE TENRAC SET NOM_TR=:nom, MDP_TR=:mdp, COURRIEL_TR=:email, TELEPHONE_TR=:telephone, ADRESSE_TR=:adresse WHERE ID_TR=:id_tr';
@@ -63,16 +88,12 @@ class ModelTenrac
         // return $stmt->fetch();
     }
 
-    public function getMail($email){
-        $stmt = $this->pdo->prepare('SELECT EMAIL FROM TENRAC WHERE EMAIL = :email');
-        $stmt->bindValue(':email', $email);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-
-
-    }
-
-    // Fonction qui nous permet de récupérer l'id d'un utilisateur grace à son email et son mot de passe
+    /**
+     * Fonction qui nous permet de récupérer l'id d'un utilisateur grace à son email et son mot de passe
+     * @param $email: email de l'utilisateur
+     * @param $pwd: mot de passe de l'utilisateur
+     * @return int: id de l'utilisateur ou -1 si aucun utilisateur n'est trouvé
+     */
     public function getTenracId($email, $pwd): int
     {
         $stmt = $this->pdo->prepare("SELECT ID_TR FROM TENRAC WHERE COURRIEL_TR = :email AND MDP_TR = :pwd");
@@ -87,8 +108,11 @@ class ModelTenrac
         return -1; // Retourne -1 si aucun utilisateur n'est trouvé
     }
 
-
-    // Fonction nous permettant de supprimer un utilisateur
+    /**
+     * Fonction nous permettant de supprimer un utilisateur
+     * @param $id_tr: id de l'utilisateur
+     * @return void
+     */
     public function deleteTenrac($id_tr):void {
         $sql = 'DELETE FROM TENRAC WHERE ID_TR = :id_tr';
         $stmt = $this->pdo->prepare($sql);
@@ -97,6 +121,11 @@ class ModelTenrac
         ]);
     }
 
+    /**
+     * trouve un utilisateur par son mail
+     * @param string $email: email de l'utilisateur
+     * @return mixed: tableau associatif de l'utilisateur ou false si aucun utilisateur n'est trouvé
+     */
     public function findUserByEmail(string $email) {
         $stmt = $this->pdo->prepare("SELECT * FROM TENRAC WHERE COURRIEL_TR = :email");
         $stmt->bindParam(':email', $email);
@@ -104,6 +133,12 @@ class ModelTenrac
         return $stmt->fetch(); // Retourne l'utilisateur ou false si non trouvé
     }
 
+    /**
+     * met à jour le mot de passe de l'utilisateur
+     * @param string $email: email de l'utilisateur
+     * @param string $newPassword: nouveau mot de passe
+     * @return bool: true si la mise à jour a réussi, false sinon
+     */
     public function updatePassword(string $email, string $newPassword): bool
     {
         $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
@@ -113,14 +148,4 @@ class ModelTenrac
 
         return $stmt->execute(); // Retourne true si la mise à jour a réussi
     }
-
-    public function createPasswordReset(string $email, string $token): void
-    {
-        $stmt = $this->pdo->prepare("INSERT INTO password_resets (email, token, created_at) VALUES (:email, :token, NOW())");
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':token', $token);
-        $stmt->execute();
-    }
-
-
 }

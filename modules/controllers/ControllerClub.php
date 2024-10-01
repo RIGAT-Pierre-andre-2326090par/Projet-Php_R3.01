@@ -7,6 +7,10 @@ use views\ViewClub;
 
 class ControllerClub
 {
+    /**
+     * traite la requete de la page club
+     * @return void
+     */
     public function execute(): void {
         $id = isset($_GET['id']) ? $_GET['id'] : null;
         if ($id) {

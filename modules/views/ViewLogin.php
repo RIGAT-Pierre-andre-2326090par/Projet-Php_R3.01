@@ -4,6 +4,10 @@ namespace views;
 
 class ViewLogin
 {
+    /**
+     * renvoie la page de connexion
+     * @return void
+     */
     public function show(): void{
         ob_start();
         ?>

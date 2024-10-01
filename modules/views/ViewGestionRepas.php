@@ -4,6 +4,11 @@ namespace views;
 
 class ViewGestionRepas
 {
+    /**
+     * renvoie la page de gestion du repas
+     * @param $repas: tableau contenant les informations du repas
+     * @return void
+     */
     public function show($repas):void{
         $id=$repas['idrepas'];
         ob_start();

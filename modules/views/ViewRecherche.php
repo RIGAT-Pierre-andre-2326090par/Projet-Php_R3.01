@@ -4,6 +4,12 @@ namespace views;
 
 class ViewRecherche
 {
+    /**
+     * renvoie la page de recherche
+     * @param $search: string
+     * @param $plats_searched: array
+     * @return void
+     */
     public function show($search, $plats_searched): void {
         ob_start();
         ?>

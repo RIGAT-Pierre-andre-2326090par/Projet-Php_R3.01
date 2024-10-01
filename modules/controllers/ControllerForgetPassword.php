@@ -8,6 +8,10 @@ use views\ViewPasswordResetConfirmation;
 
 class ControllerForgetPassword
 {
+    /**
+     * Traite la requête de la page de réinitialisation de mot de passe
+     * @return void
+     */
     public function execute(): void
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {

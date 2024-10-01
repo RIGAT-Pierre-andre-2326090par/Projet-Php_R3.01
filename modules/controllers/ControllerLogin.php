@@ -4,9 +4,16 @@ namespace controllers;
 
 class ControllerLogin {
 
+    /**
+     * le constructeur du ControllerLogin
+     */
     public function __construct() {
     }
 
+    /**
+     * traite la requete de la page login
+     * @return void
+     */
     public function execute(): void {
         $model=(new \models\ModelLogin());
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -23,6 +30,11 @@ class ControllerLogin {
 
 
     }
+
+    /**
+     * Déconnecte l'utilisateur
+     * @return void
+     */
     public function logout(): void {
         // Démarrer la session si elle n'est pas déjà démarrée
         if (session_status() == PHP_SESSION_NONE) {

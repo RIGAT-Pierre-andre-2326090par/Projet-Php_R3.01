@@ -6,6 +6,10 @@ use models\ModelPlats;
 use models\ModelClubs;
 
 class ControllerHomepage {
+    /**
+     * Traite la requête de la page d'accueil
+     * @return void
+     */
     public function execute(): void {
         $resplat = (new ModelPlats())->getPlats(); // Récupère les plats à partir du modèle
         $plats = $resplat['plats'];

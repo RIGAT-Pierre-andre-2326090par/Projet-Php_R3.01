@@ -10,12 +10,25 @@ class ModelGestionClub
 {
     private $pdo;
 
+    /**
+     * le constructeur de la classe ModelGestionClub
+     */
     public function __construct()
     {
         $this->pdo = (new \includes\database())->getInstance();
 
     }
 
+    /**
+     * insere un club dans la base de donnée
+     * @param $nom: le nom du club
+     * @param $adresse: l'adresse du club
+     * @param $description: la description du club
+     * @param $image: l'image du club
+     * @param $ordre: l'ordre auquel est rattaché le club
+     * @return void
+     * @throws Exception
+     */
     public function insertClub($nom, $adresse, $description, $image, $ordre): void
     {
 
@@ -64,7 +77,15 @@ class ModelGestionClub
         }
     }
 
-    public function updateClub($id,$nom, $adresse, $description): void
+    /**
+     * met à jour le club choisi
+     * @param $id: l'id du club
+     * @param $nom: le nom du club
+     * @param $adresse: l'adresse du club
+     * @param $description: la description du club
+     * @return void
+     */
+    public function updateClub($id, $nom, $adresse, $description): void
     {
         try{
             $sql = 'UPDATE CLUB SET NOM_CL = :nom, ADRESSE_CL = :adresse, DESC_CL = :description WHERE ID_CL = :id';
@@ -85,6 +106,11 @@ class ModelGestionClub
         }
     }
 
+    /**
+     * supprime le club choisi
+     * @param $id: l'id du club
+     * @return void
+     */
     public function deleteClub($id): void
     {
         $sql = 'DELETE FROM CLUB WHERE ID_CL = :id';

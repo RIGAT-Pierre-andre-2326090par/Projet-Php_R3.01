@@ -4,6 +4,10 @@ namespace views;
 
 class ViewSignIn
 {
+    /**
+     * renvoie la page d'inscription
+     * @return void
+     */
     function show(): void
     {
         ob_start();

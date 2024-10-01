@@ -3,7 +3,17 @@ namespace views;
 
 class ViewLayout // La classe Layout nous permet de poser la base de nos pages HTML
 {
+    /**
+     * constructeur de la classe ViewLayout
+     * @param string $title: titre de la page
+     * @param string $content: contenu de la page
+     */
     public function __construct(private string $title, private string $content){} // On définit notre constructeur
+
+    /**
+     * renvoie la page
+     * @return void
+     */
     public function show():void{ // Création de la fonction show, qui permet d'afficher le contenu de la page
         ?>
         <!DOCTYPE html>  <!-- Structure basique de HTML, qui se retrouvera sur toutes les pages -->

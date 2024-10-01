@@ -6,6 +6,10 @@ use models\ModelTenrac;
 
 class ViewTenrac
 {
+    /**
+     * Affiche la page d'accueil de l'utilisateura
+     * @return void
+     */
     function show(): void
     {
         $user = (new ModelTenrac())->getTenrac($_SESSION['user']); // On récupère les informations de l'utilisateur

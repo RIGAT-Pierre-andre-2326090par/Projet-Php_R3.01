@@ -4,6 +4,11 @@ namespace views;
 
 class ViewPasswordResetConfirmation
 {
+    /**
+     * renvoie la page de confirmation de réinitialisation du mot de passe
+     * @param $status: string|null
+     * @return void
+     */
     public function show($status = null): void
     {
         ob_start();

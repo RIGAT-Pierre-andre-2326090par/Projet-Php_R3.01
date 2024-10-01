@@ -5,6 +5,10 @@ use views\ViewPlat;
 use models\ModelPlat;
 
 class ControllerPlat{
+    /**
+     * Traite la requête de la page Plat
+     * @return void
+     */
     public function execute(): void {
         $id = ($_GET['id']) ?? null; // Soit GET['id'], soit NULL
         if ($id) {

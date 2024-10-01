@@ -4,6 +4,10 @@ namespace views;
 
 class ViewResetPassword
 {
+    /**
+     * renvoie la page de réinitialisation du mot de passe
+     * @return void
+     */
     public function show(): void{
         ob_start();
         ?>

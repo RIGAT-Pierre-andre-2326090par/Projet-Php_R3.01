@@ -4,6 +4,11 @@ namespace controllers;
 
 class ControllerGestionRepas
 {
+    /**
+     * traite la requete de la page gestionRepas
+     * @return void
+     * @throws \Exception
+     */
     public function execute(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

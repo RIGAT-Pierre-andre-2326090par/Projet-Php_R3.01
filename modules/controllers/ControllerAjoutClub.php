@@ -2,6 +2,11 @@
 namespace controllers;
 class ControllerAjoutClub
 {
+    /**
+     * traite la requete de la page ajoutClub
+     * @return void
+     * @throws \Exception
+     */
     public function execute(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

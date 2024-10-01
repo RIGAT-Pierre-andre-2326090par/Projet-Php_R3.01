@@ -3,6 +3,13 @@
 namespace views;
 
 class ViewPlats{
+    /**
+     * renvoie la page des plats
+     * @param $plats: array
+     * @param $page: int
+     * @param $pagemax: int
+     * @return void
+     */
     public function show($plats, $page, $pagemax): void {
         ob_start();
         ?>

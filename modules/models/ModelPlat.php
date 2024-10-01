@@ -14,6 +14,13 @@ class ModelPlat
     public $description;
     public $image;
 
+    /**
+     * le constructeur de la classe ModelPlat
+     * @param $id: l'id du plat
+     * @param $nom: le nom du plat
+     * @param $description: la description du plat
+     * @param $image: l'image du plat
+     */
     public function __construct($id = null, $nom = null, $description = null, $image = null) {
         $this->id = $id;
         $this->nom = $nom;
@@ -21,25 +28,51 @@ class ModelPlat
         $this->image = $image;
     }
 
+    /**
+     * renvoie un plat vide
+     * @return self: un plat vide
+     */
     public static function createEmpty() {
         return new self();
     }
 
+    /**
+     * renvoie l'id du plat
+     * @return string: l'id du plat
+     */
     public function getId(): string {
         return $this->id;
     }
+
+    /**
+     * renvoie le nom du plat
+     * @return string: le nom du plat
+     */
     public function getNom(): string {
         return $this->nom;
     }
 
+    /**
+     * renvoie la description du plat
+     * @return string: la description du plat
+     */
     public function getDescription(): string {
         return $this->description;
     }
 
+    /**
+     * renvoie l'image du plat
+     * @return string: l'image du plat
+     */
     public function getImage(): string {
         return $this->image;
     }
 
+    /**
+     * renvoie un plat
+     * @param $id: l'id du plat
+     * @return mixed|void|null: le plat
+     */
     public function getPlat($id) {
         $pdo = (new \includes\database())->getInstance();
         $stmt = $pdo->prepare('SELECT * FROM PLAT WHERE ID_PL = :id');

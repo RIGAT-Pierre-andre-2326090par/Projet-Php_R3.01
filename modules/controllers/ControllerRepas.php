@@ -4,6 +4,11 @@ namespace controllers;
 
 class ControllerRepas
 {
+    /**
+     * traite la requete de la page repas
+     * @param $page : le numére de la page chargée
+     * @return void
+     */
     public function execute($page): void{
         /*if (!isset($_SESSION['user'])) {
             // Redirige vers la page de connexion

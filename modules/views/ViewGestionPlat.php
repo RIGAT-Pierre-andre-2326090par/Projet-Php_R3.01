@@ -4,6 +4,11 @@ namespace views;
 
 class ViewGestionPlat
 {
+    /**
+     * renvoie la page de gestion du plat
+     * @param $plat: array
+     * @return void
+     */
     public function show($plat):void{
         $id=$plat['ID_PL'];
         ob_start();

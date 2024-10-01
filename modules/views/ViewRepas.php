@@ -4,6 +4,13 @@ namespace views;
 
 class ViewRepas
 {
+    /**
+     * renvoie la page d'un repas
+     * @param $repas: array
+     * @param $page: int
+     * @param $pagemax: int
+     * @return void
+     */
     public function show($repas, $page, $pagemax): void {
         ob_start();
         ?>

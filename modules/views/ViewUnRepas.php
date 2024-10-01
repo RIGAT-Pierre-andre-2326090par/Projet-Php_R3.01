@@ -4,8 +4,16 @@ namespace views;
 
 class ViewUnRepas
 {
+    /**
+     * constructeur de la classe ViewUnRepas
+     */
     public function __construct(){}
 
+    /**
+     * renvoie la page d'un repas
+     * @param $repas: array
+     * @return void
+     */
     public function show($repas):void{
         $dates = $repas['dates'];
         $idrp = $repas['idrepas'];

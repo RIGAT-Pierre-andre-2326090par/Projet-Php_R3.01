@@ -2,6 +2,12 @@
 namespace views;
 
 class ViewHomepage {
+    /**
+     * renvoie la page d'accueil
+     * @param $plats: array
+     * @param $clubs: array
+     * @return void
+     */
     public function show($plats, $clubs): void {
         ob_start();
         ?>

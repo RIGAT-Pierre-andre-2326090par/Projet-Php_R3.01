@@ -4,6 +4,10 @@ namespace views;
 
 class ViewAjoutRepas
 {
+    /**
+     * renvoie le formulaire d'ajout d'un repas
+     * @return void
+     */
     public function show(): void
     {
         ob_start();

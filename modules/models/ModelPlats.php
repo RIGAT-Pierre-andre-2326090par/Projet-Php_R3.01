@@ -6,7 +6,17 @@ use PDOException;
 
 class ModelPlats
 {
+    /**
+     * le constructeur de la classe ModelPlats
+     */
     public function __construct(){}
+
+    /**
+     * retourne les plats
+     * @param $page: la page
+     * @param $limit: le nombre de plats par page
+     * @return array|void: les plats et la page max
+     */
     public function getPlats($page = 0, $limit = 3){
         $pdo = (new \includes\database())->getInstance();
 

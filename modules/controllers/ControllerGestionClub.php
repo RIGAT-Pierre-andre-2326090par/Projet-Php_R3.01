@@ -4,6 +4,10 @@ namespace controllers;
 
 class ControllerGestionClub
 {
+    /**
+     * traite la requete de la page gestionClub
+     * @return void
+     */
     public function execute(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

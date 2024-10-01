@@ -4,6 +4,11 @@ namespace views;
 
 class ViewClub
 {
+    /**
+     * renvoie la page du club
+     * @param $club: tableau associatif contenant les informations du club
+     * @return void
+     */
     public function show($club): void {
         $id=$club['ID_CL'];
         $nom=$club['NOM_CL'];

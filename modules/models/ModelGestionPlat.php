@@ -8,12 +8,22 @@ class ModelGestionPlat
 {
     private $pdo;
 
+    /**
+     * le constructeur de la classe ModelGestionPlat
+     */
     public function __construct()
     {
         $this->pdo = (new \includes\database())->getInstance();
 
     }
 
+    /**
+     * met à jour le plat choisi
+     * @param $id: l'id du plat
+     * @param $nom: le nom du plat
+     * @param $description: la description du plat
+     * @return void
+     */
     public function updatePlat($id, $nom, $description) {
         try{
             $sql = 'UPDATE PLAT SET NOM_PL = :nom, DESC_PL = :description WHERE ID_PL = :id';
@@ -32,6 +42,12 @@ class ModelGestionPlat
             exit();
         }
     }
+
+    /**
+     * supprime le plat choisi
+     * @param $id: l'id du plat
+     * @return void
+     */
     public function deletePlat($id) {
         $sql = 'DELETE FROM PLAT WHERE ID_PL = :id';
         $stmt = $this->pdo->prepare($sql);

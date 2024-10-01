@@ -10,12 +10,22 @@ class ModelGestionRepas
 {
     private $pdo;
 
+    /**
+     * le constructeur de la classe ModelGestionRepas
+     */
     public function __construct()
     {
         $this->pdo = (new \includes\database())->getInstance();
 
     }
 
+    /**
+     * insère un repas dans la base de donnée
+     * @param $date: la date du repas
+     * @param $idcl: l'id du club
+     * @return void
+     * @throws Exception
+     */
     public function insertRepas($date, $idcl): void
     {
         try {
@@ -60,6 +70,14 @@ class ModelGestionRepas
         }
     }
 
+    /**
+     * met à jour le repas choisi
+     * @param $date: la date du repas
+     * @param $id: l'id du repas
+     * @param $idcl: l'id du club
+     * @return void
+     * @throws Exception
+     */
     public function updateRepas($date, $id, $idcl): void
     {
         try {
@@ -97,6 +115,11 @@ class ModelGestionRepas
         }
     }
 
+    /**
+     * supprime un repas choisi
+     * @param $id: l'id du repas
+     * @return void
+     */
     public function deleteRepas($id): void
     {
         $sql = 'DELETE FROM REPAS WHERE ID_RP = :id';

@@ -4,6 +4,11 @@ namespace views;
 
 class ViewGestionTenrac
 {
+    /**
+     * renvoie la page de gestion du tenrac
+     * @param $tenrac: array
+     * @return void
+     */
     public function show($tenrac): void {
         $id = $tenrac['ID_TR'];
         ob_start();

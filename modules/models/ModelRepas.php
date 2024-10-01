@@ -6,6 +6,12 @@ use PDOException;
 
 class ModelRepas
 {
+    /**
+     * retourne des repas
+     * @param $page: page actuelle
+     * @param $limit: nombre de repas par page
+     * @return array|void: tableau de repas
+     */
     public function getRepas($page = 0, $limit = 3) {
         $pdo = (new \includes\database())->getInstance();
 

@@ -5,6 +5,10 @@ namespace controllers;
 
 class ControllerUnRepas
 {
+    /**
+     * Traite la requête de la page d'un repas
+     * @return void
+     */
     public function execute(): void
     {
         $id = isset($_GET['id']) ? $_GET['id'] : null;

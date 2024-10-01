@@ -6,6 +6,10 @@ use views\ViewGestionPlat;
 
 class ControllerGestionPlat
 {
+    /**
+     * traite la requete de la page gestionPlat
+     * @return void
+     */
     public function execute() :void {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie si le bouton de modification du formulaire a été soumis

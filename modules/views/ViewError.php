@@ -4,6 +4,11 @@ namespace views;
 
 class ViewError
 {
+    /**
+     * renvoie la page d'erreur
+     * @param string $erreur: le message d'erreur
+     * @return void
+     */
     public function show(string $erreur):void{
         ob_start();
         ?>

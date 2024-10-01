@@ -8,6 +8,12 @@ use includes\database;
 
 class ModelClubs
 {
+    /**
+     * Récupère les clubs
+     * @param $page: page actuelle
+     * @param $limit: nombre de clubs par page
+     * @return array|void: tableau contenant les clubs et le nombre de pages
+     */
     public function getClubs($page = 0, $limit = 3) {
         $pdo = (new database())->getInstance();
 

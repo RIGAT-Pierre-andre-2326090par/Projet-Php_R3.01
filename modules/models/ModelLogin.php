@@ -9,26 +9,56 @@
 
         private $messageError;
         private $nb;
+
+        /**
+         * le constructeur de la classe modelLogin
+         */
         public function __construct() {}
 
+        /**
+         * définit le message d'erreur
+         * @param $messageError: le message d'erreur
+         * @return void
+         */
         public function setMessageError($messageError): void
         {
             $this->messageError = $messageError;
         }
+
+        /**
+         * renvoie le message d'erreur
+         * @return mixed: le message d'erreur
+         */
         public function getMessageError()
         {
             return $this->messageError;
         }
 
+        /**
+         * retourne le numéro de l'erreur
+         * @return mixed: le numéro de l'erreur
+         */
         public function getNb()
         {
             return $this->nb;
         }
+
+        /**
+         * définit le numéro de l'erreur
+         * @param $nb: le numéro de l'erreur
+         * @return void
+         */
         public function setNb($nb): void
         {
             $this->nb = $nb;
         }
 
+        /**
+         * connecte un utilisateur
+         * @param $email: l'email de l'utilisateur
+         * @param $password: le mot de passe de l'utilisateur
+         * @return void
+         */
         public function login($email, $password): void  {
             // Obtenir une instance PDO
             $pdo = (new Database())->getInstance();

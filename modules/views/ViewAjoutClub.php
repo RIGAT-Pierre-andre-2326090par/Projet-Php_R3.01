@@ -4,6 +4,10 @@ namespace views;
 
 class ViewAjoutClub
 {
+    /**
+     * renvoie le formulaire d'ajout d'un club
+     * @return void
+     */
     public function show(): void
     {
         ob_start();

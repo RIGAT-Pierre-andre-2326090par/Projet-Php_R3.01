@@ -4,6 +4,13 @@ namespace views;
 
 class ViewOrdre
 {
+    /**
+     * renvoie la page de l'ordre
+     * @param $clubs: liste des clubs
+     * @param $page: page actuelle
+     * @param $pagemax: nombre de pages
+     * @return void
+     */
     public function show($clubs, $page, $pagemax):void{
         ?>
 

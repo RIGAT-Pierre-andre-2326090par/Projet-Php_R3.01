@@ -4,6 +4,10 @@ namespace views;
 
 class ViewForgetPassword
 {
+    /**
+     * renvoie la page de mot de passe oublié
+     * @return void
+     */
     public function show(): void{
         ob_start();
         ?>

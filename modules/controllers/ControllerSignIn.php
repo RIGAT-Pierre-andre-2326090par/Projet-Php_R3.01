@@ -4,6 +4,10 @@ namespace controllers;
 
 class ControllerSignIn
 {
+    /**
+     * Traite la requête de la page d'inscription
+     * @return void
+     */
     public function execute(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

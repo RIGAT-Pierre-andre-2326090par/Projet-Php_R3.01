@@ -4,6 +4,11 @@ namespace views;
 
 class ViewGestionClub
 {
+    /**
+     * renvoie la page de gestion du club
+     * @param $club: tableau associatif contenant les informations du club
+     * @return void
+     */
     public function show($club):void{
         $id=$club['ID_CL'];
         ob_start();

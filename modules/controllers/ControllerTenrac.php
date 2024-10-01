@@ -3,6 +3,10 @@
 namespace controllers;
 
 class ControllerTenrac {
+    /**
+     * Traite la requête de la page Tenrac
+     * @return void
+     */
     public function execute(): void {
         // Démarrer la session si ce n'est pas déjà fait
         if (session_status() == PHP_SESSION_NONE) {
