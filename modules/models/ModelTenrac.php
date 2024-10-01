@@ -7,11 +7,13 @@ use PDO;
 class ModelTenrac
 {
     private $pdo;
+    private $id_tr;
 
     /**
      * Constructeur de la classe
      */
     public function __construct(){
+
         $this->pdo = (new \includes\database())->getInstance();
 
     }
@@ -55,7 +57,7 @@ class ModelTenrac
      * @return array|null: tableau associatif de l'utilisateur ou null si aucun utilisateur n'est trouvé
      */
     public function getTenrac($id_tr): ? array {
-        $stmt = $this->pdo->prepare('SELECT NOM_TR, COURRIEL_TR, TELEPHONE_TR, ADRESSE_TR FROM TENRAC WHERE ID_TR = :id_tr');
+        $stmt = $this->pdo->prepare('SELECT NOM_TR, COURRIEL_TR, TELEPHONE_TR, ADRESSE_TR,GRADE_TR,RANG_TR,TITRE_TR,DIGNITE_TR FROM TENRAC WHERE ID_TR = :id_tr');
         $stmt->bindValue(':id_tr', $id_tr);
         $stmt->execute();
 
@@ -77,20 +79,25 @@ class ModelTenrac
      * @param $id_tr: id de l'utilisateur
      * @return void
      */
-    public function updateTenrac($nom, $mdp, $email, $telephone, $adresse, $id_tr): void
+    public function updateTenrac($nom, $mdp, $email, $telephone, $adresse, $grade, $rang, $titre, $dignite, $id_tr): void
     {
-        $sql = 'UPDATE TENRAC SET NOM_TR=:nom, MDP_TR=:mdp, COURRIEL_TR=:email, TELEPHONE_TR=:telephone, ADRESSE_TR=:adresse WHERE ID_TR=:id_tr';
+        $sql = 'UPDATE TENRAC SET NOM_TR=:nom, MDP_TR=:mdp, COURRIEL_TR=:email, TELEPHONE_TR=:telephone, ADRESSE_TR=:adresse, GRADE_TR=:grade, RANG_TR=:rang, TITRE_TR=:titre, DIGNITE_TR=:dignite WHERE ID_TR=:id_tr';
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([
             ':nom' => $nom,
-            ':mdp' => $mdp,
+            ':mdp' => password_hash($mdp,PASSWORD_DEFAULT),
             ':email' => $email,
             ':telephone' => $telephone,
             ':adresse' => $adresse,
+            ':grade' => $grade,
+            ':rang' => $rang,
+            ':titre' => $titre,
+            ':dignite' => $dignite,
             ':id_tr' => $id_tr
         ]);
         // return $stmt->fetch();
     }
+
 
     /**
      * Fonction qui nous permet de récupérer l'id d'un utilisateur grace à son email et son mot de passe

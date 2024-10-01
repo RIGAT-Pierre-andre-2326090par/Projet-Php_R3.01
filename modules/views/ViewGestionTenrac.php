@@ -10,26 +10,20 @@ class ViewGestionTenrac
      * @return void
      */
     public function show($tenrac): void {
-        $id = $tenrac['ID_TR'];
         ob_start();
         ?>
         <section class="formulaire">
-            <form action="/index.php?action=gestionTenrac&id=<?= $id ?>" method="POST">
+            <form action="/index.php?action=tenracmodifie" method="POST">
                 <label for="nomTenrac">Nom :</label>
                 <input type="text" name="nomTenrac" id="nomTenrac" required value="<?= htmlspecialchars($tenrac['NOM_TR']) ?>"><br>
-
                 <label for="mdpTenrac">Mot de passe :</label>
                 <input type="password" name="mdpTenrac" id="mdpTenrac" required><br>
-
                 <label for="adrTenrac">Adresse :</label>
                 <input type="text" name="adrTenrac" id="adrTenrac" required value="<?= htmlspecialchars($tenrac['ADRESSE_TR']) ?>"><br>
-
                 <label for="courrielTenrac">Courriel :</label>
                 <input type="email" name="courrielTenrac" id="courrielTenrac" required value="<?= htmlspecialchars($tenrac['COURRIEL_TR']) ?>"><br>
-
                 <label for="telephoneTenrac">Téléphone :</label>
                 <input type="number" name="telephoneTenrac" id="telephoneTenrac" required value="<?= htmlspecialchars($tenrac['TELEPHONE_TR']) ?>"><br>
-
                 <label for="gradeTenrac">Grade :</label>
                 <select name="gradeTenrac" id="gradeTenrac" required>
                     <option value=""> -- Choisissez un grade --</option>

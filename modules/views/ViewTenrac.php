@@ -20,8 +20,11 @@ class ViewTenrac
         <form action="/index.php?action=logout" method="POST">
             <button class="btn" type="submit">Se déconnecter</button>
         </form>
+        <form action="/index.php?action=modifTenrac" method="POST">
+            <button class="btn" type="submit" name="modifBouton">Modifier Tenrac</button>
+        </form>
         <form action="/index.php?action=supprTenrac" method="POST">
-            <button class="btn" type="submit">Supprimer son compte</button>
+            <button class="btn" type="submit" name="deleteBouton">Supprimer son compte</button>
         </form>
 
         <?php

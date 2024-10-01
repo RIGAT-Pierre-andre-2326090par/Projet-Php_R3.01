@@ -21,7 +21,6 @@ class ControllerTenrac {
         }
 
         // Utilisateur connecté, récupérer les données de l'utilisateur
-        $user = (new \models\ModelTenrac())->getTenrac($_SESSION['user']);
-        (new \views\ViewTenrac())->show($user);
+        (new \views\ViewTenrac())->show();
     }
 }
