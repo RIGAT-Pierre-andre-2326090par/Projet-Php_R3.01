@@ -2,6 +2,9 @@
 
 namespace views;
 
+use models\ModelClub;
+use models\ModelTenrac;
+
 class ViewClub
 {
     /**
@@ -21,6 +24,18 @@ class ViewClub
         <h2><?php echo  $nom ?></h2>
         <h4><?php echo  $adr ?></h4>
         <p> <?php echo  $description ?></p>
+        <p> <?php foreach ((new ModelClub())->getMembreClub($id) as &$tenrac) {
+                $tenrac_info = (new ModelTenrac())->getTenrac($tenrac);?>
+                <a href="/index.php?action=tenrac">
+                    <section class="infoClub">
+                        <img src="<?= htmlspecialchars('/_assets/images/plat/' . $tenrac_info['ADRESSE_TR']); ?>" alt="<?= htmlspecialchars($tenrac_info['NOM_TR']); ?>" style="max-width: 200px; height: auto;" />
+                        <div>
+                            <h3><?= htmlspecialchars($tenrac_info['NOM_TR']); ?></h3>
+                            <p><?= htmlspecialchars($tenrac_info['ADRESSE_TR']); ?></p>
+                        </div>
+                    </section>
+                </a>
+            <?php }?></p>
         <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
             <form action="/index.php?action=gestionClub&id=<?= $id ?>" method="POST">
                 <button type="submit" class="modif">Modifier Club</button>

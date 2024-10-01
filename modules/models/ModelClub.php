@@ -98,4 +98,27 @@ class ModelClub
     {
         return $this->img_cl;
     }
+
+    public function getMembreClub($id_cl){
+        $pdo = (new database())->getInstance();
+        $stmt = $pdo->prepare('SELECT ID_TR FROM TENRAC WHERE ID_CL=:id');
+        try
+        {
+            $stmt->bindParam(':id', $id_cl, \PDO::PARAM_INT);
+            $stmt->execute();
+            if ($stmt->rowCount() === 0) {
+                return null; // Pas de résultat, retourne null
+            }
+            // Récupération des résultats sous forme de tableau associatif
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $e)
+        {
+            // Affichage de l'erreur et rappel de la requête.
+            echo 'Erreur : ', $e->getMessage(), PHP_EOL;
+            echo 'Requête : ', $sql, PHP_EOL;
+            exit();
+        }
+
+    }
 }

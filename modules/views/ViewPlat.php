@@ -13,11 +13,12 @@ class ViewPlat
     public function __construct(){}
 
     /**
-     * renvoie la page du plat
-     * @param $plat: array
+     * Affichage de la page du plat
+     * @param $plat
+     * @param $ingredients
      * @return void
      */
-    public function show($plat):void{
+    public function show($plat, $ingredients):void{
         $id = $plat['ID_PL'];
         $nom = $plat['NOM_PL']; // Nom du controllerPlat
         $description = $plat['DESC_PL']; // Description du controllerPlat
@@ -29,16 +30,24 @@ class ViewPlat
                 <section id="leftside">
                     <section id="top">
                         <h2 id="nom_plat"> <?php echo $nom ?> </h2>
-                        <img id="note" alt="<?= $nom ?>" class="img_plat" src="<?php echo '/_assets/images/plat/' . $image ?>">
+                        <img id="note" alt="<?= $nom ?>" src="">
                     </section>
-
+                    <section id="bottom">
+                        <img id="plat" class="img_plat" alt="<?= $nom ?>" src="<?php echo '/_assets/images/plat/' . $image ?>"> <!--import depuis la BD-->
+                    </section>
                 </section>
                 <section id="right">
                     <p id="description"><?php echo  $description ?></p>
-                    <h3 id="ingredients"><!--import depuis la BD--></h3>
-                    <ol id="liste_ingredients">
 
-                    </ol>
+                    <h3 id="ingredients">Ingrédients :</h3>
+                    <div class="listeIngredients">
+                        <?php foreach ($ingredients as $ingredient) { ?>
+                            <ul>
+                                <li><?= htmlspecialchars($ingredient->getNom()); ?></li>
+                            </ul>
+                        <?php }?>
+                    </div>
+
                     <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
                         <!--boutons modification et suppression plats-->
                         <form action="/index.php?action=gestionPlat&id=<?= $id ?>" method="POST">
