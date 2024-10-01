@@ -15,13 +15,16 @@ class ControllerUnRepas
         if ($id) {
             $repasVide = \models\ModelUnRepas::createEmpty();
             $repas = $repasVide->getRepas($id);
+
+            $plats = (new \models\ModelUnRepas())->getPlats($id);
+
             if ($repas) {
-                (new \views\ViewUnRepas())->show($repas);
+                (new \views\ViewUnRepas())->show($repas, $plats);
             } else {
-                echo 'ModelRepas non trouvé.';
+                echo 'Repas non trouvé.';
             }
         } else {
-            echo 'Aucun id de controllerRepas fourni.';
+            echo 'Aucun id de Repas fourni.';
         }
     }
 

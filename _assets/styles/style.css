@@ -314,11 +314,28 @@ header button, .formulaire input[type="submit"], .modif, .delete {
 }
 
 #leftside {
-    width: 50%;
+    width: 70%;
+}
+
+#topSide img {
+    margin: 10px;
+    border-radius: 20px;
+    object-fit: cover;
+    float: left;
+}
+
+#top img {
+    width: calc(100% - 20px);
+    aspect-ratio: 16/9;
+}
+
+#right img {
+    width: 200px;
+    aspect-ratio: 1/1;
 }
 
 #right {
-    width: 50%;
+    width: 30%;
 }
 
 #note {

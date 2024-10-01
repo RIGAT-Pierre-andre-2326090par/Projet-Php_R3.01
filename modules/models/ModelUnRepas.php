@@ -133,6 +133,7 @@ class ModelUnRepas
         try {
             // Bind du paramètre nom
             $stmt->bindParam(':idrepas', $idrp, PDO::PARAM_STR);
+
             $stmt->execute();
 
             // Vérification si des résultats sont retournés
@@ -140,12 +141,36 @@ class ModelUnRepas
                 return null; // Pas de controllerPlat trouvé
             }
 
-            // Récupération du controllerPlat sous forme de tableau associatif
+            // resultat : plats et page max
             return $stmt->fetch(PDO::FETCH_ASSOC);
-
         } catch (PDOException $e) {
             echo 'Erreur : ', $e->getMessage(), PHP_EOL;
             exit();
         }
+    }
+
+    public function getPlats($idrepas) {
+        $pdo = (new \includes\database())->getInstance();
+
+        $sql2 = 'SELECT PLAT.ID_PL id, PLAT.IMG_PL imgplat, PLAT.NOM_PL nomplat, PLAT.DESC_PL descplat
+                FROM REPAS
+                JOIN est_compose
+                ON est_compose.ID_RP = REPAS.ID_RP
+                LEFT JOIN PLAT
+                ON est_compose.ID_PL = PLAT.ID_PL
+				WHERE REPAS.ID_RP = :idrepas';
+        $stmt2 = $pdo->prepare($sql2); // Préparation d'une requête.
+        $stmt2->bindParam(':idrepas', $idrepas, PDO::PARAM_STR);
+        $stmt2->execute();
+        $stmt2->rowCount();
+
+        $stmt2->setFetchMode(PDO::FETCH_OBJ);
+        $plats = [];
+        while ($result = $stmt2->fetch())
+        {
+            $plats[] = new ModelPlat($result->id, $result->nomplat, $result->descplat, $result->imgplat) ;
+        }
+
+        return $plats;
     }
 }
