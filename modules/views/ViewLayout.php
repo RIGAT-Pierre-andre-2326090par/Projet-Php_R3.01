@@ -27,40 +27,51 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="icon" href="/_assets/images/favicon.ico">
             <link rel="icon" type="image/png" href="/_assets/images/logo.webp"> <!-- On insère l'icone du site -->
+            <script type="text/javascript" src="/_assets/scripts/script.js"></script>
         </head>
         <body>
         <header>
-            <nav class="bandeau"> <!-- On crée notre bandeau de navigation -->
-                <ul>
-                    <li><img src="/_assets/images/logo.webp" alt="Logo du site"/> <!-- Affichage du logo. --></li>
-                    <li><a href="/index.php?action=accueil"> Accueil </a> </li>
-                    <li><a href="/index.php?action=plats"> Plats </a></li>
-                    <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
-                        <li><a href="/index.php?action=repas">Repas</a></li>
-                    <?php endif; ?>
-
-                    <li><a href="/index.php?action=ordre"> Structure </a></li>
-                </ul>
-            </nav>
-            <nav class="bandeau">
-                <ul>
-                    <li>
-                        <form action="/index.php?action=recherche" method="GET"> <!-- Utilisation de la barre de recherche. -->
-                            <input type="text" id="search" name="keyword" required>
-                            <button name="action" value="recherche" type="submit"> Rechercher </button>
-                        </form>
-                    </li>
-                    <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
-                        <li><a href="/index.php?action=gestionTenrac">Profil</a></li>
-                        <li><a href="/index.php?action=sign_in"> Ajouter Utilisateur </a></li>
-                        <!-- <li><a href="/index.php?action=profilTenrac"> Se Déconnecter </a></li>-->
-                    <?php else: ?> <!-- Sinon, pouvoir se déconnecter -->
-                        <li><a href="/index.php?action=login"> Se Connecter </a></li>
-
-
-                    <?php endif; ?>
-                </ul>
-            </nav>
+            <div>
+                <img src="/_assets/images/icons/hamburgermenu.webp" alt="Ouverture du Menu" id="boutonmenu">
+                <img src="/_assets/images/logo.webp" alt="Logo du site">
+            </div>
+            <div class="menu">
+                <nav class="bandeau">
+                    <!-- On crée notre bandeau de navigation -->
+                    <ul>
+                        <li>
+                            <a href="/index.php?action=accueil"> Accueil </a>
+                        </li>
+                        <li>
+                            <a href="/index.php?action=plats"> Plats </a>
+                        </li>
+                        <li>
+                            <a href="/index.php?action=ordre"> Structure </a>
+                        </li>
+                        <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                            <li><a href="/index.php?action=repas">Repas</a></li>
+                        <?php endif; ?>
+                    </ul>
+                </nav>
+                <nav class="bandeau">
+                    <ul>
+                        <li>
+                            <form action="/index.php?action=recherche" method="GET">
+                                <!-- Utilisation de la barre de recherche. -->
+                                <input type="text" id="search" name="keyword" required="">
+                                <button name="action" value="recherche" type="submit"> Rechercher </button>
+                            </form>
+                        </li>
+                        <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                            <li><a href="/index.php?action=gestionTenrac">Profil</a></li>
+                            <li><a href="/index.php?action=sign_in"> Ajouter Utilisateur </a></li>
+                            <!-- <li><a href="/index.php?action=profilTenrac"> Se Déconnecter </a></li>-->
+                        <?php else: ?> <!-- Sinon, pouvoir se déconnecter -->
+                            <li><a href="/index.php?action=login"> Se Connecter </a></li>
+                        <?php endif; ?>
+                    </ul>
+                </nav>
+            </div>
         </header>
         <main>
             <?= $this->content; ?> <!-- Contenu de la page, avec $content-->
