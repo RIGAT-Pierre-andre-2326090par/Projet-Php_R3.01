@@ -13,8 +13,9 @@ class ViewPlat
     public function __construct(){}
 
     /**
-     * renvoie la page du plat
-     * @param $plat: array
+     * Affichage de la page du plat
+     * @param $plat
+     * @param $ingredients
      * @return void
      */
     public function show($plat, $ingredients):void{

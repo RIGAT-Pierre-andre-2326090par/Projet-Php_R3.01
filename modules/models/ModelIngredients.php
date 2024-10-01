@@ -24,9 +24,19 @@ class ModelIngredients
         $this->image = $image;
     }
 
+    /**
+     * renvoie le nom de l'ingrédient
+     * @return string
+     */
     public function getNom(): string {
         return $this->nom;
     }
+
+    /**
+     * retourne les ingrédients
+     * @param $idPlat
+     * @return array|void
+     */
     public function getIngredients($idPlat) {
         $pdo = (new \includes\database())->getInstance();
         $stmt = $pdo->prepare('SELECT INGREDIENT.ID_IG id, INGREDIENT.NOM_IG nomingredient, INGREDIENT.IMG_IG imgingredient FROM INGREDIENT JOIN plat_contient ON INGREDIENT.ID_IG = plat_contient.ID_IG WHERE plat_contient.ID_PL = :idPlat');
