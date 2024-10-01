@@ -16,10 +16,17 @@ class ControllerSignIn
             $Adresse = $_POST['Adresse'];
             $Email = $_POST['Email'];
             $Telephone = $_POST['Téléphone'];
-            $id = (new \models\ModelSignIn())->addUser($Nom, $Mot_de_Passe, $Adresse, $Email, $Telephone);
-            $_SESSION['user'] = $id;
-            header('location:index.php?action=tenrac');
+            $grade = !empty($_POST['grade']) ? $_POST['grade'] : 'Affilié';
+            $rang = !empty($_POST['rang']) ? $_POST['rang'] : null;
+            $titre = !empty($_POST['titre']) ? $_POST['titre'] : null;
+            $dignite = !empty($_POST['dignite']) ? $_POST['dignite'] : null;
+            (new \models\ModelSignIn())->addUser($Nom, $Mot_de_Passe, $Adresse, $Email, $Telephone, $grade, $rang, $titre, $dignite);
+            (new \views\ViewLayout('User Crée', '<h2>User crée</h2>'))->show();
         }
-        (new \views\ViewSignIn())->show();
+        else {
+            (new \views\ViewSignIn())->show();
+        }
+
+
     }
 }

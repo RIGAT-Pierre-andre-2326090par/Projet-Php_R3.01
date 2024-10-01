@@ -15,7 +15,7 @@ class ViewSignIn
         <section class="formulaire">
             <h1>Créer un compte</h1>
             <br>
-            <form action="/index.php?action=login" method="post"> <!-- On crée un formulaire afin de récupérer les informations d'inscription -->
+            <form action="/index.php?action=usercree" method="post"> <!-- On crée un formulaire afin de récupérer les informations d'inscription -->
                 <label for="nom">Nom</label>
                 <input type="text" name="Nom" id="nom" required><br>
                 <label for="password">Mot de Passe</label>
@@ -26,6 +26,43 @@ class ViewSignIn
                 <input type="email" name="Email" id="email" required><br>
                 <label for="tel">Téléphone</label>
                 <input type="tel" name="Téléphone" id="tel" required><br>
+                <label for="grade">Grade</label>
+                <select name="grade" id="grade" required>
+                    <option value="">--Veuillez choisir un grade--</option>
+                    <option value="affilie">Affilié</option>
+                    <option value="sympathisant">Sympathisant</option>
+                    <option value="adherent">Adhérent</option>
+                    <option value="chevalier">Chevalier</option>
+                    <option value="dame">Dame</option>
+                    <option value="grand_chevalier">Grand Chevalier</option>
+                    <option value="haute_dame">Haute Dame</option>
+                    <option value="commandeur">Commandeur</option>
+                    <option value="grand_croix">Grand’Croix</option>
+                </select>
+                <br>
+                <label for="rang">Rang</label>
+                <select name="rang" id="rang">
+                    <option value="">--Aucun rang--</option>
+                    <option value="novice">Novice</option>
+                    <option value="compagnon">Compagnon</option>
+                </select>
+                <br>
+                <label for="titre">Titre</label>
+                <select name="titre" id="titre">
+                    <option value="">--Aucun titre--</option>
+                    <option value="philanthrope">Philanthrope</option>
+                    <option value="protecteur">Protecteur</option>
+                    <option value="honorable">Honorable</option>
+                </select>
+                <br>
+                <label for="dignite">Dignité</label>
+                <select name="dignite" id="dignite">
+                    <option value="">--Aucune dignité--</option>
+                    <option value="maitre">Maître</option>
+                    <option value="grand_chancelier">Grand Chancelier</option>
+                    <option value="grand_maitre">Grand Maître</option>
+                </select>
+                <br>
                 <input type="submit" id="sign_in" value="Soumettre">
             </form>
         </section>

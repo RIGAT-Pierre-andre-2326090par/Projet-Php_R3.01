@@ -25,14 +25,14 @@ class ModelTenrac
      * @param $telephone: téléphone de l'utilisateur
      * @return int: id de l'utilisateur ajouté
      */
-    public function insertTenrac($nom, $mdp, $adresse, $email, $telephone): int
+    public function insertTenrac($nom, $mdp, $adresse, $email, $telephone,$grade,$rang,$titre,$dignite): int
     {
         $sql = 'SELECT MAX(ID_TR) as max_id FROM TENRAC';
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         $id = $result['max_id'] !== null ? $result['max_id'] + 1 : 0;
-        $sql2 = 'INSERT INTO TENRAC (NOM_TR, MDP_TR, COURRIEL_TR, TELEPHONE_TR, ADRESSE_TR, ID_TR) VALUES (:nom, :mdp, :email, :telephone, :adresse, :id)';
+        $sql2 = 'INSERT INTO TENRAC (NOM_TR, MDP_TR, COURRIEL_TR, TELEPHONE_TR, ADRESSE_TR, ID_TR,GRADE_TR,RANG_TR,TITRE_TR,DIGNITE_TR) VALUES (:nom, :mdp, :email, :telephone, :adresse, :id, :grade, :rang, :titre, :dignite)';
         $stmt2 = $this->pdo->prepare($sql2);
         $stmt2->execute([
             ':nom' => $nom,
@@ -40,7 +40,11 @@ class ModelTenrac
             ':email' => $email,
             ':telephone' => $telephone,
             ':adresse' => $adresse,
-            ':id'=>$id
+            ':id'=>$id,
+            ':grade'=>$grade,
+            ':rang'=>$rang,
+            ':titre'=>$titre,
+            ':dignite'=>$dignite
         ]);
         return $id; // Retourne l'id de l'utilisateur ajouté
     }
@@ -50,7 +54,7 @@ class ModelTenrac
      * @param $id_tr: id de l'utilisateur
      * @return array|null: tableau associatif de l'utilisateur ou null si aucun utilisateur n'est trouvé
      */
-    public function getTenrac($id_tr): ?array {
+    public function getTenrac($id_tr): ? array {
         $stmt = $this->pdo->prepare('SELECT NOM_TR, COURRIEL_TR, TELEPHONE_TR, ADRESSE_TR FROM TENRAC WHERE ID_TR = :id_tr');
         $stmt->bindValue(':id_tr', $id_tr);
         $stmt->execute();

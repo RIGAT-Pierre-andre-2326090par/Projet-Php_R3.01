@@ -33,7 +33,9 @@ try {
         }
         elseif ($_GET['action'] === 'sign_in') {
             (new \controllers\ControllerSignIn())->execute();
-
+        }
+        elseif ($_GET['action']==='usercree'){
+            (new \controllers\ControllerSignIn())->execute();
         }
         elseif ($_GET['action'] === 'forget') {
             (new \controllers\ControllerForgetPassword())->execute();
