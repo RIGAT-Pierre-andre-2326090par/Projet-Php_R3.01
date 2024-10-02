@@ -2,7 +2,6 @@
 
 namespace views;
 
-use models\ModelTenrac;
 
 class ViewTenrac
 {
