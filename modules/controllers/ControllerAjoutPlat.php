@@ -4,6 +4,11 @@ namespace controllers;
 
 class ControllerAjoutPlat
 {
+    /**
+     * Traite la requête de la page AjoutPlat
+     * @return void
+     * @throws \Exception
+     */
     public function execute(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
