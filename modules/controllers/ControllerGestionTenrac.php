@@ -41,7 +41,7 @@ class ControllerGestionTenrac
                     (new \views\ViewLayout('User non mis à jour', '<h2>Erreur lors de l\'envoie des codes (user non crée)</h2>'))->show();
                 }
             }
-            if (isset($_POST['supprimerBouton'])) {
+            if (isset($_POST['deleteBouton'])) {
                 $id = $_SESSION['user'];
                 (new \models\ModelTenrac())->deleteTenrac($id);
                 (new \views\ViewLayout('Votre compte à été supprimé', '<h2>Votre compte à été supprimé</h2>'))->show();
