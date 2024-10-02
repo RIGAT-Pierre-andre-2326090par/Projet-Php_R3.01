@@ -28,7 +28,7 @@ class ViewClub
                 $tenrac_info = (new ModelTenrac())->getTenrac($tenrac);?>
                 <a href="/index.php?action=tenrac">
                     <section class="infoClub">
-                        <img src="<?= htmlspecialchars('/_assets/images/plat/' . $tenrac_info['ADRESSE_TR']); ?>" alt="<?= htmlspecialchars($tenrac_info['NOM_TR']); ?>" style="max-width: 200px; height: auto;" />
+                        <img src="<?= htmlspecialchars('/_assets/images/plat/' . $tenrac_info['ADRESSE_TR']); ?>" alt="<?= htmlspecialchars($tenrac_info['NOM_TR']); ?>"/>
                         <div>
                             <h3><?= htmlspecialchars($tenrac_info['NOM_TR']); ?></h3>
                             <p><?= htmlspecialchars($tenrac_info['ADRESSE_TR']); ?></p>
