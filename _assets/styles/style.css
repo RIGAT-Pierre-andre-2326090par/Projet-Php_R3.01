@@ -401,4 +401,9 @@ header button, .formulaire input[type="submit"], .modif, .delete {
         width: 100px;
         height: 125px;
     }
+
+    .infoclub .imgclub {
+        width: 45px;
+        height: 45px;
+    }
 }
