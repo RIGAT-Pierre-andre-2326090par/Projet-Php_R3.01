@@ -61,6 +61,10 @@ class ModelClubs
         return $resultat;
     }
 
+    /**
+     * Récupère l'entièreté des clubs de la base de donnée
+     * @return array
+     */
     public function getAllClubs(): array
     {
 
