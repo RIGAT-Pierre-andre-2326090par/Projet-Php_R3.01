@@ -25,29 +25,13 @@ class ModelGestionClub
      * @param $adresse: l'adresse du club
      * @param $description: la description du club
      * @param $image: l'image du club
-     * @param $ordre: l'ordre auquel est rattaché le club
      * @return void
      * @throws Exception
      */
-    public function insertClub($nom, $adresse, $description, $image, $ordre): void
+    public function insertClub($nom, $adresse, $description, $image): void
     {
 
-        try {
-            $sql = 'SELECT NOM_OR ordre FROM ORDRE WHERE NOM_OR = :ordre';
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->bindParam(':ordre', $ordre, PDO::PARAM_STR);
-            $stmt->execute();
 
-            // Vérification si des résultats sont retournés
-            $stmt->rowCount() or throw new Exception('Votre ordre selectionné est invalide');
-        }
-        catch (PDOException $e)
-        {
-            // Affichage de l'erreur et rappel de la requête.
-            echo 'Erreur : ', $e->getMessage(), PHP_EOL;
-            echo 'Requête : ', $sql, PHP_EOL;
-            exit();
-        }
 
         $sql = 'SELECT MAX(ID_CL) as max_id FROM CLUB';
         $stmt = $this->pdo->prepare($sql);
@@ -56,15 +40,14 @@ class ModelGestionClub
         $id = $result['max_id'] !== null ? $result['max_id'] + 1 : 0;
 
         try {
-            $sql = 'INSERT INTO CLUB (NOM_CL, ADRESSE_CL, DESC_CL, IMG_CL, NOM_OR, ID_CL)
-                    VALUES (:nom, :adresse, :description, :image, :ordre, :id)';
+            $sql = 'INSERT INTO CLUB (NOM_CL, ADRESSE_CL, DESC_CL, IMG_CL, ID_CL)
+                    VALUES (:nom, :adresse, :description, :image, :id)';
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([
                 ':nom' => $nom,
                 ':adresse' => $adresse,
                 ':description' => $description,
                 ':image' => $image,
-                ':ordre' => $ordre,
                 ':id' => $id
             ]);
         }
