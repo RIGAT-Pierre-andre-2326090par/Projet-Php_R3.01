@@ -81,11 +81,12 @@ footer hr {
 }
 
 .reseaux img {
-    width: 100px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     aspect-ratio: 1 / 1;
     object-fit: contain;
     transition-duration: 250ms;
+    margin: 0 10px;
 }
 
 .reseaux img:hover {
@@ -225,6 +226,8 @@ main {
 
 .formulaire input {
     border-radius: 0.5em;
+    border: solid 0.1em rgb(0 0 0 / 20%);
+    padding: 0.3em
 }
 
 .img_plat {

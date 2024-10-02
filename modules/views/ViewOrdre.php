@@ -39,7 +39,7 @@ class ViewOrdre
         </div>
         <ul>
             <?php for ($i = ($page-2 >= 0) ? ($page-2) : 0; ($i <= $page+2) && ($i <= $pagemax); $i++) { ?>
-                <li><a href="<?php echo '/index.php?action=ordre&page='.$i ?>"><?php echo $i ?></a></li>
+                <li><a href="<?php echo '/index.php?action=ordre&page='.$i ?>"><?php echo $i+1 ?></a></li>
             <?php } ?>
         </ul>
         <?php

@@ -11,11 +11,17 @@ class ControllerGestionRepas
      */
     public function execute(): void
     {
+        if (!isset($_SESSION['user'])) {
+            // Redirige vers la page de connexion
+            header('Location: /index.php?action=login');
+            exit(); // Assurez-vous que le script s'arrête ici
+        }
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie si le bouton de modification a été soumis
             if (isset($_POST['modifBouton'])) {
                 $id = $_GET['id'];
-                $date = $_POST['dateRepas'];
+                $date = $_POST['dateRepéas'];
                 $club = $_POST['clubRepas'];
                 (new \models\ModelGestionRepas())->updateRepas($date, $id, $club);
             }

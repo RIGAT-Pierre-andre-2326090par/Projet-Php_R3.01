@@ -22,20 +22,20 @@ class ViewRepas
             <?php foreach ($repas as $unrepas) { ?>
                 <a href="/index.php?action=unrepas&id=<?= urlencode($unrepas->getIdrp()); ?>">
                     <section class="infoClub">
-                        <img src="<?= htmlspecialchars('/_assets/images/plat/' . $unrepas->getImageplat()); ?>" alt="<?= htmlspecialchars($unrepas->getDates()); ?>" style="max-width: 200px; height: auto;" />
+                        <img src="<?= htmlspecialchars('/_assets/images/plat/' . $unrepas->getImageplat()); ?>" alt="<?= htmlspecialchars($unrepas->getDates()); ?>"/>
                         <div>
                             <h3><?= htmlspecialchars($unrepas->getDates()); ?></h3>
                             <p><?= htmlspecialchars($unrepas->getNomplat() ?? ""); ?></p>
                             <p><?= htmlspecialchars($unrepas->getNomclub() ?? ""); ?></p>
                         </div>
-                        <img src="<?= htmlspecialchars('/_assets/images/club/' . $unrepas->getImageclub()); ?>" alt="<?= htmlspecialchars($unrepas->getNomclub()); ?>" style="max-width: 200px; height: auto;" />
+                        <img src="<?= htmlspecialchars('/_assets/images/club/' . $unrepas->getImageclub()); ?>" alt="<?= htmlspecialchars($unrepas->getNomclub()); ?>"/>
                     </section>
                 </a>
             <?php }?>
         </div>
         <ul>
             <?php for ($i = ($page-2 >= 0) ? ($page-2) : 0; ($i <= $page+2) && ($i <= $pagemax); $i++) { ?>
-                <li><a href="<?php echo '/index.php?action=repas&page='.$i ?>"><?php echo $i ?></a></li>
+                <li><a href="<?php echo '/index.php?action=repas&page='.$i ?>"><?php echo $i+1 ?></a></li>
             <?php } ?>
         </ul>
         <?php

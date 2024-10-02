@@ -14,6 +14,12 @@ class ControllerForgetPassword
      */
     public function execute(): void
     {
+        if (!isset($_SESSION['user'])) {
+            // Redirige vers la page de connexion
+            header('Location: /index.php?action=login');
+            exit(); // Assurez-vous que le script s'arrête ici
+        }
+
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $email = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
 

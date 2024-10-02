@@ -30,7 +30,7 @@ class ViewPlat
                 <section id="leftside">
                     <section id="top">
                         <h2 id="nom_plat"> <?php echo $nom ?> </h2>
-                        <img id="note" alt="<?= $nom ?>" src="">
+                        <img id="note" alt="Note" src="">
                     </section>
                     <section id="bottom">
                         <img id="plat" class="img_plat" alt="<?= $nom ?>" src="<?php echo '/_assets/images/plat/' . $image ?>"> <!--import depuis la BD-->
