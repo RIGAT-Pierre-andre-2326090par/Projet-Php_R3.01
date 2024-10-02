@@ -63,7 +63,7 @@ class ViewSignIn
                     <option value="grand_maitre">Grand Maître</option>
                 </select>
                 <br>
-                <input type="submit" id="sign_in" value="Soumettre">
+                <input type="submit" name="signe_in" value="Soumettre">
             </form>
         </section>
         <?php

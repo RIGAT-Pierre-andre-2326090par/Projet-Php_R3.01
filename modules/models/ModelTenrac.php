@@ -179,4 +179,10 @@ class ModelTenrac
 
         return $stmt->execute(); // Retourne true si la mise à jour a réussi
     }
+    public function getPassword($email){
+        $stmt = $this->pdo->prepare("SELECT MDP_TR FROM TENRAC WHERE email = :email");
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }

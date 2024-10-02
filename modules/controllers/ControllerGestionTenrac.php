@@ -16,8 +16,8 @@ class ControllerGestionTenrac
             // Vérifie si le bouton de modification a été soumis
             if (isset($_POST['modifBouton'])) {
                 $id = $_SESSION['user'];
-                $nom = $_POST['nomTenrac'];
-                $mdp = $_POST['mdpTenrac'];
+                $Nom = $_POST['nomTenrac'];
+                $password = $_POST['mdpTenrac'];
                 $adr = $_POST['adrTenrac'];
                 $email = $_POST['courrielTenrac'];
                 $telephone = $_POST['telephoneTenrac'];
@@ -25,8 +25,17 @@ class ControllerGestionTenrac
                 $rang = $_POST['rangTenrac'];
                 $titre = $_POST['titreTenrac'];
                 $dignite = $_POST['digniteTenrac'];
-                (new \models\ModelTenrac())->updateTenrac($nom, $mdp, $email, $telephone, $adr, $grade, $rang, $titre, $dignite, $id);
-                (new \views\ViewLayout('Tenrac modifié', '<h2>Tenrac Modifié</h2>'))->show();
+                $subject = 'Code Tenracs-Lovers';
+                $message = "Bonjour, votre mot de passe a été modifié, voici vos nouveaux identifiants pour tenrac lovers : \n - email :".$email."\n - mot de passe :".$password."\n Cordialement, \n L'ordre des tenracs";
+                $headers = 'From: no-reply@tenraclovers.com' . "\r\n" .
+                    'Reply-To: no-reply@tenraclovers.com' . "\r\n" .
+                    'X-Mailer: PHP/' . phpversion();
+                if (mail($email, $subject, $message, $headers)) {
+                    (new \models\ModelTenrac())->updateTenrac($Nom,$password,$email,$telephone,$adr,$grade,$rang,$titre,$dignite,$id);
+                    (new \views\ViewLayout('User mis à jour', '<h2>User mis à jour </h2>'))->show();
+                } else {
+                    (new \views\ViewLayout('User non mis à jour', '<h2>Erreur lors de l\'envoie des codes (user non crée)</h2>'))->show();
+                }
             }
             if (isset($_POST['supprimerBouton'])) {
                 $id = $_SESSION['user'];

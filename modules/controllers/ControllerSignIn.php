@@ -2,6 +2,8 @@
 
 namespace controllers;
 
+use models\ModelTenrac;
+
 class ControllerSignIn
 {
     /**
@@ -18,21 +20,29 @@ class ControllerSignIn
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $Nom = $_POST['Nom'];
-            $Mot_de_Passe = password_hash($_POST['Mot_de_Passe'], PASSWORD_DEFAULT);
+            $password= $_POST['Mot_de_Passe'];
+            $Mot_de_Passe = password_hash($password, PASSWORD_DEFAULT);
             $Adresse = $_POST['Adresse'];
-            $Email = $_POST['Email'];
+            $email = $_POST['Email'];
             $Telephone = $_POST['Téléphone'];
             $grade = !empty($_POST['grade']) ? $_POST['grade'] : 'Affilié';
             $rang = !empty($_POST['rang']) ? $_POST['rang'] : null;
             $titre = !empty($_POST['titre']) ? $_POST['titre'] : null;
             $dignite = !empty($_POST['dignite']) ? $_POST['dignite'] : null;
-            (new \models\ModelSignIn())->addUser($Nom, $Mot_de_Passe, $Adresse, $Email, $Telephone, $grade, $rang, $titre, $dignite);
-            (new \views\ViewLayout('User Crée', '<h2>User crée</h2>'))->show();
+            $subject = 'Code Tenracs-Lovers';
+            $message = "Bonjour voici vos identifiants pour tenrac lovers : \n - email :".$email."\n - mot de passe :".$password."\n Cordialement, \n L'ordre des tenracs";
+            $headers = 'From: no-reply@tenraclovers.com' . "\r\n" .
+                            'Reply-To: no-reply@tenraclovers.com' . "\r\n" .
+                            'X-Mailer: PHP/' . phpversion();
+            if (mail($email, $subject, $message, $headers)) {
+                (new \models\ModelSignIn())->addUser($Nom, $Mot_de_Passe, $Adresse, $email, $Telephone, $grade, $rang, $titre, $dignite);
+                (new \views\ViewLayout('User Crée', '<h2>User crée</h2>'))->show();
+            } else {
+                (new \views\ViewLayout('User Non Crée', '<h2>Erreur lors de l\'envoie des codes (user non crée)</h2>'))->show();
+            }
         }
         else {
             (new \views\ViewSignIn())->show();
         }
-
-
     }
 }
