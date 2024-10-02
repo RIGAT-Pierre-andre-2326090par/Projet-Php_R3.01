@@ -66,7 +66,6 @@ class ViewSignIn
                 <input type="submit" id="sign_in" value="Soumettre">
             </form>
         </section>
-        <a href="/index.php?action=login"><p>Retouner à la page de connexion</p></a> <!-- Retour à la page de connexion -->
         <?php
         (new ViewLayout('Inscription', ob_get_clean()))->show(); // On affiche le formulaire en plus du layout.
     }

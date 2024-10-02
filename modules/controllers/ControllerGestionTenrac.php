@@ -6,6 +6,12 @@ class ControllerGestionTenrac
 {
     public function execute()
     {
+        if (!isset($_SESSION['user'])) {
+            // Redirige vers la page de connexion
+            header('Location: /index.php?action=login');
+            exit(); // Assurez-vous que le script s'arrête ici
+        }
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie si le bouton de modification a été soumis
             if (isset($_POST['modifBouton'])) {

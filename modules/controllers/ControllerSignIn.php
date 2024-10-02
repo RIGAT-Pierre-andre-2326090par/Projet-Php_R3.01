@@ -10,6 +10,12 @@ class ControllerSignIn
      */
     public function execute(): void
     {
+        if (!isset($_SESSION['user'])) {
+            // Redirige vers la page de connexion
+            header('Location: /index.php?action=login');
+            exit(); // Assurez-vous que le script s'arrête ici
+        }
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $Nom = $_POST['Nom'];
             $Mot_de_Passe = password_hash($_POST['Mot_de_Passe'], PASSWORD_DEFAULT);
