@@ -15,7 +15,7 @@ class ControllerPlat{
             $platVide = ModelPlat::createEmpty(); // On crée un modèle vide.
             $plat = $platVide->getPlat($id);
             if ($plat) {
-                $ingredients = (new \models\ModelIngredients())->getIngredients($id); // On récupère les ingrédients du plat.
+                $ingredients = (new \models\ModelIngredients())->getIngredientsPlat($id); // On récupère les ingrédients du plat.
                 (new ViewPlat())->show($plat,$ingredients); // Affiche la vue Plat, avec le plat en détail.
             } else {
                 echo 'Plat non trouvé.';

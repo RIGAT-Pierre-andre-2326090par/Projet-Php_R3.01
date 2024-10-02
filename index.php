@@ -99,6 +99,18 @@ try {
         elseif ($_GET['action']==='confirmReset'){
             (new \controllers\ControllerForgetPassword())->execute();
         }
+        elseif ($_GET['action'] === 'ingredient') {
+            if (isset($_GET['id'])) {
+                $id = urldecode($_GET['id']);
+                (new \controllers\ControllerIngredient())->execute();
+            } else {
+                throw new Exception("ID de l'ingrédient non spécifié.");
+            }
+        } elseif ($_GET['action'] === 'ingredients') {
+            $page = 0;
+            if (isset($_GET['page'])) $page = urldecode($_GET['page']);
+            (new \controllers\ControllerIngredients())->execute($page);
+        }
 
     } else {
         (new \controllers\ControllerHomepage())->execute();

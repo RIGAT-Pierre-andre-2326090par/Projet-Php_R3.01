@@ -109,11 +109,11 @@ main {
     padding: 10px;
 }
 
-.plat div, .infoClub div {
+.plat div, .infoClub div, .infoIngredient div {
     flex: 1 1;
 }
 
-.plat img, .infoClub img{
+.plat img, .infoClub img, .infoIngredient img{
     width: 170px;
     height: 170px;
     border-radius: 1em;
@@ -123,7 +123,7 @@ main {
     background-color: rgb(209 125 0 / 22%);
 }
 
-.plat, .infoClub{
+.plat, .infoClub, .infoIngredient{
     margin: 14px;
     padding: 5px;
     border-radius: 1.2em;
@@ -380,11 +380,11 @@ header button, .formulaire input[type="submit"], .modif, .delete {
         width: 100px;
     }
 
-    .plat, .infoClub {
+    .plat, .infoClub, .infoIngredient {
         margin: 5px;
     }
 
-    .plat img, .infoClub img {
+    .plat img, .infoClub img, .infoIngredient img {
         width: 100px;
         height: 125px;
     }
