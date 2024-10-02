@@ -2,12 +2,16 @@
 
 namespace controllers;
 
+use Exception;
+use models\ModelGestionPlat;
+use views\ViewAjoutPlat;
+
 class ControllerAjoutPlat
 {
     /**
      * Traite la requête de la page AjoutPlat
      * @return void
-     * @throws \Exception
+     * @throws Exception
      */
     public function execute(): void
     {
@@ -17,9 +21,9 @@ class ControllerAjoutPlat
                 $nom = $_POST['nomPlat'];
                 $desc = $_POST['descPlat'];
                 $img = $_POST['imgPlat'];
-                (new \models\ModelGestionPlat())->insertPlat($nom, $desc, $img);
+                (new ModelGestionPlat())->insertPlat($nom, $desc, $img);
             }
         }
-        (new \views\ViewAjoutPlat())->show();
+        (new ViewAjoutPlat())->show();
     }
 }
