@@ -6,12 +6,17 @@ class ModelSignIn
 {
     /**
      * Fonction qui permet d'ajouter un utilisateur
-     * @param $Nom: Nom de l'utilisateur
-     * @param $Mot_de_Passe: Mot de passe de l'utilisateur
-     * @param $Adresse: Adresse de l'utilisateur
-     * @param $Email: Email de l'utilisateur
-     * @param $Telephone: Téléphone de l'utilisateur
-     * @return int: Retourne l'id de l'utilisateur ajouté
+     * @param $Nom
+     * @param $Mot_de_Passe
+     * @param $Adresse
+     * @param $Email
+     * @param $Telephone
+     * @param $grade
+     * @param $rang
+     * @param $titre
+     * @param $dignite
+     * @param $club
+     * @return int
      */
     function addUser($Nom, $Mot_de_Passe, $Adresse, $Email, $Telephone,$grade,$rang,$titre, $dignite, $club): int
     {

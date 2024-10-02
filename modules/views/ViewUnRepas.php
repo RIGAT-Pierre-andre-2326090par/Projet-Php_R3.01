@@ -11,16 +11,15 @@ class ViewUnRepas
 
     /**
      * renvoie la page d'un repas
-     * @param $repas: array
+     * @param $repas : array
+     * @param $plats
      * @return void
      */
     public function show($repas, $plats):void{
         $dates = $repas['dates'];
         $idrp = $repas['idrepas'];
-        $idcl = $repas['idclub'];
         $nomclub = $repas['nomclub'];
         $imageclub = $repas['imageclub'];
-        $nomplat = $repas['nomplat'];
         $imageplat = $repas['imageplat'];
         ob_start();
         ?>

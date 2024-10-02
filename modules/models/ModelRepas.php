@@ -15,7 +15,7 @@ class ModelRepas
     public function getRepas($page = 0, $limit = 3) {
         $pdo = (new \includes\database())->getInstance();
 
-        $sql = 'SELECT COUNT(*) as count FROM REPAS';
+        $sql = 'SELECT COUNT(*) as count FROM REPAS'; // On compte le nb d'éléments dans notre table
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         $count = $stmt->fetch(PDO::FETCH_ASSOC);

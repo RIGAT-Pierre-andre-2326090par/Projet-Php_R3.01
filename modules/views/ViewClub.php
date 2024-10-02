@@ -9,7 +9,8 @@ class ViewClub
 {
     /**
      * renvoie la page du club
-     * @param $club: tableau associatif contenant les informations du club
+     * @param $club
+     * @param $membres
      * @return void
      */
     public function show($club, $membres): void {

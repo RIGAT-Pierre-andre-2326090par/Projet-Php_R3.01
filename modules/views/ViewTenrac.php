@@ -2,12 +2,12 @@
 
 namespace views;
 
-use models\ModelTenrac;
 
 class ViewTenrac
 {
     /**
-     * Affiche la page d'accueil de l'utilisateura
+     * Affiche la page d'accueil de l'utilisateur
+     * @param $user
      * @return void
      */
     function show($user): void

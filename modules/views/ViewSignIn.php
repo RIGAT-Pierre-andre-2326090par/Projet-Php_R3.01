@@ -6,6 +6,7 @@ class ViewSignIn
 {
     /**
      * renvoie la page d'inscription
+     * @param $clubs
      * @return void
      */
     function show($clubs): void

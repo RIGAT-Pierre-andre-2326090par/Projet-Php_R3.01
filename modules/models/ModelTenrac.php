@@ -89,12 +89,17 @@ class ModelTenrac
 
     /**
      * Fonction nous permettant d'ajouter un utilisateur
-     * @param $nom: nom de l'utilisateur
-     * @param $mdp: mot de passe de l'utilisateur
-     * @param $adresse: adresse de l'utilisateur
-     * @param $email: email de l'utilisateur
-     * @param $telephone: téléphone de l'utilisateur
-     * @return int: id de l'utilisateur ajouté
+     * @param $nom
+     * @param $mdp
+     * @param $adresse
+     * @param $email
+     * @param $telephone
+     * @param $grade
+     * @param $rang
+     * @param $titre
+     * @param $dignite
+     * @param $club
+     * @return int
      */
     public function insertTenrac($nom, $mdp, $adresse, $email, $telephone,$grade,$rang,$titre,$dignite,$club): int
     {
@@ -141,12 +146,16 @@ class ModelTenrac
 
     /**
      * Fonction nous permettant de changer certaines informations sur un utilisateur
-     * @param $nom: nom de l'utilisateur
-     * @param $mdp: mot de passe de l'utilisateur
-     * @param $email: email de l'utilisateur
-     * @param $telephone: téléphone de l'utilisateur
-     * @param $adresse: adresse de l'utilisateur
-     * @param $id_tr: id de l'utilisateur
+     * @param $nom
+     * @param $mdp
+     * @param $email
+     * @param $telephone
+     * @param $adresse
+     * @param $grade
+     * @param $rang
+     * @param $titre
+     * @param $dignite
+     * @param $id_tr
      * @return void
      */
     public function updateTenrac($nom, $mdp, $email, $telephone, $adresse, $grade, $rang, $titre, $dignite, $id_tr): void
