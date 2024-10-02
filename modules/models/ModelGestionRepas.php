@@ -137,22 +137,6 @@ class ModelGestionRepas
     }
 
     /**
-     * Supprime une entrée dans la table est_compose
-     * @param int $idRp : l'id du repas
-     * @param int $idCl : l'id du club
-     * @return void
-     */
-    public function deleteCompose(int $idRp, int $idCl): void
-    {
-        $sql = 'DELETE FROM est_compose WHERE ID_RP = :idRp AND ID_CL = :idCl';
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([
-            ':idRp' => $idRp,
-            ':idCl' => $idCl
-        ]);
-    }
-
-    /**
      * Insère les plats dans le repas dans la base de données
      * @param int $idRepas : l'ID du repas
      * @param array $plats : tableau des plats à insérer

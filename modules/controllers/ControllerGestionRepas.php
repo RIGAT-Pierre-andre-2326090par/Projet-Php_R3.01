@@ -32,11 +32,8 @@ class ControllerGestionRepas
             if (isset($_POST['modifBouton'])) {
                 $date = $_POST['dateRepas'];
                 $club = $_POST['clubRepas'];
-                $oldClub = $_POST['oldClub']; // Ancien club pour mise à jour
-
                 // Met à jour le repas
                 (new ModelGestionRepas())->updateRepas($date, $id, $club);
-                (new ModelGestionRepas())->updateCompose($id, $oldClub, $club); // Met à jour la composition
 
                 // Redirige après la modification pour éviter de re-soumettre le formulaire
                 header("Location: /index.php?action=repas");
@@ -47,11 +44,6 @@ class ControllerGestionRepas
             if (isset($_POST['deleteBouton'])) {
                 // Suppression du repas
                 (new ModelGestionRepas())->deleteRepas($id);
-
-                // Suppression de la composition (par exemple, d'un club spécifique)
-                $clubId = $_POST['clubId']; // ID du club à supprimer de la composition
-                (new ModelGestionRepas())->deleteCompose($id, $clubId);
-
                 // Redirection après suppression
                 header('Location: /index.php?action=repas');
                 exit();

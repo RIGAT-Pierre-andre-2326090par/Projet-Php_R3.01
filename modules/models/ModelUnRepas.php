@@ -127,12 +127,12 @@ class ModelUnRepas
                 ON REPAS.ID_RP = est_compose.ID_RP
                 LEFT JOIN PLAT
                 ON est_compose.ID_PL = PLAT.ID_PL
-                AND REPAS.ID_RP = :idrepas'
+                WHERE REPAS.ID_RP = :idrepas'
         );
 
         try {
             // Bind du paramètre nom
-            $stmt->bindParam(':idrepas', $idrp, PDO::PARAM_STR);
+            $stmt->bindParam(':idrepas', $idrp, PDO::PARAM_INT);
 
             $stmt->execute();
 
