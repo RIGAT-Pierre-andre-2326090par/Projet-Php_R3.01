@@ -2,6 +2,7 @@
 
 namespace models;
 
+use Exception;
 use PDOException;
 use PDO;
 
@@ -45,8 +46,7 @@ class ModelIngredients
             $stmt->bindParam(':idPlat', $idPlat, PDO::PARAM_STR);
             $stmt->execute();
 
-            $stmt->rowCount() or die('Aucun ingrédient trouvé' . PHP_EOL); // S'il y a des résultats.
-
+            $stmt->rowCount();
             $stmt->setFetchMode(PDO::FETCH_OBJ);
             $ingredients = [];
             while ($result = $stmt->fetch())

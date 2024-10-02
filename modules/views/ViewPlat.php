@@ -41,11 +41,14 @@ class ViewPlat
 
                     <h3 id="ingredients">Ingrédients :</h3>
                     <div class="listeIngredients">
-                        <?php foreach ($ingredients as $ingredient) { ?>
+
+
+                        <?php if(count($ingredients) > 0){
+                        foreach ($ingredients as $ingredient) { ?>
                             <ul>
                                 <li><?= htmlspecialchars($ingredient->getNom()); ?></li>
                             </ul>
-                        <?php }?>
+                        <?php }}?>
                     </div>
 
                     <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
@@ -65,4 +68,5 @@ class ViewPlat
         </section>
         <?php
         (new ViewLayout('Plat', ob_get_clean()))->show();}
+
 }
