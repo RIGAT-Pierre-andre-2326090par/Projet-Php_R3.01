@@ -13,9 +13,9 @@ class ModelSignIn
      * @param $Telephone: Téléphone de l'utilisateur
      * @return int: Retourne l'id de l'utilisateur ajouté
      */
-    function addUser($Nom, $Mot_de_Passe, $Adresse, $Email, $Telephone,$grade,$rang,$titre, $dignite): int
+    function addUser($Nom, $Mot_de_Passe, $Adresse, $Email, $Telephone,$grade,$rang,$titre, $dignite, $club): int
     {
-        return (new ModelTenrac())->insertTenrac($Nom, $Mot_de_Passe, $Adresse, $Email, $Telephone,$grade,$rang,$titre,$dignite); // On utilise la fonction insertTenrac
+        return (new ModelTenrac())->insertTenrac($Nom, $Mot_de_Passe, $Adresse, $Email, $Telephone,$grade,$rang,$titre,$dignite,$club); // On utilise la fonction insertTenrac
         // présent dans le modèle avec les informations en paramètres
 
     }

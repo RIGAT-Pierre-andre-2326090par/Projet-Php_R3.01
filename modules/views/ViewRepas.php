@@ -14,9 +14,12 @@ class ViewRepas
     public function show($repas, $page, $pagemax): void {
         ob_start();
         ?>
-        <h2>Les Repas</h2>
-        <p>Car c'est bien de se réunir</p>
-        <a class="btn" href="/index.php?action=ajoutRepas">Ajouter un Repas</a>
+
+        <div class="titrePartie">
+            <h2>Les Repas</h2>
+            <p>Car c'est bien de se réunir</p>
+            <a class="btn" href="/index.php?action=ajoutRepas">Ajouter un Repas</a>
+        </div>
 
         <div class="liste">
             <?php foreach ($repas as $unrepas) { ?>
