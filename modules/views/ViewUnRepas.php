@@ -18,10 +18,8 @@ class ViewUnRepas
     public function show($repas, $plats):void{
         $dates = $repas['dates'];
         $idrp = $repas['idrepas'];
-        $idcl = $repas['idclub'];
         $nomclub = $repas['nomclub'];
         $imageclub = $repas['imageclub'];
-        $nomplat = $repas['nomplat'];
         $imageplat = $repas['imageplat'];
         ob_start();
         ?>

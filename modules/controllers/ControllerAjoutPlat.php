@@ -24,6 +24,6 @@ class ControllerAjoutPlat
                 (new ModelGestionPlat())->insertPlat($nom, $desc, $img);
             }
         }
-        (new ViewAjoutPlat())->show();
+        (new ViewAjoutPlat())->show(); // Montre la vue d'AjoutPlat
     }
 }
