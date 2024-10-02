@@ -87,13 +87,13 @@
                     $_SESSION['nom'] = $user['NOM_TR'];
                     $_SESSION['user']= $user['ID_TR'];
 
-                    // Connexion réussie
+                    // En cas d'erreur de mdp, ou de mot de passe, renvoie le texte suivant
                 } else {
-                    $this->setMessageError("<h2>Mot de passe incorrect pour l'utilisateur : " . htmlspecialchars($email) . "</h2>");
+                    $this->setMessageError("<h2> L'adresse email ou le mot de passe est invalide. </h2>");
                     $this->setNb(1);
                 }
             } else {
-                    $this->setMessageError("<h2>Aucun utilisateur trouvé avec cet e-mail : " . htmlspecialchars($email) . "</h2>");
+                    $this->setMessageError("<h2> L'adresse email ou le mot de passe est invalide. </h2>");
                     $this->setNb(2);
             }
         }

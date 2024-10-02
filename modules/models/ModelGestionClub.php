@@ -3,19 +3,20 @@
 namespace models;
 
 use Exception;
+use includes\database;
 use PDO;
 use PDOException;
 
 class ModelGestionClub
 {
-    private $pdo;
+    private PDO $pdo;
 
     /**
      * le constructeur de la classe ModelGestionClub
      */
     public function __construct()
     {
-        $this->pdo = (new \includes\database())->getInstance();
+        $this->pdo = (new database())->getInstance();
 
     }
 
@@ -30,9 +31,6 @@ class ModelGestionClub
      */
     public function insertClub($nom, $adresse, $description, $image): void
     {
-
-
-
         $sql = 'SELECT MAX(ID_CL) as max_id FROM CLUB';
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
@@ -41,17 +39,17 @@ class ModelGestionClub
 
         try {
             $sql = 'INSERT INTO CLUB (NOM_CL, ADRESSE_CL, DESC_CL, IMG_CL, ID_CL)
-                    VALUES (:nom, :adresse, :description, :image, :id)';
+                    VALUES (:nom, :adresse, :description, :image, :id)'; // On insère les valeurs en SQL avec nos paramètres
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([
                 ':nom' => $nom,
                 ':adresse' => $adresse,
                 ':description' => $description,
                 ':image' => $image,
-                ':id' => $id
+                ':id' => $id // On met à jour nos variables.
             ]);
         }
-        catch (PDOException $e)
+        catch (PDOException $e) // On gère l'exception
         {
             // Affichage de l'erreur et rappel de la requête.
             echo 'Erreur : ', $e->getMessage(), PHP_EOL;
@@ -71,7 +69,7 @@ class ModelGestionClub
     public function updateClub($id, $nom, $adresse, $description): void
     {
         try{
-            $sql = 'UPDATE CLUB SET NOM_CL = :nom, ADRESSE_CL = :adresse, DESC_CL = :description WHERE ID_CL = :id';
+            $sql = 'UPDATE CLUB SET NOM_CL = :nom, ADRESSE_CL = :adresse, DESC_CL = :description WHERE ID_CL = :id'; // On met à jour notre club
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([
                 ':nom' => $nom,
