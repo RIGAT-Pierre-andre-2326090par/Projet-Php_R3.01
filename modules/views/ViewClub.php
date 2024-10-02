@@ -44,16 +44,16 @@ class ViewClub
                 <h3>Membres : </h3>
                 <section>
                     <?php foreach ($membres as $membre) { ?>
-                        <a href="/index.php?action=membre&id=<?= urlencode($membre->getId()); ?>">
-                            <section class="infoMembreClub">
-
-                                <img src="<?php echo '/_assets/images/membre/' . $membre->getImage() ?>" alt="<?= htmlspecialchars($membre->getNom()); ?>">
-                                <div>
-                                    <h3><?= htmlspecialchars($membre->getNom()); ?></h3>
-                                    <p><?= htmlspecialchars($membre->getAdresse()); ?></p>
-                                </div>
-                            </section>
-                        </a>
+                        <section class="infoMembreClub">
+                            <img src="<?php echo '/_assets/images/membre/' . $membre->getImage() ?>" alt="<?= htmlspecialchars($membre->getNom()); ?>">
+                            <div>
+                                <h3><?= htmlspecialchars($membre->getNom()); ?></h3>
+                                <p> Grade : <?= htmlspecialchars($membre->getGrade()); ?></p>
+                                <p><?= htmlspecialchars($membre->getCourriel()); ?></p>
+                                <p><?= htmlspecialchars($membre->getTelephone()); ?></p>
+                                <p><?= htmlspecialchars($membre->getAdresse()); ?></p>
+                            </div>
+                        </section>
                     <?php }?>
                 </section>
             </section>

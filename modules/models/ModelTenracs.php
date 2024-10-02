@@ -8,7 +8,7 @@ class ModelTenracs
 {
     public function getTenracsClub($id_cl){
         $pdo = (new \includes\database())->getInstance();
-        $stmt = $pdo->prepare('SELECT TENRAC.ID_TR id, TENRAC.NOM_TR nomtenrac, TENRAC.ADRESSE_TR adressetenrac, TENRAC.IMG_TR imgtenrac FROM TENRAC WHERE TENRAC.ID_CL = :id_cl');
+        $stmt = $pdo->prepare('SELECT TENRAC.ID_TR id, TENRAC.NOM_TR nomtenrac, TENRAC.GRADE_TR gradetenrac, TENRAC.COURRIEL_TR courrieltenrac, TENRAC.TELEPHONE_TR telephonetenrac, TENRAC.ADRESSE_TR adressetenrac, TENRAC.IMG_TR imgtenrac FROM TENRAC WHERE TENRAC.ID_CL = :id_cl');
 
         try {
             $stmt->bindParam(':id_cl', $id_cl, PDO::PARAM_STR);
@@ -20,7 +20,7 @@ class ModelTenracs
             $membres = [];
             while ($result = $stmt->fetch())
             {
-                $membres[] = new ModelTenrac($result->id, $result->nomtenrac, $result->adressetenrac, $result->imgtenrac) ;
+                $membres[] = new ModelTenrac($result->id, $result->nomtenrac, $result->gradetenrac, $result->courrieltenrac, $result->telephonetenrac, $result->adressetenrac, $result->imgtenrac) ;
             }
 
         } catch (PDOException $e) {
