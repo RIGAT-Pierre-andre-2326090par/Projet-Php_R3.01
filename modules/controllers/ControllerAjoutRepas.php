@@ -39,7 +39,7 @@ class ControllerAjoutRepas
                 (new ModelGestionRepas())->insertRepas($date, $club, $img); // Ajoutez l'argument pour l'image si nécessaire
 
                 // Rediriger vers la page appropriée après l'ajout
-                header('Location: /index.php?action=gestionRepas'); // Redirection vers la page de gestion des repas
+                header('Location: /index.php?action=repas'); // Redirection vers la page de gestion des repas
                 exit();
             }
         }

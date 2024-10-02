@@ -38,7 +38,7 @@ class ControllerGestionRepas
                 (new ModelGestionRepas())->updateRepas($date, $id, $club);
 
                 // Redirige après la modification pour éviter de re-soumettre le formulaire
-                header("Location: /index.php?action=gestionRepas&id=" . $id);
+                header("Location: /index.php?action=repas");
                 exit();
             }
 
@@ -47,13 +47,11 @@ class ControllerGestionRepas
                 (new ModelGestionRepas())->deleteRepas($id);
 
                 // Redirection après suppression
-                header('Location: /index.php?action=listeRepas');
+                header('Location: /index.php?action=repas');
                 exit();
             }
         }
 
-        // Requête GET (affichage de la page)
-        $id = $_GET['id'];
 
         // Récupère les informations du repas et tous les clubs
         $repas = (new ModelUnRepas())->getRepas($id);
