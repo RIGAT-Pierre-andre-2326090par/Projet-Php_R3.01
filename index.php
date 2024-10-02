@@ -102,7 +102,7 @@ try {
             (new \controllers\ControllerAjoutPlat())->execute();
         }
         elseif ($_GET['action']==='suppressionPlat'){
-            (new \controllers\ControllerGestionClub())->execute();
+            (new \controllers\ControllerGestionPlat())->execute();
             (new \views\ViewLayout('Plat supprimé','<h2>Plat supprimé</h2>'))->show();
         }
         elseif ($_GET['action']==='confirmReset'){
