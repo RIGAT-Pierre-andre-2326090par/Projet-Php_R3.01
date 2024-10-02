@@ -88,7 +88,8 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
                 <a href=""><img src="/_assets/images/icons/twitter.webp" alt="Logo Twitter" /></a>
                 <a href=""><img src="/_assets/images/icons/instagram.webp" alt="Logo Instagram" /></a>
             </section>
-            <p>Tenrac-Lovers© <?= date('Y'); ?> Tous droits réservés.</p> <!-- Ajout de l'année actuelle de manière dynamique -->
+            <p>Tenrac-Lovers© <?= date('Y'); ?> Tous droits réservés. <br>
+            Pour votre santé, mangez au moins cinq viandes et charcuteries par jour.</p> <!-- Ajout de l'année actuelle de manière dynamique -->
         </footer>
         </body>
         </html>

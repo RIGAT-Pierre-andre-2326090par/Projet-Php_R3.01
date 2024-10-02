@@ -5,16 +5,17 @@ namespace models;
 use PDO;
 use PDOException;
 use includes\database;
+use views\ViewLayout;
 
 class ModelClubs
 {
     /**
      * Récupère les clubs
-     * @param $page: page actuelle
-     * @param $limit: nombre de clubs par page
+     * @param int $page: page actuelle
+     * @param int $limit: nombre de clubs par page
      * @return array|void: tableau contenant les clubs et le nombre de pages
      */
-    public function getClubs($page = 0, $limit = 3) {
+    public function getClubs(int $page = 0, int $limit = 3) {
         $pdo = (new database())->getInstance();
 
         $sql = 'SELECT COUNT(*) as count FROM CLUB';
@@ -33,7 +34,7 @@ class ModelClubs
 
             $stmt->execute(); // Exécution de la requête.
             if ($stmt->rowCount() == 0) {
-                (new \views\ViewLayout('Erreur', '<h2>Pas de clubs</h2>'))->show();
+                (new ViewLayout('Erreur', '<h2>Pas de clubs</h2>'))->show();
                 exit(); }// Facultatif, pour s'assurer que le reste du code ne s'exécute pas
             else {
                 $stmt->rowCount();
@@ -74,6 +75,6 @@ class ModelClubs
         $stmt->execute();
 
         // Retourne tous les clubs sous forme de tableau associatif
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

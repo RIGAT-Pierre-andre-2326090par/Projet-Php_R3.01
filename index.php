@@ -7,6 +7,15 @@ if (session_status() == PHP_SESSION_NONE) {
 require '_assets/includes/autoloader.php';
 
 try {
+    /*if (filter_input(INPUT_GET, 'action')){
+        $str_ctrl = 'Controller' . $_GET['action'];
+        if (isset($_GET['page'])) $page = urldecode($_GET['page']);
+        elseif (isset($_GET['id'])) $page = urldecode($_GET['id']);
+        call_user_func(array($str_ctrl, 'execute'), array($page));
+    } elseif (filter_input(INPUT_GET, 'ctrl')){
+        $str_ctrl = 'Controller' . $_GET['ctrl'];
+        call_user_func(array($str_ctrl, 'execute'));
+    } else (new \controllers\ControllerHomepage())->execute();*/
     if (filter_input(INPUT_GET, 'action')) {
         if ($_GET['action'] === 'plats') {
             $page = 0;
@@ -111,7 +120,6 @@ try {
             if (isset($_GET['page'])) $page = urldecode($_GET['page']);
             (new \controllers\ControllerIngredients())->execute($page);
         }
-
     } else {
         (new \controllers\ControllerHomepage())->execute();
     }

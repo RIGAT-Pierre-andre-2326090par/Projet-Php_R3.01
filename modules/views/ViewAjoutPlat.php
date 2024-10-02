@@ -4,6 +4,10 @@ namespace views;
 
 class ViewAjoutPlat
 {
+    /**
+     * Affiche le formulaire d'ajout d'un plat
+     * @return void
+     */
     public function show(): void
     {
         ob_start();

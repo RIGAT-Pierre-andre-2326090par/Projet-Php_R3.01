@@ -32,7 +32,8 @@ class ModelClub
      * créer un club vide
      * @return self: un club vide
      */
-    public static function createEmpty() {
+    public static function createEmpty(): ModelClub
+    {
         return new self();
     }
 
@@ -46,7 +47,7 @@ class ModelClub
         $stmt = $pdo->prepare('SELECT ID_CL,NOM_CL,ADRESSE_CL,IMG_CL,DESC_CL FROM CLUB WHERE ID_CL=:id');
         try
         {
-            $stmt->bindParam(':id', $id_cl, \PDO::PARAM_INT);
+            $stmt->bindParam(':id', $id_cl, PDO::PARAM_INT);
             $stmt->execute();
             if ($stmt->rowCount() === 0) {
                 return null; // Pas de résultat, retourne null

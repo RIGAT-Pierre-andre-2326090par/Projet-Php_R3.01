@@ -31,29 +31,58 @@ class ModelTenrac
 
     }
 
+    /**
+     * Renvoie l'identifiant du Tenrac
+     * @return mixed|null
+     */
     public function getId(){
         return $this->id_tr;
     }
 
+    /**
+     * Renvoie le nom du Tenrac
+     * @return mixed|null
+     */
     public function getNom(){
         return $this->nom_tr;
     }
 
+    /**
+     * Renvoie l'adresse mail du Tenrac
+     * @return mixed|null
+     */
     public function getCourriel(){
         return $this->courriel_tr;
     }
 
+    /**
+     * Renvoie le grade du Tenrac
+     * @return mixed|null
+     */
     public function getGrade(){
         return $this->grade_tr;
     }
 
+    /**
+     * Renvoie le numéro de téléphone du Tenrac
+     * @return mixed|null
+     */
     public function getTelephone(){
         return $this->telephone_tr;
     }
 
+    /**
+     * Renvoie l'adresse du Tenrac
+     * @return mixed|null
+     */
     public function getAdresse(){
         return $this->adresse_tr;
     }
+
+    /**
+     * Renvoie l'image de profil du Tenrac
+     * @return string
+     */
     public function getImage(): string{
         return $this->img_tr;
     }

@@ -16,8 +16,10 @@ class ViewOrdre
 
         <h1>Ordre</h1>
 
-        <p>Dans l'univers des Tenracs, l'Ordre prestigieux des Tenracs veillent à la préservation et à la promotion de la culture fromagère, avec un accent particulier sur la raclette, un plat emblématique de la convivialité et du partage.
-            Chacun de ces Ordres a ses propres valeurs, traditions et missions.</p>
+        <p>L'Ordre des Tenrac est né dans les montagnes de Savoie au XIVe siècle, lorsque Mickael, un jeune berger, découvrit par hasard l'association parfaite entre tenders de poulet et raclette. Coincé dans un col enneigé, il fit fondre de la raclette sur des morceaux de poulet grillé, créant une fusion si délicieuse qu'elle donna force et espoir à ses compagnons. Cette recette devint rapidement légendaire dans la région.
+
+            Mickael fonda alors une confrérie dédiée à ce plat unique, l'Ordre des Tenrac, qui rassemblait les amateurs de cette combinaison divine. Au fil des siècles, l'Ordre grandit, instaurant des rites, des grades, et des banquets sacrés pour honorer l’union entre le croustillant du poulet et le fondant de la raclette.
+        </p>
 
         <div class="titrePartie">
             <h2>Clubs</h2>
