@@ -2,6 +2,7 @@
 
 namespace models;
 
+use PDO;
 use PDOException;
 
 class ModelGestionPlat
@@ -31,6 +32,34 @@ class ModelGestionPlat
             $stmt->execute([
                 ':nom' => $nom,
                 ':description' => $description,
+                ':id' => $id
+            ]);
+        }
+        catch (PDOException $e)
+        {
+            // Affichage de l'erreur et rappel de la requête.
+            echo 'Erreur : ', $e->getMessage(), PHP_EOL;
+            echo 'Requête : ', $sql, PHP_EOL;
+            exit();
+        }
+    }
+
+    public function insertPlat($nom,$description, $image): void
+    {
+        $sql = 'SELECT MAX(ID_PL) as max_id FROM PLAT';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $id = $result['max_id'] !== null ? $result['max_id'] + 1 : 0;
+
+        try {
+            $sql = 'INSERT INTO PLAT (NOM_PL, DESC_PL, IMG_PL,ID_PL)
+                    VALUES (:nom, :description, :image,:id)';
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                ':nom' => $nom,
+                ':description' => $description,
+                ':image' => $image,
                 ':id' => $id
             ]);
         }

@@ -88,7 +88,11 @@ try {
         }
         elseif ($_GET['action']==='gestionPlat'){
             (new \controllers\ControllerGestionPlat())->execute();
-        } elseif ($_GET['action']==='suppressionPlat'){
+        }
+        elseif ($_GET['action']==='ajoutPlat'){
+            (new \controllers\ControllerAjoutPlat())->execute();
+        }
+        elseif ($_GET['action']==='suppressionPlat'){
             (new \controllers\ControllerGestionClub())->execute();
             (new \views\ViewLayout('Plat supprimé','<h2>Plat supprimé</h2>'))->show();
         }
