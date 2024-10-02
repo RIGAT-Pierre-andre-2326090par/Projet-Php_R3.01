@@ -6,6 +6,11 @@ use PDO;
 use PDOException;
 class ModelTenracs
 {
+    /**
+     * Renvoie la liste des membres d'un club
+     * @param $id_cl
+     * @return array|void
+     */
     public function getTenracsClub($id_cl){
         $pdo = (new \includes\database())->getInstance();
         $stmt = $pdo->prepare('SELECT TENRAC.ID_TR id, TENRAC.NOM_TR nomtenrac, TENRAC.GRADE_TR gradetenrac, TENRAC.COURRIEL_TR courrieltenrac, TENRAC.TELEPHONE_TR telephonetenrac, TENRAC.ADRESSE_TR adressetenrac, TENRAC.IMG_TR imgtenrac FROM TENRAC WHERE TENRAC.ID_CL = :id_cl');
