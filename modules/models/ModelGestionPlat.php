@@ -44,6 +44,13 @@ class ModelGestionPlat
         }
     }
 
+    /**
+     * Insère un nouveau plat
+     * @param $nom
+     * @param $description
+     * @param $image
+     * @return void
+     */
     public function insertPlat($nom,$description, $image): void
     {
         $sql = 'SELECT MAX(ID_PL) as max_id FROM PLAT';

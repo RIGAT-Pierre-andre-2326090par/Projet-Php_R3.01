@@ -133,6 +133,11 @@ main {
     box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 16%);
 }
 
+.infoClub .imgclub {
+    width: 75px;
+    height: 75px;
+}
+
 .infoMembreClub {
     max-width: 500px;
     margin: 17px auto;
@@ -310,6 +315,8 @@ header button, .formulaire input[type="submit"], .modif, .delete {
     color: white;
     text-decoration: none;
     transition-duration: 250ms;
+    border: 0;
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -395,5 +402,10 @@ header button, .formulaire input[type="submit"], .modif, .delete {
     .plat img, .infoClub img, .infoMembreClub img, .infoIngredient img {
         width: 100px;
         height: 125px;
+    }
+
+    .infoClub .imgclub {
+        width: 45px;
+        height: 45px;
     }
 }

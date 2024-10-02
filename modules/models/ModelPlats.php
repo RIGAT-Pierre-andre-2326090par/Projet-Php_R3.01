@@ -60,6 +60,10 @@ class ModelPlats
         return $resultat;
     }
 
+    /**
+     * Récupère tous les plats de la base de données
+     * @return array
+     */
     public function getAllPlats(): array
     {
 

@@ -9,15 +9,22 @@ class ModelTenrac
     private $pdo;
     private $id_tr;
     public $nom_tr;
+    public $courriel_tr;
+    public $grade_tr;
+    public $telephone_tr;
     public $adresse_tr;
     public $img_tr;
+
 
     /**
      * Constructeur de la classe
      */
-    public function __construct($id_tr = null, $nom_tr = null, $adresse_tr = null, $img_tr = null){
+    public function __construct($id_tr = null, $nom_tr = null, $grade_tr = null, $courriel_tr = null, $telephone_tr = null, $adresse_tr = null, $img_tr = null, $pdo = null){
         $this->id_tr = $id_tr;
         $this->nom_tr = $nom_tr;
+        $this->grade_tr = $grade_tr;
+        $this->courriel_tr = $courriel_tr;
+        $this->telephone_tr = $telephone_tr;
         $this->adresse_tr = $adresse_tr;
         $this->img_tr = $img_tr;
         $this->pdo = (new \includes\database())->getInstance();
@@ -31,6 +38,19 @@ class ModelTenrac
     public function getNom(){
         return $this->nom_tr;
     }
+
+    public function getCourriel(){
+        return $this->courriel_tr;
+    }
+
+    public function getGrade(){
+        return $this->grade_tr;
+    }
+
+    public function getTelephone(){
+        return $this->telephone_tr;
+    }
+
     public function getAdresse(){
         return $this->adresse_tr;
     }

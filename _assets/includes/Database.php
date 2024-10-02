@@ -7,10 +7,17 @@ use PDOException;
 class  database {
     private dbpass $pass; // Non-static property
 
+    /**
+     * Le constructeur de la classe database
+     */
     public function __construct() {
         $this->pass = new dbpass(); // Initialize dbpass instance
     }
 
+    /**
+     * Crée une connexion à la base de données
+     * @return PDO
+     */
     public function getInstance(): PDO {
         // Access the dbpass properties
         $host = $this->pass->host;
