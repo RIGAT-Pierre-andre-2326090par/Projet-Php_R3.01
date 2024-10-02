@@ -239,6 +239,59 @@ main {
     border: solid 0.1em rgb(0 0 0 / 20%);
     padding: 0.3em
 }
+/* Conteneur principal du formulaire */
+.form-repas {
+    text-align: center;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Formulaire lui-même */
+.form-repas form {
+    display: flex;
+    flex-direction: column; /* Vertical alignment for form elements */
+    align-items: center; /* Center the items */
+    gap: 15px; /* Espacement entre les éléments */
+    padding: 20px;
+}
+
+/* Champs de saisie */
+.form-repas input[type="date"],
+.form-repas select {
+    padding: 10px;
+    border: 1px solid #ffa500; /* Bordure orange */
+    border-radius: 5px;
+    font-size: 1em;
+    width: 220px; /* Largeur des éléments */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* État de survol des champs */
+.form-repas input[type="date"]:hover,
+.form-repas select:hover {
+    border-color: #ff8c00; /* Bordure orange plus foncée au survol */
+    box-shadow: 0px 4px 8px rgba(255, 140, 0, 0.3);
+}
+
+/* Bouton "Modifier" */
+.form-repas button {
+    background-color: #ff7f50; /* Couleur orange pour le bouton */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* État de survol du bouton */
+.form-repas button:hover {
+    background-color: #ff4500; /* Couleur orange plus foncée au survol */
+    box-shadow: 0px 4px 8px rgba(255, 69, 0, 0.3);
+}
 
 .img_plat {
     aspect-ratio: 16/9;

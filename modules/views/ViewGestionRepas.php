@@ -13,7 +13,7 @@ class ViewGestionRepas
         $id=$repas['idrepas'];
         ob_start();
         ?>
-        <section class="formulaire">
+        <section class="form-repas">
             <form action="/index.php?action=gestionRepas&id=<?= $id ?>" method="POST">
                 <label for="dateRepas">Date :</label>
                 <input type="date" name=dateRepas id="dateRepas" required><?= PHP_EOL; ?>

@@ -12,6 +12,7 @@ class ViewAjoutClub
     {
         ob_start();
         ?>
+    <section class="formulaire">
         <form action="/index.php?action=ajoutClub" method="POST">
             <label for="nomClub">Nom :</label>
             <input type="text" name=nomClub id="nomClub" required><?= PHP_EOL; ?>
@@ -21,6 +22,8 @@ class ViewAjoutClub
             <input type="text" name="descClub" id="descClub" required><br>
             <button type="submit" name="ajoutBouton">Ajouter</button>
         </form>
+    </section>
+
         <?php
         (new ViewLayout('Ajout Club', ob_get_clean()))->show();
     }
