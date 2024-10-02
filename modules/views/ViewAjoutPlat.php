@@ -19,7 +19,7 @@ class ViewAjoutPlat
             <input type="text" name=descPlat id="descPlat" required><?= PHP_EOL; ?>
             <label for="imgPlat">Image</label>
             <input type="url" name=imgPlat id="imgPlat" required><?= PHP_EOL; ?>
-            <button type="submit" name="ajoutBouton">Ajouter</button>
+            <button type="submit" name="ajoutBouton" class="modif">Ajouter</button>
         </form>
         <?php
         (new ViewLayout('Ajout Plat', ob_get_clean()))->show();
