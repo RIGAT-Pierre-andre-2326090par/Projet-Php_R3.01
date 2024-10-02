@@ -19,10 +19,12 @@ class ViewOrdre
         <p>Dans l'univers des Tenracs, l'Ordre prestigieux des Tenracs veillent à la préservation et à la promotion de la culture fromagère, avec un accent particulier sur la raclette, un plat emblématique de la convivialité et du partage.
             Chacun de ces Ordres a ses propres valeurs, traditions et missions.</p>
 
-        <h2>Clubs</h2>
-        <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
-            <a class="btn" href="/index.php?action=ajoutClub">Ajouter un Club</a>
-        <?php endif ?>
+        <div class="titrePartie">
+            <h2>Clubs</h2>
+            <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                <a class="btn" href="/index.php?action=ajoutClub">Ajouter un Club</a>
+            <?php endif ?>
+        </div>
 
         <div class="liste">
             <?php foreach ($clubs as $club) { ?>
