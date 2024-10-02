@@ -12,7 +12,7 @@ class ViewClub
      * @param $club: tableau associatif contenant les informations du club
      * @return void
      */
-    public function show($club): void {
+    public function show($club, $membres): void {
         $id=$club['ID_CL'];
         $nom=$club['NOM_CL'];
         $adr=$club['ADRESSE_CL'];
@@ -20,34 +20,47 @@ class ViewClub
         $image=$club['IMG_CL'];
         ob_start();
         ?>
-        <img alt="<? echo htmlspecialchars($nom); ?>" src="<?php echo '/_assets/images/club/' . $image ?>" />
-        <h2><?php echo  $nom ?></h2>
-        <h4><?php echo  $adr ?></h4>
-        <p> <?php echo  $description ?></p>
-        <p> <?php foreach ((new ModelClub())->getMembreClub($id) as &$tenrac) {
-                $tenrac_info = (new ModelTenrac())->getTenrac($tenrac);?>
-                <a href="/index.php?action=tenrac">
-                    <section class="infoClub">
-                        <img src="<?= htmlspecialchars('/_assets/images/plat/' . $tenrac_info['ADRESSE_TR']); ?>" alt="<?= htmlspecialchars($tenrac_info['NOM_TR']); ?>"/>
-                        <div>
-                            <h3><?= htmlspecialchars($tenrac_info['NOM_TR']); ?></h3>
-                            <p><?= htmlspecialchars($tenrac_info['ADRESSE_TR']); ?></p>
-                        </div>
-                    </section>
-                </a>
-            <?php }?></p>
-        <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
-            <form action="/index.php?action=gestionClub&id=<?= $id ?>" method="POST">
-                <button type="submit" class="modif">Modifier Club</button>
-            </form>
-            <form action="/index.php?action=clubsupprime&id=<?= $id ?>" method="POST">
-                <button type="submit" name="deleteBouton" class="delete">Supprimer Club</button>
-            </form>
-        <?php endif ?>
-        <strong>Photos</strong>
-        <img src="#" alt="<?= $nom ?>"/>
-        <strong>Membres</strong>
-        <img src="#" />
+        <section>
+            <section id="topSide">
+                <section id="leftside">
+                    <img class="img_membre" alt="<? echo htmlspecialchars($nom); ?>" src="<?php echo '/_assets/images/club/' . $image ?>" />
+                </section>
+                <section id="right">
+                    <h2><?php echo  $nom ?></h2>
+                    <h4><?php echo  $adr ?></h4>
+                    <p> <?php echo  $description ?></p>
+                    <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                        <form action="/index.php?action=gestionClub&id=<?= $id ?>" method="POST">
+                            <button type="submit" class="modif">Modifier Club</button>
+                        </form>
+                        <form action="/index.php?action=clubsupprime&id=<?= $id ?>" method="POST">
+                            <button type="submit" name="deleteBouton" class="delete">Supprimer Club</button>
+                        </form>
+                    <?php endif ?>
+                </section>
+            </section>
+            <section>
+                <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                <h3>Membres : </h3>
+                <section>
+                    <?php foreach ($membres as $membre) { ?>
+                        <a href="/index.php?action=membre&id=<?= urlencode($membre->getId()); ?>">
+                            <section class="infoMembreClub">
+
+                                <img src="<?php echo '/_assets/images/membre/' . $membre->getImage() ?>" alt="<?= htmlspecialchars($membre->getNom()); ?>">
+                                <div>
+                                    <h3><?= htmlspecialchars($membre->getNom()); ?></h3>
+                                    <p><?= htmlspecialchars($membre->getAdresse()); ?></p>
+                                </div>
+                            </section>
+                        </a>
+                    <?php }?>
+                </section>
+            </section>
+                <?php endif ?>
+        </section>
+
+
         <?php
         (new ViewLayout('Club', ob_get_clean()))->show();
     }

@@ -81,14 +81,14 @@ class ViewLayout // La classe Layout nous permet de poser la base de nos pages H
             <section class="contact">
                 <p>Contact</p>
                 <p>Mentions légales</p>
-                <p>Conditions générales d'utilisations</p>
+                <p>Conditions générales d'utilisation</p>
             </section>
             <section class="reseaux"> <!-- On place nos icônes en bas de la page -->
                 <a href=""><img src="/_assets/images/icons/facebook.webp" alt="Logo Facebook" /></a>
                 <a href=""><img src="/_assets/images/icons/twitter.webp" alt="Logo Twitter" /></a>
                 <a href=""><img src="/_assets/images/icons/instagram.webp" alt="Logo Instagram" /></a>
             </section>
-            <p>Tenrac-Lovers© <?= date('Y'); ?> Tous droit réservé.</p> <!-- Ajout de l'année actuelle de manière dynamique -->
+            <p>Tenrac-Lovers© <?= date('Y'); ?> Tous droits réservés.</p> <!-- Ajout de l'année actuelle de manière dynamique -->
         </footer>
         </body>
         </html>

@@ -109,11 +109,11 @@ main {
     padding: 10px;
 }
 
-.plat div, .infoClub div, .infoIngredient div {
+.plat div, .infoClub div, .infoMembreClub section, .infoIngredient div {
     flex: 1 1;
 }
 
-.plat img, .infoClub img, .infoIngredient img{
+.plat img, .infoClub img, .infoMembreClub img, .infoIngredient img{
     width: 170px;
     height: 170px;
     border-radius: 1em;
@@ -123,7 +123,7 @@ main {
     background-color: rgb(209 125 0 / 22%);
 }
 
-.plat, .infoClub, .infoIngredient{
+.plat, .infoClub, .infoMembreClub, .infoIngredient{
     margin: 14px;
     padding: 5px;
     border-radius: 1.2em;
@@ -131,6 +131,11 @@ main {
     color: black;
     display: flex;
     box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 16%);
+}
+
+.infoMembreClub {
+    max-width: 500px;
+    margin: 17px auto;
 }
 
 .liste {
@@ -231,8 +236,11 @@ main {
 }
 
 .img_plat {
-    width: 100%;
     aspect-ratio: 16/9;
+}
+
+.img_plat, .img_membre {
+    width: 100%;
     object-fit: cover;
     border-radius: 1em;
 }
@@ -380,11 +388,11 @@ header button, .formulaire input[type="submit"], .modif, .delete {
         width: 100px;
     }
 
-    .plat, .infoClub, .infoIngredient {
+    .plat, .infoClub, .infoMembreClub, .infoIngredient {
         margin: 5px;
     }
 
-    .plat img, .infoClub img, .infoIngredient img {
+    .plat img, .infoClub img, .infoMembreClub img, .infoIngredient img {
         width: 100px;
         height: 125px;
     }

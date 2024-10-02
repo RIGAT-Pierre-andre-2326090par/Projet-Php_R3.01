@@ -33,7 +33,7 @@ class ViewHomepage {
         <?php }?>
         </div>
         <div class="titrePartie">
-            <h2>Des clubs a votre portée</h2>
+            <h2>Des clubs à votre portée</h2>
             <a class="btn" href="/index.php?action=ordre"> Voir plus </a>
         </div>
         <div class="listeHome">

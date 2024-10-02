@@ -17,7 +17,8 @@ class ControllerClub
             $clubVide = ModelClub::createEmpty();
             $club = $clubVide->getClub($id);
             if ($club) {
-                (new ViewClub())->show($club);
+                $membres = (new \models\ModelTenracs())->getTenracsClub($id); // On récupère les membres du club.
+                (new ViewClub())->show($club, $membres);
             } else {
                 echo 'ModelClub non trouvé.';
             }

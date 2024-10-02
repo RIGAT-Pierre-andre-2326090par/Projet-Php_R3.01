@@ -8,14 +8,34 @@ class ModelTenrac
 {
     private $pdo;
     private $id_tr;
+    public $nom_tr;
+    public $adresse_tr;
+    public $img_tr;
 
     /**
      * Constructeur de la classe
      */
-    public function __construct(){
-
+    public function __construct($id_tr = null, $nom_tr = null, $adresse_tr = null, $img_tr = null){
+        $this->id_tr = $id_tr;
+        $this->nom_tr = $nom_tr;
+        $this->adresse_tr = $adresse_tr;
+        $this->img_tr = $img_tr;
         $this->pdo = (new \includes\database())->getInstance();
 
+    }
+
+    public function getId(){
+        return $this->id_tr;
+    }
+
+    public function getNom(){
+        return $this->nom_tr;
+    }
+    public function getAdresse(){
+        return $this->adresse_tr;
+    }
+    public function getImage(): string{
+        return $this->img_tr;
     }
 
     /**
