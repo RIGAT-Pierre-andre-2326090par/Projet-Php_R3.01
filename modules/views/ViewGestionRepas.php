@@ -24,8 +24,7 @@ class ViewGestionRepas
                         <option value="<?= $club['ID_CL'] ?>"><?= $club['NOM_CL'] ?></option>
                     <?php endforeach; ?>
                 </select>
-                <label
-                <button type="submit" name="modifBouton" class="modif">Modifier</button>
+                <button type="submit" name="modifBouton" >Modifier</button>
             </form>
         </section>
 

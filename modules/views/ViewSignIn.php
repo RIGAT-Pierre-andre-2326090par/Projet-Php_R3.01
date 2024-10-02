@@ -8,7 +8,7 @@ class ViewSignIn
      * renvoie la page d'inscription
      * @return void
      */
-    function show(): void
+    function show($clubs): void
     {
         ob_start();
         ?>
@@ -63,7 +63,14 @@ class ViewSignIn
                     <option value="grand_maitre">Grand Maître</option>
                 </select>
                 <br>
-                <input type="submit" name="signe_in" value="Soumettre">
+                <label for="club">Club :</label>
+                <select name="club" id="club" required>
+                    <option value=""> -- Choisissez un club --</option>
+                    <?php foreach ($clubs as $club): ?>
+                        <option value="<?= $club['ID_CL'] ?>"><?= $club['NOM_CL'] ?></option>
+                    <?php endforeach; ?>
+                </select><br>
+                <input type="submit" id="sign_in" value="Soumettre">
             </form>
         </section>
         <?php

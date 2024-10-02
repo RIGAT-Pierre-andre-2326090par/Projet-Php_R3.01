@@ -20,7 +20,7 @@ class ViewAjoutClub
             <input type="text" name="adrClub" id="adrClub" required><?= PHP_EOL; ?>
             <label for="descClub">Description :</label>
             <input type="text" name="descClub" id="descClub" required><br>
-            <button type="submit" name="ajoutBouton">Ajouter</button>
+            <button type="submit" name="ajoutBouton" class="modif" >Ajouter</button>
         </form>
     </section>
 
