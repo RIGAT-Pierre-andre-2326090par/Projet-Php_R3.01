@@ -315,6 +315,8 @@ header button, .formulaire input[type="submit"], .modif, .delete {
     color: white;
     text-decoration: none;
     transition-duration: 250ms;
+    border: 0;
+    cursor: pointer;
 }
 
 .btn:hover {
