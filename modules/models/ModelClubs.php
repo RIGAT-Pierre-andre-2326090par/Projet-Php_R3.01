@@ -60,4 +60,16 @@ class ModelClubs
 
         return $resultat;
     }
+
+    public function getAllClubs(): array
+    {
+
+        $pdo = (new database())->getInstance();
+        // Préparation de la requête pour récupérer tous les clubs
+        $stmt = $pdo->prepare("SELECT ID_CL, NOM_CL FROM CLUB");
+        $stmt->execute();
+
+        // Retourne tous les clubs sous forme de tableau associatif
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }

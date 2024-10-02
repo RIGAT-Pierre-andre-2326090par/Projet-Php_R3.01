@@ -2,37 +2,64 @@
 
 namespace controllers;
 
+use Exception;
+use models\ModelClubs;
+use models\ModelGestionRepas;
+use models\ModelUnRepas;
+use views\ViewGestionRepas;
+
 class ControllerGestionRepas
 {
     /**
-     * traite la requete de la page gestionRepas
+     * Traite la requête de la page gestionRepas.
      * @return void
-     * @throws \Exception
+     * @throws Exception
      */
     public function execute(): void
     {
+        // Vérifie si l'utilisateur est connecté
         if (!isset($_SESSION['user'])) {
             // Redirige vers la page de connexion
             header('Location: /index.php?action=login');
-            exit(); // Assurez-vous que le script s'arrête ici
+            exit(); // Arrête le script après redirection
         }
 
+        // Si la méthode de requête est POST, c'est une soumission de formulaire
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_GET['id'];
+
             // Vérifie si le bouton de modification a été soumis
             if (isset($_POST['modifBouton'])) {
-                $id = $_GET['id'];
-                $date = $_POST['dateRepéas'];
+                $date = $_POST['dateRepas'];
                 $club = $_POST['clubRepas'];
-                (new \models\ModelGestionRepas())->updateRepas($date, $id, $club);
+
+
+                // Met à jour le repas
+                (new ModelGestionRepas())->updateRepas($date, $id, $club);
+
+                // Redirige après la modification pour éviter de re-soumettre le formulaire
+                header("Location: /index.php?action=gestionRepas&id=" . $id);
+                exit();
             }
+
+            // Vérifie si le bouton de suppression a été soumis
             if (isset($_POST['deleteBouton'])) {
-                $id = $_GET['id'];
-                (new \models\ModelGestionRepas())->deleteRepas($id);
-            }
-            else{
-                (new \views\ViewGestionRepas())->show((new \models\ModelUnRepas())->getRepas( $_GET['id']));
+                (new ModelGestionRepas())->deleteRepas($id);
+
+                // Redirection après suppression
+                header('Location: /index.php?action=listeRepas');
+                exit();
             }
         }
 
+        // Requête GET (affichage de la page)
+        $id = $_GET['id'];
+
+        // Récupère les informations du repas et tous les clubs
+        $repas = (new ModelUnRepas())->getRepas($id);
+        $clubs = (new ModelClubs())->getAllClubs();
+
+        // Affiche la vue avec les informations du repas et la liste des clubs
+        (new ViewGestionRepas())->show($repas, $clubs);
     }
 }

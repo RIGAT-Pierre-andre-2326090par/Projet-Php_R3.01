@@ -29,7 +29,7 @@ class ViewUnRepas
                 <section id="leftside">
                     <section id="top">
                         <h2 id="dates"> <?php echo $dates ?> </h2>
-                        <img alt="<? htmlspecialchars($dates); ?>"alt="Images d'un plat"  id="platimg" <?= htmlspecialchars($dates); ?> src="<?php echo '/_assets/images/plat/' . $imageplat ?>">
+                        <img alt="Images d'un plat"  id="platimg" <?= htmlspecialchars($dates); ?> src="<?php echo '/_assets/images/plat/' . $imageplat ?>">
                     </section>
                 </section>
                 <section id="right">
