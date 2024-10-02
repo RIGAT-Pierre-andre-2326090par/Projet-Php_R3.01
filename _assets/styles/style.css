@@ -226,6 +226,8 @@ main {
 
 .formulaire input {
     border-radius: 0.5em;
+    border: solid 0.1em rgb(0 0 0 / 20%);
+    padding: 0.3em
 }
 
 .img_plat {
