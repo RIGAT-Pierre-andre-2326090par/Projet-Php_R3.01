@@ -16,7 +16,7 @@ class ControllerAjoutClub
         if (!isset($_SESSION['user'])) { // On vérifie si on est connecté
             // Redirige vers la page de connexion
             header('Location: /index.php?action=login');
-            exit(); // Assurez-vous que le script s'arrête ici
+            exit();
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -27,6 +27,8 @@ class ControllerAjoutClub
                 $desc = $_POST['descClub'];
                 $img = strtolower(str_replace(' ', '_', $_POST['nomClub'])) . '.webp';
                 (new ModelGestionClub())->insertClub($nom, $adr, $desc, $img); // On insère notre club avec ces nouvelles valeurs
+                header('Location: /index.php?action=ordre'); // Redirection vers les clubs une fois l'ajout effectué
+                exit();
             }
         }
         (new ViewAjoutClub())->show(); // On montre notre vue AjoutClub
