@@ -149,6 +149,11 @@ class ModelUnRepas
         }
     }
 
+    /**
+     * Récupère les plats composant un repas donné
+     * @param $idrepas
+     * @return array
+     */
     public function getPlats($idrepas) {
         $pdo = (new \includes\database())->getInstance();
 
