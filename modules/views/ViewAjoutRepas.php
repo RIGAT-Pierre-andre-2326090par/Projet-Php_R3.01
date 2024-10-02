@@ -6,6 +6,8 @@ class ViewAjoutRepas
 {
     /**
      * renvoie le formulaire d'ajout d'un repas
+     * @param $clubs
+     * @param $plats
      * @return void
      */
     public function show($clubs, $plats): void

@@ -6,7 +6,8 @@ class ViewGestionRepas
 {
     /**
      * renvoie la page de gestion du repas
-     * @param $repas: tableau contenant les informations du repas
+     * @param $repas : tableau contenant les informations du repas
+     * @param $clubs
      * @return void
      */
     public function show($repas, $clubs):void{

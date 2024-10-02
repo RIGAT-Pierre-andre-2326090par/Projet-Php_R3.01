@@ -11,7 +11,8 @@ class ViewUnRepas
 
     /**
      * renvoie la page d'un repas
-     * @param $repas: array
+     * @param $repas : array
+     * @param $plats
      * @return void
      */
     public function show($repas, $plats):void{

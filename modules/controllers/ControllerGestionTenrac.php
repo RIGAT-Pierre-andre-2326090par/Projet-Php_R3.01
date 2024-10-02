@@ -4,6 +4,10 @@ namespace controllers;
 
 class ControllerGestionTenrac
 {
+    /**
+     * Traite la gestion des Tenracs.
+     * @return void
+     */
     public function execute()
     {
         if (!isset($_SESSION['user'])) {
