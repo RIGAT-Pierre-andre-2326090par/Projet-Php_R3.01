@@ -8,7 +8,7 @@ class ViewAjoutRepas
      * renvoie le formulaire d'ajout d'un repas
      * @return void
      */
-    public function show($clubs): void
+    public function show($clubs, $plats): void
     {
         ob_start();
         ?>
@@ -22,6 +22,17 @@ class ViewAjoutRepas
                     <option value="<?= $club['ID_CL'] ?>"><?= $club['NOM_CL'] ?></option>
                 <?php endforeach; ?>
             </select>
+            <label for="platRepas" id="platRepas">Plat :</label>
+            <select name="platRepas" id="platRepas" required>
+                <option value=""> -- Choisissez un plat -- </option>
+                <?php foreach ($plats as $plat): ?>
+                    <option value="<?= $plat['ID_PL'] ?>"><?= $plat['NOM_PL'] ?></option>
+                <?php endforeach; ?>
+
+
+
+            </select>
+
             <button type="submit" name="ajoutBouton">Ajouter</button>
         </form>
         <?php

@@ -2,49 +2,67 @@
 
 namespace controllers;
 
-use models\ModelClubs;
 use models\ModelGestionRepas;
-use models\ModelClub; // Assurez-vous d'importer votre modèle de club
+use models\ModelClubs;
+use models\ModelPlats;
+use Exception;
 
 class ControllerAjoutRepas
 {
+    private $modelGestionRepas;
+
     /**
-     * traite la requête de la page ajoutRepas
+     * Le constructeur de la classe ControllerAjoutRepas
+     */
+    public function __construct()
+    {
+        $this->modelGestionRepas = new ModelGestionRepas();
+    }
+
+    /**
+     * Exécute le contrôleur pour gérer l'ajout de repas
      * @return void
-     * @throws \Exception
      */
     public function execute(): void
     {
-        // Vérifiez si l'utilisateur est connecté
+        // Vérifie si l'utilisateur est connecté
         if (!isset($_SESSION['user'])) {
             // Redirige vers la page de connexion
             header('Location: /index.php?action=login');
-            exit(); // Assurez-vous que le script s'arrête ici
+            exit();
         }
 
-        // Récupérer les clubs pour le select
-        $clubs = (new ModelClubs())->getAllClubs(); // Assurez-vous d'avoir une méthode pour obtenir tous les clubs
+        // Récupère les clubs et plats pour le select
+        $clubs = (new ModelClubs())->getAllClubs();
+        $plats = (new ModelPlats())->getAllPlats();
 
+        // Gère l'ajout d'un nouveau repas
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie si le bouton d'ajout a été soumis
             if (isset($_POST['ajoutBouton'])) {
-                // Récupérer les données du formulaire
-                $date = $_POST['dateRepas'];
-                $club = $_POST['clubRepas'];
+                // Récupère les données du formulaire
+                $date = $_POST['dateRepas'] ?? null;
+                $club = $_POST['clubRepas'] ?? null;
+                $platsChoisis = $_POST['plats'] ?? [];
 
-                // Créez le nom de l'image (si nécessaire)
-                $img = strtolower(str_replace(' ', '_', $date)) . '.webp';
+                try {
+                    // Insère le repas et récupère son ID
+                    $idRepas = $this->modelGestionRepas->insertRepas($date, $club);
 
-                // Appel de la méthode pour insérer le repas
-                (new ModelGestionRepas())->insertRepas($date, $club, $img); // Ajoutez l'argument pour l'image si nécessaire
+                    // Insère les plats dans le repas
+                    $this->modelGestionRepas->insertCompose($idRepas, $platsChoisis);
 
-                // Rediriger vers la page appropriée après l'ajout
-                header('Location: /index.php?action=repas'); // Redirection vers la page de gestion des repas
-                exit();
+                    // Redirection après insertion
+                    header('Location: /index.php?action=repas');
+                    exit();
+                } catch (Exception $e) {
+                    // Gérer les exceptions et afficher un message d'erreur
+                    $errorMessage = $e->getMessage();
+                }
             }
         }
 
-        // Affichez le formulaire d'ajout de repas
-        (new \views\ViewAjoutRepas())->show($clubs);
+        // Affiche la vue d'ajout de repas
+        (new \views\ViewAjoutRepas())->show($clubs, $plats, $errorMessage ?? null);
     }
 }

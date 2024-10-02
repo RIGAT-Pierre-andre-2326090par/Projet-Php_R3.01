@@ -1,5 +1,6 @@
 <?php
 namespace models;
+use includes\database;
 use PDO;
 use PDOException;
 
@@ -57,5 +58,17 @@ class ModelPlats
         $resultat['pagemax'] = ceil($count / $limit)-1;
         $resultat['plats'] = $plats;
         return $resultat;
+    }
+
+    public function getAllPlats(): array
+    {
+
+        $pdo = (new database())->getInstance();
+        // Préparation de la requête pour récupérer tous les clubs
+        $stmt = $pdo->prepare("SELECT ID_PL, NOM_PL FROM PLAT");
+        $stmt->execute();
+
+        // Retourne tous les clubs sous forme de tableau associatif
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 }

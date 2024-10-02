@@ -11,70 +11,65 @@ class ModelGestionRepas
     private $pdo;
 
     /**
-     * le constructeur de la classe ModelGestionRepas
+     * Le constructeur de la classe ModelGestionRepas
      */
     public function __construct()
     {
         $this->pdo = (new \includes\database())->getInstance();
-
     }
 
     /**
-     * insère un repas dans la base de donnée
-     * @param $date: la date du repas
-     * @param $idcl: l'id du club
-     * @return void
+     * Insère un repas dans la base de données et retourne l'ID du repas inséré.
+     * @param string $date : la date du repas
+     * @param int $idcl : l'id du club
+     * @return int : L'ID du repas inséré
      * @throws Exception
      */
-    public function insertRepas($date, $idcl): void
+    public function insertRepas($date, $idcl): int
     {
         try {
             $sql = 'SELECT NOM_CL club FROM CLUB WHERE ID_CL = :club';
             $stmt = $this->pdo->prepare($sql);
-            $stmt->bindParam(':club', $idcl, PDO::PARAM_STR);
+            $stmt->bindParam(':club', $idcl, PDO::PARAM_INT);
             $stmt->execute();
 
             // Vérification si des résultats sont retournés
-            $stmt->rowCount() or throw new Exception('Votre club selectionné est invalide');
-        }
-        catch (PDOException $e)
-        {
+            if ($stmt->rowCount() === 0) {
+                throw new Exception('Votre club sélectionné est invalide');
+            }
+        } catch (PDOException $e) {
             // Affichage de l'erreur et rappel de la requête.
             echo 'Erreur : ', $e->getMessage(), PHP_EOL;
-            echo 'Requête : ', $sql, PHP_EOL;
             exit();
         }
 
-        $sql = 'SELECT MAX(ID_RP) as max_id FROM REPAS';
+        // Générer un nouvel ID pour le repas
+        $sql = 'SELECT COALESCE(MAX(ID_RP), 0) + 1 AS new_id FROM REPAS';
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        $id = $result['max_id'] !== null ? $result['max_id'] + 1 : 0;
+        $newId = $stmt->fetchColumn();
 
         try {
-            $sql = 'INSERT INTO REPAS (DATES, ID_RP, ID_CL)
-                    VALUES (:date, :id, :idcl)';
+            $sql = 'INSERT INTO REPAS (DATES, ID_RP, ID_CL) VALUES (:date, :id, :idcl)';
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([
                 ':idcl' => $idcl,
                 ':date' => $date,
-                ':id' => $id
+                ':id' => $newId
             ]);
-        }
-        catch (PDOException $e)
-        {
+            return $newId; // Retourner l'ID du repas inséré
+        } catch (PDOException $e) {
             // Affichage de l'erreur et rappel de la requête.
             echo 'Erreur : ', $e->getMessage(), PHP_EOL;
-            echo 'Requête : ', $sql, PHP_EOL;
             exit();
         }
     }
 
     /**
-     * met à jour le repas choisi
-     * @param $date: la date du repas
-     * @param $id: l'id du repas
-     * @param $idcl: l'id du club
+     * Met à jour le repas choisi
+     * @param string $date : la date du repas
+     * @param int $id : l'id du repas
+     * @param int $idcl : l'id du club
      * @return void
      * @throws Exception
      */
@@ -83,21 +78,20 @@ class ModelGestionRepas
         try {
             $sql = 'SELECT NOM_CL club FROM CLUB WHERE ID_CL = :club';
             $stmt = $this->pdo->prepare($sql);
-            $stmt->bindParam(':club', $idcl, PDO::PARAM_STR);
+            $stmt->bindParam(':club', $idcl, PDO::PARAM_INT);
             $stmt->execute();
 
             // Vérification si des résultats sont retournés
-            $stmt->rowCount() or throw new Exception('Votre club selectionné est invalide');
-        }
-        catch (PDOException $e)
-        {
+            if ($stmt->rowCount() === 0) {
+                throw new Exception('Votre club sélectionné est invalide');
+            }
+        } catch (PDOException $e) {
             // Affichage de l'erreur et rappel de la requête.
             echo 'Erreur : ', $e->getMessage(), PHP_EOL;
-            echo 'Requête : ', $sql, PHP_EOL;
             exit();
         }
 
-        try{
+        try {
             $sql = 'UPDATE REPAS SET ID_CL = :idcl, DATES = :date WHERE ID_RP = :id';
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([
@@ -105,27 +99,81 @@ class ModelGestionRepas
                 ':date' => $date,
                 ':id' => $id
             ]);
-        }
-        catch (PDOException $e)
-        {
+        } catch (PDOException $e) {
             // Affichage de l'erreur et rappel de la requête.
             echo 'Erreur : ', $e->getMessage(), PHP_EOL;
-            echo 'Requête : ', $sql, PHP_EOL;
             exit();
         }
     }
 
     /**
-     * supprime un repas choisi
-     * @param $id: l'id du repas
+     * Supprime un repas choisi
+     * @param int $id : l'id du repas
      * @return void
      */
     public function deleteRepas($id): void
     {
         $sql = 'DELETE FROM REPAS WHERE ID_RP = :id';
         $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':id' => $id]);
+    }
+
+    /**
+     * Met à jour une entrée dans la table est_compose
+     * @param int $idRp : l'id du repas
+     * @param int $idClOld : l'ancien id du club
+     * @param int $idClNew : le nouvel id du club
+     * @return void
+     */
+    public function updateCompose(int $idRp, int $idClOld, int $idClNew): void
+    {
+        $sql = 'UPDATE est_compose SET ID_CL = :idClNew WHERE ID_RP = :idRp AND ID_CL = :idClOld';
+        $stmt = $this->pdo->prepare($sql);
         $stmt->execute([
-            ':id'=> $id
+            ':idClNew' => $idClNew,
+            ':idRp' => $idRp,
+            ':idClOld' => $idClOld
         ]);
+    }
+
+    /**
+     * Supprime une entrée dans la table est_compose
+     * @param int $idRp : l'id du repas
+     * @param int $idCl : l'id du club
+     * @return void
+     */
+    public function deleteCompose(int $idRp, int $idCl): void
+    {
+        $sql = 'DELETE FROM est_compose WHERE ID_RP = :idRp AND ID_CL = :idCl';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            ':idRp' => $idRp,
+            ':idCl' => $idCl
+        ]);
+    }
+
+    /**
+     * Insère les plats dans le repas dans la base de données
+     * @param int $idRepas : l'ID du repas
+     * @param array $plats : tableau des plats à insérer
+     * @return void
+     * @throws Exception
+     */
+    public function insertCompose(int $idRepas, array $plats): void
+    {
+        foreach ($plats as $plat) {
+            try {
+                $sql = 'INSERT INTO est_compose (ID_RP, NOM_PL) VALUES (:idRepas, :plat)';
+                $stmt = $this->pdo->prepare($sql);
+                $stmt->execute([
+                    ':idRepas' => $idRepas,
+                    ':plat' => $plat
+                ]);
+            } catch (PDOException $e) {
+                // Affichage de l'erreur et rappel de la requête.
+                echo 'Erreur : ', $e->getMessage(), PHP_EOL;
+                exit();
+            }
+        }
     }
 }
