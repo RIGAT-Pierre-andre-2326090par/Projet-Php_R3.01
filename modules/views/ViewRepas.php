@@ -28,7 +28,7 @@ class ViewRepas
                             <p><?= htmlspecialchars($unrepas->getNomplat() ?? ""); ?></p>
                             <p><?= htmlspecialchars($unrepas->getNomclub() ?? ""); ?></p>
                         </div>
-                        <img src="<?= htmlspecialchars('/_assets/images/club/' . $unrepas->getImageclub()); ?>" alt="<?= htmlspecialchars($unrepas->getNomclub()); ?>"/>
+                        <img class="imgclub" src="<?= htmlspecialchars('/_assets/images/club/' . $unrepas->getImageclub()); ?>" alt="<?= htmlspecialchars($unrepas->getNomclub()); ?>"/>
                     </section>
                 </a>
             <?php }?>
